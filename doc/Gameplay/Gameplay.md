@@ -1,3 +1,18 @@
+# Statuswerte
+
+Der Spieler hat mehrere Statuswerte:
+
+* Angriffspunkte (AP)
+* Magieangriffspunkte (MAP)
+* Lebenspunkte (LP)
+* Mana (Mana)
+* Erfahrungspunkte (EP)
+
+Items aber haben folgende Werte:
+
+* Verteidigungsfaktor
+* Angriffsfaktor
+
 # Nahkampf
 
 Der Angreifer hat Angriffspunkte (AP) und dessen Nahkampfwaffe einen Angriffsfaktor (AF).
