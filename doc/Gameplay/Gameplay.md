@@ -37,3 +37,6 @@ das Magielevel gibt das selbe für Zauber an.
 Wenn man ein NPC anspricht, startet dieser ein Unterprogramm, mit dem Dialoge gezeigt, Quest vergeben, Handel abgeschlossen oder
 Items übergeben werden. Auf die Dialoge gibt es immer mehrere Antworten, die der Spieler auswählen muss.
 
+# Tränke
+
+Trank-Items erhöhen die Werte des Spielers bis zum Maximum um einen festen Wert.
