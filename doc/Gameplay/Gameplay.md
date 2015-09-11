@@ -43,9 +43,9 @@ individuell festgelegt.
 # Leveln
 
 Hat man genug EP gesammelt, steigt man ein Level auf. Dadurch bekommt man Skillpunkte (SP). Diese SP kann man dann in verschiedene
-Skills investieren: AP, LP, Mana, Magieschaden, Waffenlevel und Magielevel. Die Skills 1 bis 4 erhöhen die
-Obergrenze, die die jeweiligen Werte erreichen können. Das Waffenlevel legt fest, wie starke Waffen man verwenden kann,
-das Magielevel gibt das selbe für Zauber an.
+Skills investieren: Zum einen kann man die Werte AP, LP, Mana und Magieschaden erhöhen, zum anderen gibt es Waffengruppen, die
+mit SP freigeschaltet werden müssen: Nahkampfwaffen, Fernkampfwaffen, Magiewaffen und Schwere Waffen. Jede dieser Gruppen ist dazu noch
+in 2 Stufen eingeteilt.
 
 # Interagieren
 
