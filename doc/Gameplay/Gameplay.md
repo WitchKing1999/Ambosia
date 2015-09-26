@@ -1,3 +1,11 @@
+# Items
+
+Items sind Gegenstände, die der Spieler in seinem Inventar platzieren kann. Sie haben einen Namen, eine Beschreibung
+und ein Bild. Das Inventar beinhaltet alle Items. Es ist unendlich und kann über ein eigenes Menü bearbeitet werden.
+In diesem Menü können Items angesehen verschoben, gelöscht und in Slots platziert werden. Damit Items die Statuswerte
+des Spielers verändern können, müssen sie in Slots platziert werden. Ein Slot kann immer nur ein Item halten und ein
+Item immer nur in einem Slot platziert werden.
+
 # Statuswerte
 
 Der Spieler hat mehrere Statuswerte:
