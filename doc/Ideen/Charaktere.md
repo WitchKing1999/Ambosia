@@ -5,6 +5,8 @@ Eine lose Sammlung an Ideen für Charaktere.
 Wir haben noch den Rivalen des Helden, nämlich den Elfen- Bogenschützen:
 Er ist sehr arrogant, weil er als Elf geschmeidiger und eleganter aussieht und kämpft, als die Menschen.
 Bei ihm kann der Held auch das Bogenschießen Stufe 1 erlernen.
+Außerdem verkauft er Pfeile zum Doppelten Preis.
+Beim 1. Kauf bekommt man Zwar Pfeile geschenkt so das es wieder fair ist aber dannach muss man den Betrug, denn man durch einen Quest von einem Händler in der Handelstadt bekommt, aufdecken.
 
 Der Held, der meiner Meinung nach Heron heißen sollte (Hero+ n)
 Ist anfangs ein einfacher Bauer: Muskulös durch seine Landarbeit.
@@ -24,3 +26,6 @@ Der Goblin Lurch:
 Er ist ein freundlicher, grünblauer Goblin, der an dem See nördlich der "Guten Burg" eine Fischerhütte hat. Er hat eine Stock- Angel, wo noch 1-2 Grüne Blätter zu sehen sind, und eine drekige Lederschürze, welche ein paar Löcher enthält.
 Von Ihm bekommt man den Quest, dass man 2 Personen der guten Burg befragen soll warum sie nicht mehr so viel Fisch bestellen.
 Dieser Quest ist eine Anlehnung an den Quest von Gothic 3, "Ein Waldbeerenpaket für Stan".
+
+Altony und Kule sind anlehnungen an (Hershel) Layton und Luke aus der Spielereihe "Professor Layton".
+Sie haben ähnliches Aussehen wie die Helden der Nintendo- Franchise und vergeben Rätsel als Quests
