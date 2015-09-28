@@ -1,14 +1,9 @@
-# Items
+# Inventar und Items
 
-Items sind Gegenstände, die der Spieler in seinem Inventar platzieren kann. Sie haben einen Namen, eine Beschreibung
-und ein Bild. Das Inventar beinhaltet alle Items. Es ist unendlich und kann über ein eigenes Menü bearbeitet werden.
-In diesem Menü können Items angesehen verschoben, gelöscht und in Slots platziert werden. Damit Items die Statuswerte
-des Spielers verändern können, müssen sie in Slots platziert werden. Ein Slot kann immer nur ein Item halten und ein
-Item immer nur in einem Slot platziert werden.
-Es gibt 6 Slots: Nahkampfwaffe, Fernkampfwaffe, Magiewaffe, Schild, Trank, Rüstung.
-Jeder dieser Slots (außer der Rüstung) lässt sich im Spiel aktivieren: Das Item auf dem Slot führt eine Aktion aus,
-welche Aktion das ist wird von dem Item festgelegt.
-Außerdem verändern die Items in den Slots auch die Statuswerte des Spielers.
+Der Spieler hat ein Inventar, in dem dessen Items abgelegt werden.
+Das Inventar hat auch ein Menü, das im Spiel aufgerufen werden kann und worüber Items sortiert und gelöscht werden
+können. Im Inventar-Menü können auch die aktiven Items (Waffen, Schilder, Tränke) und die passiven Items (Rüstung, 
+Amulette) ausgewählt werden.
 
 # Statuswerte
 
