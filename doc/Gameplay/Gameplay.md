@@ -7,7 +7,7 @@ des Spielers verändern können, müssen sie in Slots platziert werden. Ein Slot
 Item immer nur in einem Slot platziert werden.
 Es gibt 6 Slots: Nahkampfwaffe, Fernkampfwaffe, Magiewaffe, Schild, Trank, Rüstung.
 Jeder dieser Slots (außer der Rüstung) lässt sich im Spiel aktivieren: Das Item auf dem Slot führt eine Aktion aus,
-was Aktion das ist wird von dem Item festgelegt.
+welche Aktion das ist wird von dem Item festgelegt.
 Außerdem verändern die Items in den Slots auch die Statuswerte des Spielers.
 
 # Statuswerte
