@@ -1,64 +1,59 @@
+### Grundlagen
+
+Im Spiel kann jedes Wesen jedes andere Wesen angreifen. Sobald Wesen A Wesen B schlägt, verringern sich die Lebenspunkte (LP)
+von Wesen B um die Angrifspunkte von A. Wenn nach dem Schlag die Lebenspunkte von B kleiner oder gleich null sind, stirbt B.
+
 ### Inventar und Items
 
-Der Spieler hat ein Inventar, in dem dessen Items abgelegt werden.
-Das Inventar hat auch ein Menü, das im Spiel aufgerufen werden kann und worüber Items sortiert und gelöscht werden
-können. Im Inventar-Menü können auch die aktiven Items (Waffen, Schilder, Tränke) und die passiven Items (Rüstung, 
-Amulette) ausgewählt werden.
+Der Spieler hat die Möglichkeit, die grundlegenden Werte seines Wesens (Lebenspunkte, Angriffspunkte) mit Items zu verändern.
+Diese Items werden im Inventar des Spielers abgelegt und können dort über ein Menü angesehen, sortiert und ausgewählt werden.
 
-### Statuswerte
+### Waffen
 
-Der Spieler hat mehrere Statuswerte:
+Die Waffe hat als Wert einen Faktor, der mit den Angrifspunkten multipliziert wird, bevor sie von den Lebenspunkten des Gegners
+abgezogen werden.
 
-* Angriffspunkte (AP)
-* Magieangriffspunkte (MAP)
-* Lebenspunkte (LP)
-* Mana (Mana)
-* Erfahrungspunkte (EP)
+### Bogen
 
-Items aber haben folgende Werte:
+Der Bogen ist eine Waffe, die Projektile abfeuert, die beim Zusammenstoß mit einem Wesen Schaden verursachen.
+Um solche Projektile abfeuern zu können, werden Projektil-Items benötigt.
 
-* Verteidigungsfaktor
-* Angriffsfaktor
+### Rüstung
 
-### Nahkampf
+Diese Art von Items reduzieren bei einem Schlag gegen den Spieler den Schaden um einen festen Faktor.
+Sie sind Passiv-Items, können also keine Aktionen ausführen.
 
-Der Angreifer hat Angriffspunkte (AP) und dessen Nahkampfwaffe einen Angriffsfaktor (AF).
-Der Verteidiger hat Lebenspunkte (LP) und dessen Schild einen Verteidigungsfaktor (VF).
-Greift der Angreifer an, wird der Bruttoschaden berechnet (AP*AF).
-Aus diesem Bruttoschaden errechnet der Verteidiger den Nettoschaden (Bruttoschaden/VF),
-dieser wird von den Lebenspunkten des Verteidigers abgezogen.
-Sobald die LP kleiner oder gleich null sind, stirbt der Verteidiger.
+### erweitertes Kampfsystem: Magie
 
-### Fernkampf
-
-Der Angreifer schießt einen Pfeil ab, der beim Verteidiger Schaden verursacht. Die Berechnung
-funktioniert genauso wie beim Nahkampf.
-
-### Zauber
-
-Es gibt drei Arten von Zauber: Schüsse, Beschwörungen und Flächenzauber.
-Schüsse funktionieren genauso wie der Fernkampf, ein Schuss kostet aber zusätzlich je nach Waffe Mana.
-Beschwörungen kosten Mana und erstellen NPCs, die einem im Kampf unterstützen.
-Flächenzauber kosten auch Mana und breiten sich über eine Fläche aus. Solange der Zauber besteht, wird allem
-was in dem Zauber steht, Schaden zugefügt.
-
-### Looten
-
-Durch das Töten von NPCs erhält man Geld, Items und/oder Erfahrungspunkte (EP). Wieviel man wovon bekommt, ist bei jedem NPC
-individuell festgelegt.
-
-### Leveln
-
-Hat man genug EP gesammelt, steigt man ein Level auf. Dadurch bekommt man Skillpunkte (SP). Diese SP kann man dann in verschiedene
-Skills investieren: Zum einen kann man die Werte AP, LP, Mana und Magieschaden erhöhen, zum anderen gibt es Waffengruppen, die
-mit SP freigeschaltet werden müssen: Nahkampfwaffen, Fernkampfwaffen, Magiewaffen und Schwere Waffen. Jede dieser Gruppen ist dazu noch
-in 2 Stufen eingeteilt.
-
-### Interagieren
-
-Wenn man ein NPC anspricht, startet dieser ein Unterprogramm, mit dem Dialoge gezeigt, Quest vergeben, Handel abgeschlossen oder
-Items übergeben werden. Auf die Dialoge gibt es immer mehrere Antworten, die der Spieler auswählen muss.
+Im erweiterten Kampfsystem haben die Wesen Mana, die sie benötigen, um Zauber auszuführen. Wird ein Zauber ausgefüht, werden
+die Manapunkte um einen Item-spezifischen Wert verringert, hat man nicht genügend Mana für einen Zauber, wird er nicht ausgeführt.
+Was genau ein Zauber genau bewirkt, ist sehr unterschiedlich; Magie kennt keine Grenzen. 
 
 ### Tränke
 
-Trank-Items erhöhen die Werte des Spielers bis zum Maximum um einen festen Wert.
+Es gibt zwei Arten von Tränken: Manatränke und Heiltränke. Manatränke erhöhen die Manapunkte des Spielers, Lebenstränke die
+Lebenspunkte des Spielers. Allerdings gibt es ein Limit bis zu dem Tränke wirken. Ist das Limit erreicht, werden die Tränke keine
+weiteren Punkte hinzufügen.
+
+### Ringe
+
+Ringe sind eine Art Mischung aus Rüstung und Trank: Sie sind Passiv-Items, die das Leben- bzw. Manalimit oder die Angriffspunkte erhöhen.
+
+### Geld
+
+Geld hat weder aktive noch passive Eigenschaften, sondern kann bei Händlern gegen andere Items getauscht werden.
+
+### Looten
+
+Durch das Töten von Wesen erhält der Spieler Geld, Items und/oder Erfahrungspunkte (EP). Wieviel man wovon bekommt, ist bei jedem Wesen
+individuell festgelegt.
+
+### Erfahrungen sammeln
+
+Wenn man eine festgelegte Menge an Erfahrungspunkten erreicht hat, steigt man im Level auf. Dadurch werden die Lebenspunkt- und Manalimits
+und Angriffspunkte erhöht. Außerdem kann man dann neue Waffen und Rüstungen einsetzen.
+
+### Reden und Handeln
+
+Der Spieler kann andere Wesen ansprechen, worauf ein Dialog anfängt. Im Laufe des Dialoges bekommt der Spieler wichtige Informationen zum Spiel,
+Aufgaben oder Kaufangebote, er hat dabei immer die Möglichkeit auf mehrere Arten zu antworten.
