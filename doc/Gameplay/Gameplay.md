@@ -5,8 +5,9 @@ von Wesen B um die Angrifspunkte von A. Wenn nach dem Schlag die Lebenspunkte vo
 
 ### Inventar und Items
 
-Der Spieler hat die Möglichkeit, die grundlegenden Werte seines Wesens (Lebenspunkte, Angriffspunkte) mit Items zu verändern.
-Diese Items werden im Inventar des Spielers abgelegt und können dort über ein Menü angesehen, sortiert und ausgewählt werden.
+Der Spieler hat die Möglichkeit, die grundlegenden Werte seines Wesens (z.B. für Lebenspunkte, Angriffspunkte) mit Items zu verändern.
+Diese Items werden im Inventar des Spielers abgelegt und können dort über ein Menü angesehen und ausgewählt werden.
+Sortiert werden die Items automatisch z.B. werden Schwerter, die man tragen kann Oben angeordnet und Schwerter, wo man noch Stärke braucht unten angeordnet.
 
 ### Waffen
 
@@ -29,15 +30,18 @@ Im erweiterten Kampfsystem haben die Wesen Mana, die sie benötigen, um Zauber a
 die Manapunkte um einen Item-spezifischen Wert verringert, hat man nicht genügend Mana für einen Zauber, wird er nicht ausgeführt.
 Was genau ein Zauber genau bewirkt, ist sehr unterschiedlich; Magie kennt keine Grenzen. 
 
-### Tränke
+### Tränke und Pflanzen
 
 Es gibt zwei Arten von Tränken: Manatränke und Heiltränke. Manatränke erhöhen die Manapunkte des Spielers, Lebenstränke die
 Lebenspunkte des Spielers. Allerdings gibt es ein Limit bis zu dem Tränke wirken. Ist das Limit erreicht, werden die Tränke keine
 weiteren Punkte hinzufügen.
 
-### Ringe
+Planzen können das gleiche, nur sie sind schwächer, dass heißt das z.B. eine Planze weniger heilt als ein Trank
 
-Ringe sind eine Art Mischung aus Rüstung und Trank: Sie sind Passiv-Items, die das Leben- bzw. Manalimit oder die Angriffspunkte erhöhen.
+### Ringe und Amulette
+
+Ringe und Amulette erhöhen dauerhaft, wenn getragen, Werte des Spielers z.B. Rüstung, Leben, Nahkampfschaden, usw.
+Allerdings sind sie passiv und haben deshalb keinen weiteren Nutzen.
 
 ### Geld
 
@@ -45,13 +49,14 @@ Geld hat weder aktive noch passive Eigenschaften, sondern kann bei Händlern geg
 
 ### Looten
 
-Durch das Töten von Wesen erhält der Spieler Geld, Items und/oder Erfahrungspunkte (EP). Wieviel man wovon bekommt, ist bei jedem Wesen
-individuell festgelegt.
+Durch das Töten von Wesen erhält der Spieler, Items und Erfahrungspunkte (EP). Wieviel man wovon bekommt, ist bei jedem Wesen individuell festgelegt.
+Bei einigen bestimmten Wesen auch Geld.
 
 ### Erfahrungen sammeln
 
-Wenn man eine festgelegte Menge an Erfahrungspunkten erreicht hat, steigt man im Level auf. Dadurch werden die Lebenspunkt- und Manalimits
-und Angriffspunkte erhöht. Außerdem kann man dann neue Waffen und Rüstungen einsetzen.
+Wenn man eine festgelegte Menge an Erfahrungspunkten erreicht hat, steigt man im Level auf.
+Durch das Aufsteigen im Level bekommt man Skillpunkte, womit man die Werte wie z.B. Leben, Fernkampfschaden oder Rüstung dauerhaft erhöhen kann.
+Außerdem kann man dann neue Waffen und Rüstungen einsetzen.
 
 ### Reden und Handeln
 
