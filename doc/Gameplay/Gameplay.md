@@ -39,6 +39,11 @@ weiteren Punkte hinzufügen.
 
 Ringe sind eine Art Mischung aus Rüstung und Trank: Sie sind Passiv-Items, die das Leben- bzw. Manalimit oder die Angriffspunkte erhöhen.
 
+### kritische Treffer
+
+Wenn ein Wesen einen Schlag ausführt, kann es sein, dass sich der Schaden zufällig verdoppelt. Die Wahrscheinlichkeit dafür ist ein durch
+Items veränderbarer Wert größer/gleich 0 und kleiner gleich 100.
+
 ### Geld
 
 Geld hat weder aktive noch passive Eigenschaften, sondern kann bei Händlern gegen andere Items getauscht werden.
