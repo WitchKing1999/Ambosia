@@ -56,6 +56,10 @@ Händler gibt dem Spieler dafür auch eine gewisse Menge Items. Es können auch 
 Es gibt auch Händler, die für einen Obulus zwei oder mehr Items zu einem neuen verarbeiten, der Spieler kann allerdings selber nichts
 herstellen.
 
+### Geld
+
+Als Geld oder Münzen sind Items, die nur zum Handel nützlich sind, sie haben also weder aktive noch passive Eigenschaften.
+
 ### Looten
 
 Durch das Töten von Wesen erhält der Spieler, Items und Erfahrungspunkte (EP). Wieviel man wovon bekommt, ist bei jedem Wesen individuell festgelegt.
