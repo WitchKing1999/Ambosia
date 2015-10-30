@@ -58,7 +58,8 @@ herstellen.
 
 ### Geld
 
-Als Geld oder Münzen sind Items, die nur zum Handel nützlich sind, sie haben also weder aktive noch passive Eigenschaften.
+Die Ingamewährung von Ambosia ist "Gold". Diese Goldmünzen werden als Items im Inventar abgelegt und haben keine aktiven oder passiven
+Eigenschaften, sondern sind nur für den Handel bestimmt. Es gibt keine Unterwährungen von Gold.
 
 ### Looten
 
