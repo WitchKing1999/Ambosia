@@ -8,7 +8,7 @@ von Wesen B um die Angrifspunkte von A. Wenn nach dem Schlag die Lebenspunkte vo
 Der Spieler hat die Möglichkeit, die grundlegenden Werte seines Wesens (z.B. für Lebenspunkte, Angriffspunkte) mit Items zu verändern.
 Diese Items werden im Inventar des Spielers abgelegt und können dort über ein Menü angesehen und ausgewählt werden.
 Items werden automatisch sortiert. Zum Beispiel werden Schwerter, die man tragen kann, weiter oben angeordnet und Schwerter, für die
-man noch Stärke braucht, unten angeordnet.
+man noch Stärke braucht, unten angeordnet. Der Spieler kann unendlich viele Items in seinem Inventar ablegen.
 
 ### Waffen
 
