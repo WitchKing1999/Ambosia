@@ -37,7 +37,7 @@ Es gibt zwei Arten von Tränken: Manatränke und Heiltränke. Manatränke erhöh
 Lebenspunkte des Spielers. Allerdings gibt es ein Limit bis zu dem Tränke wirken. Ist das Limit erreicht, werden die Tränke keine
 weiteren Punkte hinzufügen.
 
-Planzen haben die selbe Funktion, sind  aber schwächer.
+Pflanzen haben die selbe Funktion, sind  aber schwächer.
 
 ### Ringe und Amulette
 
