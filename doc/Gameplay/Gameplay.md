@@ -7,7 +7,8 @@ von Wesen B um die Angrifspunkte von A. Wenn nach dem Schlag die Lebenspunkte vo
 
 Der Spieler hat die Möglichkeit, die grundlegenden Werte seines Wesens (z.B. für Lebenspunkte, Angriffspunkte) mit Items zu verändern.
 Diese Items werden im Inventar des Spielers abgelegt und können dort über ein Menü angesehen und ausgewählt werden.
-Sortiert werden die Items automatisch z.B. werden Schwerter, die man tragen kann Oben angeordnet und Schwerter, wo man noch Stärke braucht unten angeordnet.
+Items werden automatisch sortiert. Zum Beispiel werden Schwerter, die man tragen kann, weiter oben angeordnet und Schwerter, für die
+man noch Stärke braucht, unten angeordnet. Der Spieler kann unendlich viele Items in seinem Inventar ablegen.
 
 ### Waffen
 
@@ -36,7 +37,7 @@ Es gibt zwei Arten von Tränken: Manatränke und Heiltränke. Manatränke erhöh
 Lebenspunkte des Spielers. Allerdings gibt es ein Limit bis zu dem Tränke wirken. Ist das Limit erreicht, werden die Tränke keine
 weiteren Punkte hinzufügen.
 
-Planzen können das gleiche, nur sie sind schwächer, dass heißt das z.B. eine Planze weniger heilt als ein Trank
+Pflanzen haben die selbe Funktion, sind  aber schwächer.
 
 ### Ringe und Amulette
 
@@ -55,10 +56,15 @@ Händler gibt dem Spieler dafür auch eine gewisse Menge Items. Es können auch 
 Es gibt auch Händler, die für einen Obulus zwei oder mehr Items zu einem neuen verarbeiten, der Spieler kann allerdings selber nichts
 herstellen.
 
+### Geld
+
+Die Ingamewährung von Ambosia ist "Gold". Diese Goldmünzen werden als Items im Inventar abgelegt und haben keine aktiven oder passiven
+Eigenschaften, sondern sind nur für den Handel bestimmt. Es gibt keine Unterwährungen von Gold.
+
 ### Looten
 
 Durch das Töten von Wesen erhält der Spieler, Items und Erfahrungspunkte (EP). Wieviel man wovon bekommt, ist bei jedem Wesen individuell festgelegt.
-Bei einigen bestimmten Wesen auch Geld.
+Bestimmte Wesen geben auch Geld.
 
 ### Erfahrungen sammeln
 
