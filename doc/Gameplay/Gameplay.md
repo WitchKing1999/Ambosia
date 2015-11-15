@@ -76,3 +76,8 @@ Außerdem kann man dann neue Waffen und Rüstungen einsetzen.
 
 Der Spieler kann andere Wesen ansprechen, worauf ein Dialog anfängt. Im Laufe des Dialoges bekommt der Spieler wichtige Informationen zum Spiel,
 Aufgaben oder Kaufangebote, er hat dabei immer die Möglichkeit auf mehrere Arten zu antworten.
+
+### Speichern
+
+Der Spieler kann seinen Spielstand speichern, um ihn nach einem Neustart fortzusetzen. Dies passiert automatisch, wenn der Spieler ein Level verläßt,
+kann allerdings auch durch den Spieler manuell vorgenommen werden. Dabei werden die Statuswerte des Spielers, sein Inventar und der Quest-Verlauf gespeichert.
