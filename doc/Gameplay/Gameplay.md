@@ -77,6 +77,17 @@ Außerdem kann man dann neue Waffen und Rüstungen einsetzen.
 Der Spieler kann andere Wesen ansprechen, worauf ein Dialog anfängt. Im Laufe des Dialoges bekommt der Spieler wichtige Informationen zum Spiel,
 Aufgaben oder Kaufangebote, er hat dabei immer die Möglichkeit auf mehrere Arten zu antworten.
 
+### Gegner und NPCs
+
+Zuerst muss zwischen den Gegnern unterschieden werden: Es gibt NPCs, Bosse und Farm-Mobs.
+
+NPCs sind dauerhaft vorhanden und lassen sich nicht töten, dafür können sie angesprochen werden.
+
+Bosse gehören immer zu einer Quest und erscheinen nur, wenn diese Quest aktiviert ist. Da die Quest beendet ist, wenn der Boss getötet wurde, spawnen
+sie nicht wieder.
+
+Farm-Mobs erscheinen zufällig in bestimmten Leveln und lassen sich töten und spawnen nach einer gewissen Zeit neu.
+
 ### Speichern
 
 Der Spieler kann seinen Spielstand speichern, um ihn nach einem Neustart fortzusetzen. Dies passiert automatisch, wenn der Spieler ein Level verläßt,
