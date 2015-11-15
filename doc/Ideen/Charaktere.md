@@ -7,6 +7,7 @@ Er ist sehr arrogant, weil er als Elf geschmeidiger und eleganter aussieht und k
 Bei ihm kann der Held auch das Bogenschießen Stufe 1 erlernen.
 Außerdem verkauft er Pfeile zum Doppelten Preis.
 Beim 1. Kauf bekommt man Zwar Pfeile geschenkt so das es wieder fair ist aber dannach muss man den Betrug, denn man durch einen Quest von einem Händler in der Handelstadt bekommt, aufdecken.
+Er trägt eine Grüne Lederweste und eine braune Lederhose außerdem braune leicht angespitze Schuhe.
 
 Der Held, der meiner Meinung nach Heron heißen sollte (Hero+ n)
 Ist anfangs ein einfacher Bauer: Muskulös durch seine Landarbeit.
