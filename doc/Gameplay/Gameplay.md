@@ -92,3 +92,4 @@ Farm-Mobs erscheinen zufällig in bestimmten Leveln und lassen sich töten und s
 
 Der Spieler kann seinen Spielstand speichern, um ihn nach einem Neustart fortzusetzen. Dies passiert automatisch, wenn der Spieler ein Level verläßt,
 kann allerdings auch durch den Spieler manuell vorgenommen werden. Dabei werden die Statuswerte des Spielers, sein Inventar und der Quest-Verlauf gespeichert.
+Außerdem kann der Spieler den Speicherstand festlegen, in den das Spiel gespeichert wird.
