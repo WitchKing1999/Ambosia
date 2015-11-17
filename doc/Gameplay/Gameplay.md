@@ -5,7 +5,7 @@ von Wesen B um die Angrifspunkte von A. Wenn nach dem Schlag die Lebenspunkte vo
 
 ### Inventar und Items
 
-Der Spieler hat die Möglichkeit, die grundlegenden Werte seines Wesens (z.B. für Lebenspunkte, Angriffspunkte) mit Items zu verändern.
+Der Spieler hat die Möglichkeit, die Werte seines Wesens mit Items zu verändern.
 Diese Items werden im Inventar des Spielers abgelegt und können dort über ein Menü angesehen und ausgewählt werden.
 Items werden automatisch sortiert. Zum Beispiel werden Schwerter, die man tragen kann, weiter oben angeordnet und Schwerter, für die
 man noch Stärke braucht, unten angeordnet. Der Spieler kann unendlich viele Items in seinem Inventar ablegen.
@@ -76,3 +76,20 @@ Außerdem kann man dann neue Waffen und Rüstungen einsetzen.
 
 Der Spieler kann andere Wesen ansprechen, worauf ein Dialog anfängt. Im Laufe des Dialoges bekommt der Spieler wichtige Informationen zum Spiel,
 Aufgaben oder Kaufangebote, er hat dabei immer die Möglichkeit auf mehrere Arten zu antworten.
+
+### Gegner und NPCs
+
+Zuerst muss zwischen den Gegnern unterschieden werden: Es gibt NPCs, Bosse und Farm-Mobs.
+
+NPCs sind dauerhaft vorhanden und lassen sich nicht töten, dafür können sie angesprochen werden.
+
+Bosse gehören immer zu einer Quest und erscheinen nur, wenn diese Quest aktiviert ist. Da die Quest beendet ist, wenn der Boss getötet wurde, spawnen
+sie nicht wieder.
+
+Farm-Mobs erscheinen zufällig in bestimmten Leveln und lassen sich töten und spawnen nach einer gewissen Zeit neu.
+
+### Speichern
+
+Der Spieler kann seinen Spielstand speichern, um ihn nach einem Neustart fortzusetzen. Dies passiert automatisch, wenn der Spieler ein Level verläßt,
+kann allerdings auch durch den Spieler manuell vorgenommen werden. Dabei werden die Statuswerte des Spielers, sein Inventar und der Quest-Verlauf gespeichert.
+Außerdem kann der Spieler den Speicherstand festlegen, in den das Spiel gespeichert wird.
