@@ -1,6 +1,7 @@
 // (C) Flumminard 2015
 
 #include "Ambosia.h"
+#include "Kismet/KismetSystemLibrary.h"
 #include "InventoryComponent.h"
 
 
@@ -12,7 +13,7 @@ UInventoryComponent::UInventoryComponent()
 	bWantsBeginPlay = true;
 	PrimaryComponentTick.bCanEverTick = true;
 
-	// ...
+	ActionItem = nullptr;
 }
 
 
@@ -25,12 +26,50 @@ void UInventoryComponent::BeginPlay()
 	
 }
 
-
 // Called every frame
 void UInventoryComponent::TickComponent( float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction )
 {
 	Super::TickComponent( DeltaTime, TickType, ThisTickFunction );
 
 	// ...
+}
+
+void UInventoryComponent::OnChildDetached(USceneComponent* ChildComponent)
+{
+	UItemComponent* ChildAsItem = dynamic_cast<UItemComponent*>(ChildComponent);
+	if (ChildAsItem == this->ActionItem)
+	{
+		this->ActionItem = nullptr;
+	}
+	else if (ChildAsItem == this->PassiveItem)
+	{
+		this->PassiveItem = nullptr;
+	}
+}
+
+UItemComponent* UInventoryComponent::GetActionItem()
+{
+	return this->ActionItem;
+}
+
+void UInventoryComponent::SetActionItem(UItemComponent* Item)
+{
+	if (Item->AttachParent == this)
+	{
+		this->ActionItem = Item;
+	}
+}
+
+UItemComponent* UInventoryComponent::GetPassiveItem()
+{
+	return this->PassiveItem;
+}
+
+void UInventoryComponent::SetPassiveItem(UItemComponent* Item)
+{
+	if (Item->AttachParent == this)
+	{
+		this->PassiveItem = Item;
+	}
 }
 
