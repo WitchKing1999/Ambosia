@@ -24,19 +24,19 @@ public:
 
 	virtual void OnChildDetached(USceneComponent* ChildComponent) override;
 
-	UFUNCTION(BlueprintCallable, Category = "Variables|Inventory")
 	UItemComponent* GetActionItem();
 	UFUNCTION(BlueprintCallable, Category = "Variables|Inventory")
 	void SetActionItem(UItemComponent* Item);
 
-	UFUNCTION(BlueprintCallable, Category = "Variables|Inventory")
 	UItemComponent* GetPassiveItem();
 	UFUNCTION(BlueprintCallable, Category = "Variables|Inventory")
 	void SetPassiveItem(UItemComponent* Item);
 
 
 protected:
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Variables|Inventory")
 	UItemComponent* ActionItem;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Variables|Inventory")
 	UItemComponent* PassiveItem;
 	
 };

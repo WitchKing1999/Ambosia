@@ -12,7 +12,9 @@ UItemComponent::UItemComponent()
 	bWantsBeginPlay = true;
 	PrimaryComponentTick.bCanEverTick = true;
 
-	// ...
+	HealthPointsLimit = 200;
+	AttackPoints = 100;
+	DefenceFactor = 1;
 }
 
 
@@ -34,3 +36,17 @@ void UItemComponent::TickComponent( float DeltaTime, ELevelTick TickType, FActor
 	// ...
 }
 
+float UItemComponent::GetHealthPointsLimit()
+{
+	return this->HealthPointsLimit;
+}
+
+float UItemComponent::GetAttackPoints()
+{
+	return this->AttackPoints;
+}
+
+float UItemComponent::GetDefenceFactor()
+{
+	return this->DefenceFactor;
+}
