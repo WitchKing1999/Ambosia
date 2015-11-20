@@ -47,6 +47,16 @@ void UInventoryComponent::OnChildDetached(USceneComponent* ChildComponent)
 	}
 }
 
+void UInventoryComponent::ActivateActionItem()
+{
+	this->ActionItem->Activate();
+}
+
+void UInventoryComponent::DeactivateActionItem()
+{
+	this->ActionItem->Deactivate();
+}
+
 UItemComponent* UInventoryComponent::GetActionItem()
 {
 	return this->ActionItem;
