@@ -26,20 +26,24 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Inventory")
 	void ActivateActionItem();
+
 	UFUNCTION(BlueprintCallable, Category = "Inventory")
 	void DeactivateActionItem();
 
 	UItemComponent* GetActionItem();
+
 	UFUNCTION(BlueprintCallable, Category = "Variables|Inventory")
 	void SetActionItem(UItemComponent* Item);
 
 	UItemComponent* GetPassiveItem();
+
 	UFUNCTION(BlueprintCallable, Category = "Variables|Inventory")
 	void SetPassiveItem(UItemComponent* Item);
 
 protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Variables|Inventory")
 	UItemComponent* ActionItem;
+
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Variables|Inventory")
 	UItemComponent* PassiveItem;
 	

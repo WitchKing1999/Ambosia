@@ -22,14 +22,19 @@ public:
 	virtual void TickComponent( float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction ) override;
 
 	float GetHealthPointsLimit();
+
 	float GetAttackPoints();
+
 	float GetDefenceFactor();
 
 protected:
+
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	float HealthPointsLimit;
+
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	float AttackPoints;
+
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	float DefenceFactor;
 	
