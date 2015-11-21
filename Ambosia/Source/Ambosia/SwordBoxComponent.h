@@ -9,7 +9,7 @@
 /**
  * 
  */
-UCLASS()
+UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class AMBOSIA_API USwordBoxComponent : public UBoxComponent
 {
 	GENERATED_BODY()

@@ -8,7 +8,7 @@
 /**
  * 
  */
-UCLASS()
+UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class AMBOSIA_API USwordItemComponent : public UItemComponent
 {
 	GENERATED_BODY()
