@@ -1,6 +1,7 @@
 // (C) Flumminard 2015
 
 #include "Ambosia.h"
+#include "Kismet/KismetSystemLibrary.h"
 #include "GameplayValuesComponent.h"
 
 
@@ -11,8 +12,6 @@ UGameplayValuesComponent::UGameplayValuesComponent()
 	// off to improve performance if you don't need them.
 	bWantsBeginPlay = true;
 	PrimaryComponentTick.bCanEverTick = true;
-
-	Inventory = nullptr;
 
 	HealthPoints = 200;
 	HealthPointsLimit = 200;
@@ -41,13 +40,16 @@ void UGameplayValuesComponent::TickComponent( float DeltaTime, ELevelTick TickTy
 
 void UGameplayValuesComponent::AffectHealthPoints(float Delta)
 {
+	UKismetSystemLibrary::PrintString(this, "Affect!");
 	this->HealthPoints += Delta / this->GetEffectiveDefenceFactor();
 	if (this->HealthPoints > this->GetEffectiveHealthPointsLimit())
 	{
+		UKismetSystemLibrary::PrintString(this, "Limit reached!");
 		this->HealthPoints = this->GetEffectiveHealthPointsLimit();
 	}
 	else if (this->HealthPoints <= 0)
 	{
+		UKismetSystemLibrary::PrintString(this, "Die!");
 		this->GetOwner()->Destroy();
 	}
 }
@@ -73,9 +75,23 @@ float UGameplayValuesComponent::GetHealthPointsLimit()
 
 float UGameplayValuesComponent::GetEffectiveHealthPointsLimit()
 {
-	if (this->Inventory != nullptr)
+	TArray<UActorComponent*> otherComponents = this->GetOwner()->GetComponents();
+	UInventoryComponent* inventory = nullptr;
+	for (UActorComponent* component : otherComponents)
 	{
-		return this->GetHealthPointsLimit() + this->GetInventory()->GetPassiveItem()->GetHealthPointsLimit();
+		UInventoryComponent* componentCasted = dynamic_cast<UInventoryComponent*>(component);
+		if (componentCasted != nullptr)
+		{
+			inventory = componentCasted;
+		}
+	}
+	if (inventory == nullptr)
+		return this->GetHealthPointsLimit();
+	UItemComponent* PassiveItem = inventory->GetPassiveItem();
+
+	if (PassiveItem != nullptr)
+	{
+		return (this->GetHealthPointsLimit() + inventory->GetPassiveItem()->GetHealthPointsLimit());
 	}
 	else
 	{
@@ -102,9 +118,23 @@ float UGameplayValuesComponent::GetAttackPoints()
 
 float UGameplayValuesComponent::GetEffectiveAttackPoints()
 {
-	if (this->Inventory != nullptr)
+	TArray<UActorComponent*> otherComponents = this->GetOwner()->GetComponents();
+	UInventoryComponent* inventory = nullptr;
+	for (UActorComponent* component : otherComponents)
 	{
-		return this->GetAttackPoints() + this->GetInventory()->GetActionItem()->GetAttackPoints();
+		UInventoryComponent* componentCasted = dynamic_cast<UInventoryComponent*>(component);
+		if (componentCasted != nullptr)
+		{
+			inventory = componentCasted;
+		}
+	}
+	if (inventory == nullptr)
+		return this->GetAttackPoints();
+	UItemComponent* PassiveItem = inventory->GetPassiveItem();
+
+	if (PassiveItem != nullptr)
+	{
+		return (this->GetAttackPoints() + inventory->GetActionItem()->GetAttackPoints());
 	}
 	else
 	{
@@ -124,27 +154,27 @@ float UGameplayValuesComponent::GetDefenceFactor()
 
 float UGameplayValuesComponent::GetEffectiveDefenceFactor()
 {
-	if (this->Inventory != nullptr)
+	TArray<UActorComponent*> otherComponents = this->GetOwner()->GetComponents();
+	UInventoryComponent* inventory = nullptr;
+	for (UActorComponent* component : otherComponents)
 	{
-		return this->GetDefenceFactor() + this->GetInventory()->GetPassiveItem()->GetDefenceFactor();
+		UInventoryComponent* componentCasted = dynamic_cast<UInventoryComponent*>(component);
+		if (componentCasted != nullptr)
+		{
+			inventory = componentCasted;
+		}
 	}
-	else
-	{
+	if (inventory == nullptr)
 		return this->GetDefenceFactor();
-	}
+	UItemComponent* PassiveItem = inventory->GetPassiveItem();
+
+	if (PassiveItem != nullptr)
+		return (this->GetDefenceFactor() + inventory->GetPassiveItem()->GetDefenceFactor());
+	else
+		return this->GetDefenceFactor();
 }
 
 void UGameplayValuesComponent::SetDefenceFactor(float DefenceFactor)
 {
 	this->DefenceFactor = DefenceFactor;
-}
-
-UInventoryComponent* UGameplayValuesComponent::GetInventory()
-{
-	return this->Inventory;
-}
-
-void UGameplayValuesComponent::SetInventory(UInventoryComponent* Inventory)
-{
-	this->Inventory = Inventory;
 }

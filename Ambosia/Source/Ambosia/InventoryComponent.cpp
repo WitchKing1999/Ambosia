@@ -36,6 +36,8 @@ void UInventoryComponent::TickComponent( float DeltaTime, ELevelTick TickType, F
 
 void UInventoryComponent::OnChildDetached(USceneComponent* ChildComponent)
 {
+	Super::OnChildDetached(ChildComponent);
+
 	UItemComponent* ChildAsItem = dynamic_cast<UItemComponent*>(ChildComponent);
 	if (ChildAsItem == this->ActionItem)
 	{
@@ -49,12 +51,14 @@ void UInventoryComponent::OnChildDetached(USceneComponent* ChildComponent)
 
 void UInventoryComponent::ActivateActionItem()
 {
-	this->ActionItem->Activate();
+	if (this->ActionItem != nullptr)
+		this->ActionItem->Activate();
 }
 
 void UInventoryComponent::DeactivateActionItem()
 {
-	this->ActionItem->Deactivate();
+	if (this->ActionItem != nullptr)
+		this->ActionItem->Deactivate();
 }
 
 UItemComponent* UInventoryComponent::GetActionItem()

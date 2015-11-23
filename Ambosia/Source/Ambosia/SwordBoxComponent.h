@@ -17,7 +17,7 @@ class AMBOSIA_API USwordBoxComponent : public UBoxComponent
 public:
 	USwordBoxComponent();
 
-	void OnOverlapBegin(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+	virtual void TickComponent(float Delta, enum ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	UFUNCTION(BlueprintCallable, Category = "SwordBox")
 	void ExtendSword();
@@ -26,9 +26,6 @@ public:
 	void RetractSword();
 
 	bool GetIsSwordExtended();
-
-	UGameplayValuesComponent* GetGameplayValues();
-	void SetGameplayValues(UGameplayValuesComponent* newGameplayValues);
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SwordBox")
 	FVector SwordSizeExtended;
@@ -36,8 +33,5 @@ public:
 protected:
 	UPROPERTY(BlueprintReadOnly, Category = "SwordBox")
 	bool IsSwordExtended;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SwordBox")
-	UGameplayValuesComponent* OwnGameplayValues;
 	
 };

@@ -54,13 +54,7 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Variables|GameplayValues")
 	void SetDefenceFactor(float DefenceFactor);
 
-	UInventoryComponent* GetInventory();
-	void SetInventory(UInventoryComponent* Inventory);
-
 protected:
-
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "GameplayValues")
-	UInventoryComponent* Inventory;
 
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "GameplayValues")
 	float HealthPoints;
