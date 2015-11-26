@@ -40,17 +40,23 @@ void UGameplayValuesComponent::TickComponent( float DeltaTime, ELevelTick TickTy
 
 void UGameplayValuesComponent::AffectHealthPoints(float Delta)
 {
-	UKismetSystemLibrary::PrintString(this, "Affect!");
 	this->HealthPoints += Delta / this->GetEffectiveDefenceFactor();
 	if (this->HealthPoints > this->GetEffectiveHealthPointsLimit())
 	{
-		UKismetSystemLibrary::PrintString(this, "Limit reached!");
 		this->HealthPoints = this->GetEffectiveHealthPointsLimit();
 	}
 	else if (this->HealthPoints <= 0)
 	{
-		UKismetSystemLibrary::PrintString(this, "Die!");
-		this->GetOwner()->Destroy();
+		AController* ownerAsController = dynamic_cast<AController*>(this->GetOwner());
+		if (ownerAsController == nullptr)
+		{
+			this->GetOwner()->Destroy();
+		}
+		else
+		{
+			ownerAsController->GetPawn()->Destroy();
+			this->GetOwner()->Destroy();
+		}
 	}
 }
 

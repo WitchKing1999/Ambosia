@@ -7,7 +7,7 @@
 #include "GameplayValuesComponent.generated.h"
 
 
-UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class AMBOSIA_API UGameplayValuesComponent : public UActorComponent
 {
 	GENERATED_BODY()
