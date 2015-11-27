@@ -6,7 +6,8 @@
 #include "SwordItemComponent.generated.h"
 
 /**
- * 
+ * This item is intended to be used as an active item.
+ * When activated, it extends the sword of the pawn.
  */
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class AMBOSIA_API USwordItemComponent : public UItemComponent
@@ -16,8 +17,10 @@ class AMBOSIA_API USwordItemComponent : public UItemComponent
 public:
 	USwordItemComponent();
 
+	// Tries to extend the sword.
 	virtual void Activate(bool bReset) override;
 
+	// Tries to retract the sword.
 	virtual void Deactivate() override;
 	
 	
