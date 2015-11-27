@@ -18,25 +18,6 @@ UItemComponent::UItemComponent()
 	DefenceFactor = 1;
 }
 
-
-// Called when the game starts
-void UItemComponent::BeginPlay()
-{
-	Super::BeginPlay();
-
-	// ...
-	
-}
-
-
-// Called every frame
-void UItemComponent::TickComponent( float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction )
-{
-	Super::TickComponent( DeltaTime, TickType, ThisTickFunction );
-
-	// ...
-}
-
 float UItemComponent::GetHealthPointsLimit()
 {
 	return this->HealthPointsLimit;

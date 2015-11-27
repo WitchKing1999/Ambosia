@@ -5,7 +5,7 @@
 #include "Components/SceneComponent.h"
 #include "ItemComponent.generated.h"
 
-
+// This is the item base class.
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class AMBOSIA_API UItemComponent : public USceneComponent
 {
@@ -15,26 +15,26 @@ public:
 	// Sets default values for this component's properties
 	UItemComponent();
 
-	// Called when the game starts
-	virtual void BeginPlay() override;
-	
-	// Called every frame
-	virtual void TickComponent( float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction ) override;
-
+	// Gets the health points limit.
 	float GetHealthPointsLimit();
 
+	// Gets the attack points.
 	float GetAttackPoints();
 
+	// Gets the defence factor.
 	float GetDefenceFactor();
 
 protected:
 
+	// The health points limit
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	float HealthPointsLimit;
 
+	// The attack points
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	float AttackPoints;
 
+	// The defence factor
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	float DefenceFactor;
 	
