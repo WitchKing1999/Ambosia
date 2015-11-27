@@ -17,9 +17,6 @@ class AMBOSIA_API USwordBoxComponent : public UBoxComponent
 public:
 	USwordBoxComponent();
 
-	//UFUNCTION()
-	//virtual void BeginComponentOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
-
 	virtual void TickComponent(float Delta, enum ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	UFUNCTION(BlueprintCallable, Category = "SwordBox")

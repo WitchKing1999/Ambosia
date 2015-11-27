@@ -1,6 +1,7 @@
 // (C) Flumminard 2015
 
 #include "Ambosia.h"
+#include "InventoryComponent.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "GameplayValuesComponent.h"
 
@@ -17,25 +18,7 @@ UGameplayValuesComponent::UGameplayValuesComponent()
 	HealthPointsLimit = 200;
 	AttackPoints = 100;
 	DefenceFactor = 1;
-}
-
-
-// Called when the game starts
-void UGameplayValuesComponent::BeginPlay()
-{
-	Super::BeginPlay();
-
-	// ...
-	
-}
-
-
-// Called every frame
-void UGameplayValuesComponent::TickComponent( float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction )
-{
-	Super::TickComponent( DeltaTime, TickType, ThisTickFunction );
-
-	// ...
+	bPrintDebugStrings = false;
 }
 
 void UGameplayValuesComponent::AffectHealthPoints(float Delta)
@@ -57,6 +40,13 @@ void UGameplayValuesComponent::AffectHealthPoints(float Delta)
 			ownerAsController->GetPawn()->Destroy();
 			this->GetOwner()->Destroy();
 		}
+	}
+
+	if (this->bPrintDebugStrings)
+	{
+		FString DebugString = FString::FromInt(this->HealthPoints);
+		DebugString.Append(" Health Points");
+		UKismetSystemLibrary::PrintString(this, DebugString);
 	}
 }
 

@@ -16,65 +16,6 @@ USwordBoxComponent::USwordBoxComponent()
 	bGenerateOverlapEvents = true;
 }
 
-/*
-void USwordBoxComponent::BeginComponentOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
-{
-	UKismetSystemLibrary::PrintString(this, "Overlap");
-	if (this->IsSwordExtended)
-	{
-		// get the gameplayValuesComponent of the actor which owns us
-		APawn* ownPawn = dynamic_cast<APawn*>(this->GetOwner());
-		if (ownPawn == nullptr)
-			return;
-		AController* ownController = ownPawn->GetController();
-		if (ownController == nullptr)
-			return;
-		TArray<UActorComponent*> ownComponents = ownController->GetComponents();
-		if (ownComponents.Num() == 0)
-			return;
-		UGameplayValuesComponent* ownGameplayValues = nullptr;
-		for (UActorComponent* component : ownComponents)
-		{
-			UGameplayValuesComponent* componentCasted = dynamic_cast<UGameplayValuesComponent*>(component);
-			if (componentCasted != nullptr)
-			{
-				ownGameplayValues = componentCasted;
-			}
-		}
-		if (ownGameplayValues == nullptr)
-			return;
-
-		if (OtherActor != nullptr && OtherActor != this->GetOwner())
-		{
-			// get the gameplayValuesComponent of the other actor
-			APawn* otherPawn = dynamic_cast<APawn*>(OtherActor);
-			if (otherPawn == nullptr)
-				return;
-			AController* otherController = otherPawn->GetController();
-			if (otherController == nullptr)
-				return;
-			TArray<UActorComponent*> otherComponents = otherController->GetComponents();
-			UGameplayValuesComponent* otherGameplayValues = nullptr;
-			for (UActorComponent* component : otherComponents)
-			{
-				UGameplayValuesComponent* componentCasted = dynamic_cast<UGameplayValuesComponent*>(component);
-				if (componentCasted != nullptr)
-				{
-					otherGameplayValues = componentCasted;
-				}
-			}
-			if (otherGameplayValues == nullptr)
-				return;
-
-			// affect health and retract sword
-			otherGameplayValues->AffectHealthPoints(ownGameplayValues->GetEffectiveAttackPoints() * -1);
-			this->RetractSword();
-			UKismetSystemLibrary::PrintString(this, "Damage!");
-		}
-	}
-}
-*/
-
 void USwordBoxComponent::TickComponent(float Delta, enum ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(Delta, TickType, ThisTickFunction);
