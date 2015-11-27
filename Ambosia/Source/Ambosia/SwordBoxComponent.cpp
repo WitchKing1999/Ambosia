@@ -1,7 +1,6 @@
 // (C) Flumminard 2015
 
 #include "Ambosia.h"
-#include "Kismet/KismetSystemLibrary.h"
 #include "SwordBoxComponent.h"
 
 USwordBoxComponent::USwordBoxComponent()
@@ -14,11 +13,6 @@ USwordBoxComponent::USwordBoxComponent()
 	RetractSword();
 
 	bGenerateOverlapEvents = true;
-}
-
-void USwordBoxComponent::TickComponent(float Delta, enum ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
-{
-	Super::TickComponent(Delta, TickType, ThisTickFunction);
 }
 
 void USwordBoxComponent::ExtendSword()
