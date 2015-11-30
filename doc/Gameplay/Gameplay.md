@@ -66,11 +66,18 @@ Eigenschaften, sondern sind nur für den Handel bestimmt. Es gibt keine Unterwä
 Durch das Töten von Wesen erhält der Spieler, Items und Erfahrungspunkte (EP). Wieviel man wovon bekommt, ist bei jedem Wesen individuell festgelegt.
 Bestimmte Wesen geben auch Geld.
 
-### Erfahrungen sammeln
+### Erfahrungen sammeln, leveln und skillen
 
-Wenn man eine festgelegte Menge an Erfahrungspunkten erreicht hat, steigt man im Level auf.
-Durch das Aufsteigen im Level bekommt man Skillpunkte, womit man die Werte wie z.B. Leben, Fernkampfschaden oder Rüstung dauerhaft erhöhen kann.
-Außerdem kann man dann neue Waffen und Rüstungen einsetzen.
+Wenn man Quests abgegeben hat oder Kreaturen getötet hat bekommt man Erfahrungspunkte (XP).
+Wenn man eine bestimmte Menge an XP gesammelt hat, steigt man ein Level auf.
+Das Level ist entscheidend für das benutzen von Items (z.B. kann man den Bogen X nur benutzen, wenn man Level 20 ist.)
+Zum Levelaufstieg bekommt man Lern- oder Skillpunkte.
+Diese Lernpunkte (LP) kann man in verschiedene, dauerhafte Punkte wie z.B. Lebenspunkte, Nahkampfschaden, Manapunkte, Fernkampfschaden investieren.
+Dadurch kann man entscheiden, in welche Richtung von Klasse man geht: Magier, Schwertkämpfer, Schütze
+Auch diese Art von Punkten ist entscheidend für das benutzen von Items (Für Schwert X benötigt man Level 15 und 30 Punkte in Nahkampfschaden)
+Außerdem ist der Schaden der Waffe abhängig von diesen Punkten.
+Das heißt: Desto mehr man levelt desto mehr LP kann man investieren und desto mehr LP man in z.B. Nahkampfschaden investiert,
+desto mehr Schaden richtet man an oder desto mehr Waffen kann man anlegen   
 
 ### Reden und Handeln
 
