@@ -2,7 +2,6 @@
 
 #include "Ambosia.h"
 #include "InventoryComponent.h"
-#include "Kismet/KismetSystemLibrary.h"
 #include "GameplayValuesComponent.h"
 
 
@@ -14,40 +13,39 @@ UGameplayValuesComponent::UGameplayValuesComponent()
 	bWantsBeginPlay = true;
 	PrimaryComponentTick.bCanEverTick = true;
 
+	TimeToNextRegen = 1;
+
 	HealthPoints = 200;
 	HealthPointsLimit = 200;
 	AttackPoints = 100;
-	DefenceFactor = 1;
-	bPrintDebugStrings = false;
+	Mana = 0;
+	ManaLimit = 0;
+	MagicalAttackPoints = 0;
+	ManaRegenerationPerSec = 0;
+}
+
+void UGameplayValuesComponent::TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
+{
+	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
+
+	this->TimeToNextRegen -= DeltaTime;
+	if (this->TimeToNextRegen <= 0)
+	{
+		this->SetMana(this->GetMana() + GetManaRegenerationPerSec());
+		this->TimeToNextRegen = 1;
+	}
 }
 
 void UGameplayValuesComponent::AffectHealthPoints(float Delta)
 {
-	this->HealthPoints += Delta / this->GetEffectiveDefenceFactor();
-	if (this->HealthPoints > this->GetEffectiveHealthPointsLimit())
-	{
-		this->HealthPoints = this->GetEffectiveHealthPointsLimit();
-	}
-	else if (this->HealthPoints <= 0)
-	{
-		AController* ownerAsController = dynamic_cast<AController*>(this->GetOwner());
-		if (ownerAsController == nullptr)
-		{
-			this->GetOwner()->Destroy();
-		}
-		else
-		{
-			ownerAsController->GetPawn()->Destroy();
-			this->GetOwner()->Destroy();
-		}
-	}
-
-	if (this->bPrintDebugStrings)
-	{
-		FString DebugString = FString::FromInt(this->HealthPoints);
-		DebugString.Append(" Health Points");
-		UKismetSystemLibrary::PrintString(this, DebugString);
-	}
+	UInventoryComponent* Inventory = dynamic_cast<UInventoryComponent*>(this->GetOwner()->GetComponentByClass(TSubclassOf<UInventoryComponent>()));
+	if (Inventory == nullptr)
+		return;
+	UArmorComponent* Armor = Inventory->GetArmor();
+	if (Armor == nullptr)
+		return;
+	Delta = Armor->AffectDamage(Delta);
+	this->SetHealthPoints(this->GetHealthPoints() + Delta);
 }
 
 float UGameplayValuesComponent::GetHealthPoints()
@@ -55,56 +53,32 @@ float UGameplayValuesComponent::GetHealthPoints()
 	return this->HealthPoints;
 }
 
-void UGameplayValuesComponent::SetHealthPoints(float HealthPoints)
+void UGameplayValuesComponent::SetHealthPoints(float NewHealthPoints)
 {
-	this->HealthPoints = HealthPoints;
-	if (this->HealthPoints <= 0)
+	if (NewHealthPoints > this->HealthPointsLimit)
+	{
+		this->HealthPoints = this->HealthPointsLimit;
+	}
+	else if (NewHealthPoints <= 0)
 	{
 		this->GetOwner()->Destroy();
+	}
+	else
+	{
+		this->HealthPoints = NewHealthPoints;
 	}
 }
 
 float UGameplayValuesComponent::GetHealthPointsLimit()
 {
-	return this->HealthPointsLimit;
+	return this->HealthPoints;
 }
 
-float UGameplayValuesComponent::GetEffectiveHealthPointsLimit()
+void UGameplayValuesComponent::SetHealthPointsLimit(float NewHealthPointsLimit)
 {
-	TArray<UActorComponent*> otherComponents = this->GetOwner()->GetComponents();
-	UInventoryComponent* inventory = nullptr;
-	for (UActorComponent* component : otherComponents)
-	{
-		UInventoryComponent* componentCasted = dynamic_cast<UInventoryComponent*>(component);
-		if (componentCasted != nullptr)
-		{
-			inventory = componentCasted;
-		}
-	}
-	if (inventory == nullptr)
-		return this->GetHealthPointsLimit();
-	UItemComponent* PassiveItem = inventory->GetPassiveItem();
-
-	if (PassiveItem != nullptr)
-	{
-		return (this->GetHealthPointsLimit() + inventory->GetPassiveItem()->GetHealthPointsLimit());
-	}
-	else
-	{
-		return this->GetHealthPointsLimit();
-	}
-}
-
-void UGameplayValuesComponent::SetHealthPointsLimit(float HealthPointsLimit)
-{
-	if (HealthPointsLimit > 0)
-	{
-		this->HealthPointsLimit = HealthPointsLimit;
-		if (this->HealthPoints > HealthPointsLimit)
-		{
-			this->SetHealthPoints(HealthPointsLimit);
-		}
-	}
+	this->HealthPointsLimit = NewHealthPointsLimit;
+	if (this->HealthPoints > this->HealthPointsLimit)
+		this->HealthPoints = this->HealthPointsLimit;
 }
 
 float UGameplayValuesComponent::GetAttackPoints()
@@ -112,65 +86,52 @@ float UGameplayValuesComponent::GetAttackPoints()
 	return this->AttackPoints;
 }
 
-float UGameplayValuesComponent::GetEffectiveAttackPoints()
+void UGameplayValuesComponent::SetAttackPoints(float NewAttackPoints)
 {
-	TArray<UActorComponent*> otherComponents = this->GetOwner()->GetComponents();
-	UInventoryComponent* inventory = nullptr;
-	for (UActorComponent* component : otherComponents)
-	{
-		UInventoryComponent* componentCasted = dynamic_cast<UInventoryComponent*>(component);
-		if (componentCasted != nullptr)
-		{
-			inventory = componentCasted;
-		}
-	}
-	if (inventory == nullptr)
-		return this->GetAttackPoints();
-	UItemComponent* PassiveItem = inventory->GetPassiveItem();
+	this->AttackPoints = NewAttackPoints;
+}
 
-	if (PassiveItem != nullptr)
-	{
-		return (this->GetAttackPoints() + inventory->GetActionItem()->GetAttackPoints());
-	}
+float UGameplayValuesComponent::GetMana()
+{
+	return this->Mana;
+}
+
+void UGameplayValuesComponent::SetMana(float NewMana)
+{
+	if (NewMana <= this->ManaLimit)
+		this->Mana = NewMana;
 	else
-	{
-		return this->GetAttackPoints();
-	}
+		this->Mana = this->ManaLimit;
 }
 
-void UGameplayValuesComponent::SetAttackPoints(float AttackPoints)
+float UGameplayValuesComponent::GetManaLimit()
 {
-	this->AttackPoints = AttackPoints;
+	return this->ManaLimit;
 }
 
-float UGameplayValuesComponent::GetDefenceFactor()
+void UGameplayValuesComponent::SetManaLimit(float NewManaLimit)
 {
-	return this->DefenceFactor;
+	this->ManaLimit = NewManaLimit;
+	if (this->Mana > this->ManaLimit)
+		this->Mana = this->ManaLimit;
 }
 
-float UGameplayValuesComponent::GetEffectiveDefenceFactor()
+float UGameplayValuesComponent::GetMagicalAttackPoints()
 {
-	TArray<UActorComponent*> otherComponents = this->GetOwner()->GetComponents();
-	UInventoryComponent* inventory = nullptr;
-	for (UActorComponent* component : otherComponents)
-	{
-		UInventoryComponent* componentCasted = dynamic_cast<UInventoryComponent*>(component);
-		if (componentCasted != nullptr)
-		{
-			inventory = componentCasted;
-		}
-	}
-	if (inventory == nullptr)
-		return this->GetDefenceFactor();
-	UItemComponent* PassiveItem = inventory->GetPassiveItem();
-
-	if (PassiveItem != nullptr)
-		return (this->GetDefenceFactor() + inventory->GetPassiveItem()->GetDefenceFactor());
-	else
-		return this->GetDefenceFactor();
+	return this->MagicalAttackPoints;
 }
 
-void UGameplayValuesComponent::SetDefenceFactor(float DefenceFactor)
+void UGameplayValuesComponent::SetMagicalAttackPoints(float NewMagicalAttackPoints)
 {
-	this->DefenceFactor = DefenceFactor;
+	this->MagicalAttackPoints = NewMagicalAttackPoints;
+}
+
+float UGameplayValuesComponent::GetManaRegenerationPerSec()
+{
+	return this->ManaRegenerationPerSec;
+}
+
+void UGameplayValuesComponent::SetManaRegenerationPerSec(float NewManaReg)
+{
+	this->ManaRegenerationPerSec = NewManaReg;
 }

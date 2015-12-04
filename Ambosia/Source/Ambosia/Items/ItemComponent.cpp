@@ -11,23 +11,14 @@ UItemComponent::UItemComponent()
 	// off to improve performance if you don't need them.
 	bWantsBeginPlay = true;
 	PrimaryComponentTick.bCanEverTick = true;
-
-	HealthPointsLimit = 200;
-	AttackPoints = 100;
-	DefenceFactor = 1;
 }
 
-float UItemComponent::GetHealthPointsLimit()
+FString UItemComponent::GetName()
 {
-	return this->HealthPointsLimit;
+	return this->Name;
 }
 
-float UItemComponent::GetAttackPoints()
+FText UItemComponent::GetDescription()
 {
-	return this->AttackPoints;
-}
-
-float UItemComponent::GetDefenceFactor()
-{
-	return this->DefenceFactor;
+	return this->Description;
 }

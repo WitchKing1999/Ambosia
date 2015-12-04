@@ -12,59 +12,54 @@ UInventoryComponent::UInventoryComponent()
 	bWantsBeginPlay = true;
 	PrimaryComponentTick.bCanEverTick = true;
 
-	ActionItem = nullptr;
+	Weapon = nullptr;
+	Armor = nullptr;
 }
 
 void UInventoryComponent::OnChildDetached(USceneComponent* ChildComponent)
 {
-	Super::OnChildDetached(ChildComponent);
-
-	UItemComponent* ChildAsItem = dynamic_cast<UItemComponent*>(ChildComponent);
-	if (ChildAsItem == this->ActionItem)
+	if (ChildComponent == this->GetWeapon())
 	{
-		this->ActionItem = nullptr;
+		this->Weapon = nullptr;
 	}
-	else if (ChildAsItem == this->PassiveItem)
+	else if (ChildComponent == this->GetArmor())
 	{
-		this->PassiveItem = nullptr;
+		this->Armor = nullptr;
 	}
 }
 
-void UInventoryComponent::ActivateActionItem()
+UWeaponComponent* UInventoryComponent::GetWeapon()
 {
-	if (this->ActionItem != nullptr)
-		this->ActionItem->Activate();
+	return this->Weapon;
 }
 
-void UInventoryComponent::DeactivateActionItem()
+bool UInventoryComponent::SetWeapon(UWeaponComponent* NewWeapon)
 {
-	if (this->ActionItem != nullptr)
-		this->ActionItem->Deactivate();
-}
-
-UItemComponent* UInventoryComponent::GetActionItem()
-{
-	return this->ActionItem;
-}
-
-void UInventoryComponent::SetActionItem(UItemComponent* Item)
-{
-	if (Item->AttachParent == this)
+	if (NewWeapon->GetAttachParent() == this)
 	{
-		this->ActionItem = Item;
+		this->Weapon = NewWeapon;
+		return true;
+	}
+	else
+	{
+		return false;
 	}
 }
 
-UItemComponent* UInventoryComponent::GetPassiveItem()
+UArmorComponent* UInventoryComponent::GetArmor()
 {
-	return this->PassiveItem;
+	return this->Armor;
 }
 
-void UInventoryComponent::SetPassiveItem(UItemComponent* Item)
+bool UInventoryComponent::SetArmor(UArmorComponent* NewArmor)
 {
-	if (Item->AttachParent == this)
+	if (NewArmor->GetAttachParent() == this)
 	{
-		this->PassiveItem = Item;
+		this->Armor = NewArmor;
+		return true;
+	}
+	else
+	{
+		return false;
 	}
 }
-
