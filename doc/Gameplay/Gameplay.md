@@ -29,7 +29,8 @@ Sie sind Passiv-Items, können also keine Aktionen ausführen.
 
 Im erweiterten Kampfsystem haben die Wesen Mana, die sie benötigen, um Zauber auszuführen. Wird ein Zauber ausgefüht, werden
 die Manapunkte um einen Item-spezifischen Wert verringert, hat man nicht genügend Mana für einen Zauber, wird er nicht ausgeführt.
-Was genau ein Zauber genau bewirkt, ist sehr unterschiedlich; Magie kennt keine Grenzen. 
+Was genau ein Zauber genau bewirkt, ist sehr unterschiedlich; Magie kennt keine Grenzen. Mit der Zeit füllt sich das Mana wieder
+auf, immer um einen bestimmten Wert pro Sekunde. Dieser Wert ist von den Fähigkeiten des Spielers abhängig.
 
 ### Tränke und Pflanzen
 
