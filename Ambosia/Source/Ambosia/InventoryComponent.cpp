@@ -26,6 +26,10 @@ void UInventoryComponent::OnChildDetached(USceneComponent* ChildComponent)
 	{
 		this->Armor = nullptr;
 	}
+	else if (ChildComponent == this->GetPotion())
+	{
+		this->Potion = nullptr;
+	}
 }
 
 UWeaponComponent* UInventoryComponent::GetWeapon()
@@ -56,6 +60,24 @@ bool UInventoryComponent::SetArmor(UArmorComponent* NewArmor)
 	if (NewArmor->GetAttachParent() == this)
 	{
 		this->Armor = NewArmor;
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+UPotionComponent* UInventoryComponent::GetPotion()
+{
+	return this->Potion;
+}
+
+bool UInventoryComponent::SetPotion(UPotionComponent* NewPotion)
+{
+	if (NewPotion->GetAttachParent() == this)
+	{
+		this->Potion = NewPotion;
 		return true;
 	}
 	else

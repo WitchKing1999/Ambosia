@@ -5,6 +5,7 @@
 #include "Components/SceneComponent.h"
 #include "Items/WeaponComponent.h"
 #include "Items/ArmorComponent.h"
+#include "Items/PotionComponent.h"
 #include "InventoryComponent.generated.h"
 
 // This component manages all items that are attached to it.
@@ -20,15 +21,32 @@ public:
 
 	virtual void OnChildDetached(USceneComponent* ChildComponent) override;
 
+	/*
+	Weapon
+	*/
+
 	UWeaponComponent* GetWeapon();
 
 	UFUNCTION(BlueprintCallable, Category = "Variables|Inventory")
 	bool SetWeapon(UWeaponComponent* NewWeapon);
 
+	/*
+	Armor
+	*/
+
 	UArmorComponent* GetArmor();
 
 	UFUNCTION(BlueprintCallable, Category = "Variables|Inventory")
 	bool SetArmor(UArmorComponent* NewArmor);
+
+	/*
+	Potion
+	*/
+
+	UPotionComponent* GetPotion();
+
+	UFUNCTION(BlueprintCallable, Category = "Variables|Inventory")
+	bool SetPotion(UPotionComponent* NewPotion);
 
 protected:
 	
@@ -37,4 +55,7 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inventory")
 	UArmorComponent* Armor;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inventory")
+	UPotionComponent* Potion;
 };
