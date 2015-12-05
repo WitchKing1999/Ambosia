@@ -15,9 +15,29 @@ public:
 	// Sets default values for this component's properties
 	UItemComponent();
 
+	void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+
 	FString GetName();
 
-	FText GetDescription();
+	FString GetDescription();
+
+	float GetStackSize();
+
+	UFUNCTION(BlueprintCallable, Category = "Variables|Item")
+	void SetStackSize(float NewStackSize);
+
+	UFUNCTION(BlueprintCallable, Category = "Variables|Item")
+	void AffectStackSize(float Delta);
+
+	UFUNCTION(BlueprintCallable, Category = "Variables|Item")
+	void StartCooldown();
+
+	UFUNCTION()
+	void OnCooledDown();
+
+	float GetTimeTillCooled();
+
+	float GetCooldownTime();
 
 protected:
 
@@ -25,6 +45,15 @@ protected:
 	FString Name;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")
-	FText Description;
+	FString Description;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")
+	float StackSize;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Item")
+	float TimeTillCooled;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")
+	float CooldownTime;
 	
 };

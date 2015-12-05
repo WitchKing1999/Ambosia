@@ -10,6 +10,9 @@ UArmorComponent::UArmorComponent()
 	bWantsBeginPlay = true;
 	PrimaryComponentTick.bCanEverTick = true;
 
+	Name = "Armor";
+	Description = "Saves you from receiving the complete damage!";
+
 	DefenceFactor = 1.0;
 	MagicalDefenceFactor = 1.0;
 }

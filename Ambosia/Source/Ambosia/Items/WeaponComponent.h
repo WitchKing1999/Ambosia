@@ -16,16 +16,8 @@ class AMBOSIA_API UWeaponComponent : public UItemComponent
 public:
 	UWeaponComponent();
 
-	void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-
 	UFUNCTION(BlueprintCallable, Category = "Item")
 	void Attack();
-
-	void OnCooledDown();
-
-	float GetTimeTillCooled();
-
-	float GetCooldownTime();
 
 	float GetAttackFactor();
 
@@ -40,10 +32,6 @@ public:
 	float AffectMagicalAttackPoints(float RawMagicalAttackPoints);
 	
 protected:
-
-	float TimeTillCooled;
-
-	float CooldownTime;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")
 	float AttackFactor;
