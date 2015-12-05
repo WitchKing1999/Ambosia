@@ -36,18 +36,6 @@ void UGameplayValuesComponent::TickComponent(float DeltaTime, enum ELevelTick Ti
 	}
 }
 
-void UGameplayValuesComponent::AffectHealthPoints(float Delta)
-{
-	UInventoryComponent* Inventory = dynamic_cast<UInventoryComponent*>(this->GetOwner()->GetComponentByClass(TSubclassOf<UInventoryComponent>()));
-	if (Inventory == nullptr)
-		return;
-	UArmorComponent* Armor = Inventory->GetArmor();
-	if (Armor == nullptr)
-		return;
-	Delta = Armor->AffectDamage(Delta);
-	this->SetHealthPoints(this->GetHealthPoints() + Delta);
-}
-
 float UGameplayValuesComponent::GetHealthPoints()
 {
 	return this->HealthPoints;
@@ -69,6 +57,18 @@ void UGameplayValuesComponent::SetHealthPoints(float NewHealthPoints)
 	}
 }
 
+void UGameplayValuesComponent::AffectHealthPoints(float Delta)
+{
+	UInventoryComponent* Inventory = dynamic_cast<UInventoryComponent*>(this->GetOwner()->GetComponentByClass(TSubclassOf<UInventoryComponent>()));
+	if (Inventory == nullptr)
+		return;
+	UArmorComponent* Armor = Inventory->GetArmor();
+	if (Armor == nullptr)
+		return;
+	Delta = Armor->AffectDamage(Delta);
+	this->SetHealthPoints(this->GetHealthPoints() + Delta);
+}
+
 float UGameplayValuesComponent::GetHealthPointsLimit()
 {
 	return this->HealthPoints;
@@ -81,6 +81,11 @@ void UGameplayValuesComponent::SetHealthPointsLimit(float NewHealthPointsLimit)
 		this->HealthPoints = this->HealthPointsLimit;
 }
 
+void UGameplayValuesComponent::AffectHealthPointsLimit(float Delta)
+{
+	this->SetHealthPointsLimit(this->GetHealthPoints() + Delta);
+}
+
 float UGameplayValuesComponent::GetAttackPoints()
 {
 	return this->AttackPoints;
@@ -89,6 +94,26 @@ float UGameplayValuesComponent::GetAttackPoints()
 void UGameplayValuesComponent::SetAttackPoints(float NewAttackPoints)
 {
 	this->AttackPoints = NewAttackPoints;
+}
+
+void UGameplayValuesComponent::AffectAttackPoints(float Delta)
+{
+	this->SetAttackPoints(this->GetAttackPoints() + Delta);
+}
+
+float UGameplayValuesComponent::GetMagicalAttackPoints()
+{
+	return this->MagicalAttackPoints;
+}
+
+void UGameplayValuesComponent::SetMagicalAttackPoints(float NewMagicalAttackPoints)
+{
+	this->MagicalAttackPoints = NewMagicalAttackPoints;
+}
+
+void UGameplayValuesComponent::AffectMagicalAttackPoints(float Delta)
+{
+	this->SetMagicalAttackPoints(this->GetMagicalAttackPoints() + Delta);
 }
 
 float UGameplayValuesComponent::GetMana()
@@ -104,6 +129,11 @@ void UGameplayValuesComponent::SetMana(float NewMana)
 		this->Mana = this->ManaLimit;
 }
 
+void UGameplayValuesComponent::AffectMana(float Delta)
+{
+	this->SetMana(this->GetMana() + Delta);
+}
+
 float UGameplayValuesComponent::GetManaLimit()
 {
 	return this->ManaLimit;
@@ -116,14 +146,9 @@ void UGameplayValuesComponent::SetManaLimit(float NewManaLimit)
 		this->Mana = this->ManaLimit;
 }
 
-float UGameplayValuesComponent::GetMagicalAttackPoints()
+void UGameplayValuesComponent::AffectManaLimit(float Delta)
 {
-	return this->MagicalAttackPoints;
-}
-
-void UGameplayValuesComponent::SetMagicalAttackPoints(float NewMagicalAttackPoints)
-{
-	this->MagicalAttackPoints = NewMagicalAttackPoints;
+	this->SetManaLimit(this->GetManaLimit() + Delta);
 }
 
 float UGameplayValuesComponent::GetManaRegenerationPerSec()
@@ -134,4 +159,9 @@ float UGameplayValuesComponent::GetManaRegenerationPerSec()
 void UGameplayValuesComponent::SetManaRegenerationPerSec(float NewManaReg)
 {
 	this->ManaRegenerationPerSec = NewManaReg;
+}
+
+void UGameplayValuesComponent::AffectManaRegeneration(float Delta)
+{
+	this->SetManaRegenerationPerSec(this->GetManaRegenerationPerSec() + Delta);
 }
