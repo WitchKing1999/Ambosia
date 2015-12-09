@@ -5,9 +5,10 @@ von Wesen B um die Angrifspunkte von A. Wenn nach dem Schlag die Lebenspunkte vo
 
 ### Inventar und Items
 
-Der Spieler hat die Möglichkeit, die grundlegenden Werte seines Wesens (z.B. für Lebenspunkte, Angriffspunkte) mit Items zu verändern.
+Der Spieler hat die Möglichkeit, die Werte seines Wesens mit Items zu verändern.
 Diese Items werden im Inventar des Spielers abgelegt und können dort über ein Menü angesehen und ausgewählt werden.
-Sortiert werden die Items automatisch z.B. werden Schwerter, die man tragen kann Oben angeordnet und Schwerter, wo man noch Stärke braucht unten angeordnet.
+Items werden automatisch sortiert. Zum Beispiel werden Schwerter, die man tragen kann, weiter oben angeordnet und Schwerter, für die
+man noch Stärke braucht, unten angeordnet. Der Spieler kann unendlich viele Items in seinem Inventar ablegen.
 
 ### Waffen
 
@@ -36,21 +37,34 @@ Es gibt zwei Arten von Tränken: Manatränke und Heiltränke. Manatränke erhöh
 Lebenspunkte des Spielers. Allerdings gibt es ein Limit bis zu dem Tränke wirken. Ist das Limit erreicht, werden die Tränke keine
 weiteren Punkte hinzufügen.
 
-Planzen können das gleiche, nur sie sind schwächer, dass heißt das z.B. eine Planze weniger heilt als ein Trank
+Pflanzen haben die selbe Funktion, sind  aber schwächer.
 
 ### Ringe und Amulette
 
 Ringe und Amulette erhöhen dauerhaft, wenn getragen, Werte des Spielers z.B. Rüstung, Leben, Nahkampfschaden, usw.
 Allerdings sind sie passiv und haben deshalb keinen weiteren Nutzen.
 
+### kritische Treffer
+
+Wenn ein Wesen einen Schlag ausführt, kann es sein, dass sich der Schaden zufällig verdoppelt. Die Wahrscheinlichkeit dafür ist ein durch
+Items veränderbarer Wert größer/gleich 0 und kleiner gleich 100.
+
+### Handeln
+
+Im Spiel gibt es NPCs, die dem Spieler verschiedene Handel anbieten. Der Spieler gibt dabei dem Händler eine gewisse Menge an Items und der
+Händler gibt dem Spieler dafür auch eine gewisse Menge Items. Es können auch vierschiedene Arten von Items gleichzeitig gehandelt werden.
+Es gibt auch Händler, die für einen Obulus zwei oder mehr Items zu einem neuen verarbeiten, der Spieler kann allerdings selber nichts
+herstellen.
+
 ### Geld
 
-Geld hat weder aktive noch passive Eigenschaften, sondern kann bei Händlern gegen andere Items getauscht werden.
+Die Ingamewährung von Ambosia ist "Gold". Diese Goldmünzen werden als Items im Inventar abgelegt und haben keine aktiven oder passiven
+Eigenschaften, sondern sind nur für den Handel bestimmt. Es gibt keine Unterwährungen von Gold.
 
 ### Looten
 
 Durch das Töten von Wesen erhält der Spieler, Items und Erfahrungspunkte (EP). Wieviel man wovon bekommt, ist bei jedem Wesen individuell festgelegt.
-Bei einigen bestimmten Wesen auch Geld.
+Bestimmte Wesen geben auch Geld.
 
 ### Erfahrungen sammeln, leveln und skillen
 
@@ -69,3 +83,20 @@ desto mehr Schaden richtet man an oder desto mehr Waffen kann man anlegen
 
 Der Spieler kann andere Wesen ansprechen, worauf ein Dialog anfängt. Im Laufe des Dialoges bekommt der Spieler wichtige Informationen zum Spiel,
 Aufgaben oder Kaufangebote, er hat dabei immer die Möglichkeit auf mehrere Arten zu antworten.
+
+### Gegner und NPCs
+
+Zuerst muss zwischen den Gegnern unterschieden werden: Es gibt NPCs, Bosse und Farm-Mobs.
+
+NPCs sind dauerhaft vorhanden und lassen sich nicht töten, dafür können sie angesprochen werden.
+
+Bosse gehören immer zu einer Quest und erscheinen nur, wenn diese Quest aktiviert ist. Da die Quest beendet ist, wenn der Boss getötet wurde, spawnen
+sie nicht wieder.
+
+Farm-Mobs erscheinen zufällig in bestimmten Leveln und lassen sich töten und spawnen nach einer gewissen Zeit neu.
+
+### Speichern
+
+Der Spieler kann seinen Spielstand speichern, um ihn nach einem Neustart fortzusetzen. Dies passiert automatisch, wenn der Spieler ein Level verläßt,
+kann allerdings auch durch den Spieler manuell vorgenommen werden. Dabei werden die Statuswerte des Spielers, sein Inventar und der Quest-Verlauf gespeichert.
+Außerdem kann der Spieler den Speicherstand festlegen, in den das Spiel gespeichert wird.
