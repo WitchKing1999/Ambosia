@@ -33,6 +33,9 @@ public:
 	void AffectStackSize(float Delta);
 
 	UFUNCTION(BlueprintCallable, Category = "Variables|Item")
+	void AddItemToStack(UItemComponent* Item);
+
+	UFUNCTION(BlueprintCallable, Category = "Variables|Item")
 	void StartCooldown();
 
 	UFUNCTION(BlueprintCallable, Category = "Item")

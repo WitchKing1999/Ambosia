@@ -64,6 +64,15 @@ void UItemComponent::AffectStackSize(float Delta)
 	this->SetStackSize(this->StackSize + Delta);
 }
 
+void UItemComponent::AddItemToStack(UItemComponent* Item)
+{
+	if (this->GetClass() == Item->GetClass())
+	{
+		this->AffectStackSize(Item->GetStackSize());
+		Item->DestroyComponent();
+	}
+}
+
 void UItemComponent::StartCooldown()
 {
 	this->TimeTillCooled = this->CooldownTime;
@@ -71,7 +80,7 @@ void UItemComponent::StartCooldown()
 
 void UItemComponent::OnCooledDown()
 {
-	// do nothing!
+	return; // do nothing!
 }
 
 float UItemComponent::GetTimeTillCooled()
