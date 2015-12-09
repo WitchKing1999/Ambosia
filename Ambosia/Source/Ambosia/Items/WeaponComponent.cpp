@@ -14,9 +14,17 @@ UWeaponComponent::UWeaponComponent()
 	MagicalAttackFactor = 1.0;
 }
 
-void UWeaponComponent::Attack()
+bool UWeaponComponent::Action()
 {
-	this->StartCooldown();
+	if (this->GetTimeTillCooled())
+	{
+		this->StartCooldown();
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 float UWeaponComponent::GetAttackFactor()
@@ -24,9 +32,9 @@ float UWeaponComponent::GetAttackFactor()
 	return this->AttackFactor;
 }
 
-float UWeaponComponent::AffectAttackPoints(float RawAttackPoints)
+float UWeaponComponent::ModifyAttackPoints(float AttackPoints)
 {
-	return RawAttackPoints * this->AttackFactor;
+	return AttackPoints * this->AttackFactor;
 }
 
 float UWeaponComponent::GetManaCost()
@@ -39,7 +47,7 @@ float UWeaponComponent::GetMagicalAttackFactor()
 	return this->MagicalAttackFactor;
 }
 
-float UWeaponComponent::AffectMagicalAttackPoints(float RawMagicalAttackPoints)
+float UWeaponComponent::ModifyMagicalAttackPoints(float MagicalAttackPoints)
 {
-	return RawMagicalAttackPoints * this->MagicalAttackFactor;
+	return MagicalAttackPoints * this->MagicalAttackFactor;
 }

@@ -30,6 +30,11 @@ void UItemComponent::TickComponent(float DeltaTime, enum ELevelTick TickType, FA
 	}
 }
 
+bool UItemComponent::Action()
+{
+	return true;
+}
+
 FString UItemComponent::GetName()
 {
 	return this->Name;
@@ -77,4 +82,39 @@ float UItemComponent::GetTimeTillCooled()
 float UItemComponent::GetCooldownTime()
 {
 	return this->CooldownTime;
+}
+
+float UItemComponent::ModifyHealthPoints(float HealthPoints)
+{
+	return HealthPoints;
+}
+
+float UItemComponent::ModifyHealthPointsLimit(float HealthPointsLimit)
+{
+	return HealthPointsLimit;
+}
+
+float UItemComponent::ModifyAttackPoints(float AttackPoints)
+{
+	return AttackPoints;
+}
+
+float UItemComponent::ModifyMagicalAttackPoints(float MagicalAttackPoints)
+{
+	return MagicalAttackPoints;
+}
+
+float UItemComponent::ModifyMana(float Mana)
+{
+	return Mana;
+}
+
+float UItemComponent::ModifyManaLimit(float ManaLimit)
+{
+	return ManaLimit;
+}
+
+float UItemComponent::ModifyManaRegeneration(float ManaRegeneration)
+{
+	return ManaRegeneration;
 }

@@ -18,13 +18,11 @@ public:
 
 	float GetDefenceFactor();
 	
-	UFUNCTION(BlueprintCallable, Category = "Item")
-	float AffectDamage(float RawDamage);
+	float ModifyAttackPoints(float AttackPoints) override;
 
 	float GetMagicalDefenceFactor();
 
-	UFUNCTION(BlueprintCallable, Category = "Item")
-	float AffectMagicalDamage(float RawMagicalDamage);
+	float ModifyMagicalAttackPoints(float MagicalAttackPoints) override;
 
 protected:
 

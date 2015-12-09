@@ -18,12 +18,14 @@ public:
 	
 	UPotionComponent();
 
-	UFUNCTION(BlueprintCallable, Category = "Item")
-	void AffectGameplayValues(UGameplayValuesComponent* GVComponent);
+	bool Action() override;
+
+	float ModifyHealthPoints(float HealthPoint) override;
+
+	float ModifyMana(float Mana) override;
 
 	float GetHealthPoints();
 
-	UFUNCTION(BlueprintCallable, Category = "Variables|Item")
 	float GetMana();
 
 protected:

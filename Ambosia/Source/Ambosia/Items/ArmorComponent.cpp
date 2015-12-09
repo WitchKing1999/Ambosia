@@ -22,14 +22,14 @@ float UArmorComponent::GetDefenceFactor()
 	return this->DefenceFactor;
 }
 
-float UArmorComponent::AffectDamage(float RawDamage)
+float UArmorComponent::ModifyAttackPoints(float AttackPoints)
 {
-	if (RawDamage < 0)
+	if (AttackPoints < 0)
 	{
-		return RawDamage / this->DefenceFactor;
+		return AttackPoints / this->DefenceFactor;
 	}
 	else
-		return RawDamage;
+		return AttackPoints;
 }
 
 float UArmorComponent::GetMagicalDefenceFactor()
@@ -37,7 +37,12 @@ float UArmorComponent::GetMagicalDefenceFactor()
 	return this->MagicalDefenceFactor;
 }
 
-float UArmorComponent::AffectMagicalDamage(float RawMagicalDamage)
+float UArmorComponent::ModifyMagicalAttackPoints(float MagicalAttackPoints)
 {
-	return RawMagicalDamage / this->MagicalDefenceFactor;
+	if (MagicalAttackPoints < 0)
+	{
+		return MagicalAttackPoints / this->GetMagicalDefenceFactor();
+	}
+	else
+		return MagicalAttackPoints;
 }

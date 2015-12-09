@@ -17,6 +17,9 @@ public:
 
 	void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
+	UFUNCTION(BlueprintCallable, Category = "Item")
+	virtual bool Action();
+
 	FString GetName();
 
 	FString GetDescription();
@@ -32,12 +35,33 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Variables|Item")
 	void StartCooldown();
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable, Category = "Item")
 	void OnCooledDown();
 
 	float GetTimeTillCooled();
 
 	float GetCooldownTime();
+
+	UFUNCTION(BlueprintCallable, Category = "Item")
+	virtual float ModifyHealthPoints(float HealthPoints);
+
+	UFUNCTION(BlueprintCallable, Category = "Item")
+	virtual float ModifyHealthPointsLimit(float HealthPointsLimit);
+
+	UFUNCTION(BlueprintCallable, Category = "Item")
+	virtual float ModifyAttackPoints(float AttackPoints);
+
+	UFUNCTION(BlueprintCallable, Category = "Item")
+	virtual float ModifyMagicalAttackPoints(float MagicalAttackPoints);
+
+	UFUNCTION(BlueprintCallable, Category = "Item")
+	virtual float ModifyMana(float Mana);
+
+	UFUNCTION(BlueprintCallable, Category = "Item")
+	virtual float ModifyManaLimit(float ManaLimit);
+
+	UFUNCTION(BlueprintCallable, Category = "Item")
+	virtual float ModifyManaRegeneration(float ManaRegeneration);
 
 protected:
 

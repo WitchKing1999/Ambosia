@@ -16,20 +16,17 @@ class AMBOSIA_API UWeaponComponent : public UItemComponent
 public:
 	UWeaponComponent();
 
-	UFUNCTION(BlueprintCallable, Category = "Item")
-	void Attack();
+	bool Action() override;
 
 	float GetAttackFactor();
 
-	UFUNCTION(BlueprintCallable, Category="Item")
-	float AffectAttackPoints(float RawAttackPoints);
+	float ModifyAttackPoints(float AttackPoints) override;
 
 	float GetManaCost();
 
 	float GetMagicalAttackFactor();
 
-	UFUNCTION(BlueprintCallable, Category = "Item")
-	float AffectMagicalAttackPoints(float RawMagicalAttackPoints);
+	float ModifyMagicalAttackPoints(float MagicalAttackPoints) override;
 	
 protected:
 

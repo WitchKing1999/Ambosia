@@ -9,17 +9,41 @@ UPotionComponent::UPotionComponent()
 	Mana = 0;
 }
 
-void UPotionComponent::AffectGameplayValues(UGameplayValuesComponent* GVComponent)
+bool UPotionComponent::Action()
 {
 	if (this->GetTimeTillCooled() <= 0)
 	{
-		GVComponent->AffectHealthPoints(this->GetHealthPoints());
-		GVComponent->AffectMana(this->GetMana());
+		UGameplayValuesComponent* GVComponent = dynamic_cast<UGameplayValuesComponent*>(this->GetOwner()->GetComponentByClass(TSubclassOf<UGameplayValuesComponent>()));
+		if (GVComponent == nullptr)
+			return false;
+
+		float NewHP = this->ModifyHealthPoints(GVComponent->GetHealthPoints());
+		GVComponent->SetHealthPoints(NewHP);
+
+		float NewMana = this->ModifyMana(GVComponent->GetMana());
+		GVComponent->SetMana(NewMana);
 
 		this->AffectStackSize(-1);
 		this->StartCooldown();
+
+		return true;
+	}
+	else
+	{
+		return false;
 	}
 }
+
+float UPotionComponent::ModifyHealthPoints(float HealthPoint)
+{
+	return HealthPoints + this->GetHealthPoints();
+}
+
+float UPotionComponent::ModifyMana(float Mana)
+{
+	return Mana + this->GetMana();
+}
+
 
 float UPotionComponent::GetHealthPoints()
 {
