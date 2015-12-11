@@ -5,12 +5,16 @@
 
 UPotionComponent::UPotionComponent()
 {
+	Name = "Potion";
+	Description = "Gives you health points or mana!";
 	HealthPoints = 0;
 	Mana = 0;
 }
 
-bool UPotionComponent::Action()
+bool UPotionComponent::Action_Implementation()
 {
+	if (!Super::Action_Implementation())
+		return false;
 	if (this->GetTimeTillCooled() <= 0)
 	{
 		UGameplayValuesComponent* GVComponent = dynamic_cast<UGameplayValuesComponent*>(this->GetOwner()->GetComponentByClass(TSubclassOf<UGameplayValuesComponent>()));

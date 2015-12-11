@@ -9,7 +9,7 @@
 /**
  * 
  */
-UCLASS()
+UCLASS(ClassGroup = (Items), meta = (BlueprintSpawnableComponent))
 class AMBOSIA_API UPotionComponent : public UItemComponent
 {
 	GENERATED_BODY()
@@ -18,7 +18,7 @@ public:
 	
 	UPotionComponent();
 
-	bool Action() override;
+	virtual bool Action_Implementation() override;
 
 	float ModifyHealthPoints(float HealthPoint) override;
 

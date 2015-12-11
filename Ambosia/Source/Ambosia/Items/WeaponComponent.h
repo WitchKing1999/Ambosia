@@ -16,7 +16,7 @@ class AMBOSIA_API UWeaponComponent : public UItemComponent
 public:
 	UWeaponComponent();
 
-	bool Action() override;
+	virtual bool Action_Implementation() override;
 
 	float GetAttackFactor();
 

@@ -6,7 +6,7 @@
 #include "ItemComponent.generated.h"
 
 // This is the item base class.
-UCLASS( ClassGroup=(Items), meta=(BlueprintSpawnableComponent) )
+UCLASS( ClassGroup=(Items), meta=(BlueprintSpawnableComponent), Blueprintable)
 class AMBOSIA_API UItemComponent : public USceneComponent
 {
 	GENERATED_BODY()
@@ -17,8 +17,10 @@ public:
 
 	void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
-	UFUNCTION(BlueprintCallable, Category = "Item")
-	virtual bool Action();
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Item")
+	bool Action();
+
+	virtual bool Action_Implementation();
 
 	FString GetName();
 

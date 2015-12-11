@@ -31,7 +31,7 @@ void UItemComponent::TickComponent(float DeltaTime, enum ELevelTick TickType, FA
 	}
 }
 
-bool UItemComponent::Action()
+bool UItemComponent::Action_Implementation()
 {
 	return true;
 }
