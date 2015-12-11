@@ -45,6 +45,8 @@ public:
 
 	float GetCooldownTime();
 
+	bool IsStackable();
+
 	UFUNCTION(BlueprintCallable, Category = "Item")
 	virtual float ModifyHealthPoints(float HealthPoints);
 
@@ -82,5 +84,8 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")
 	float CooldownTime;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")
+	bool bStackable;
 	
 };

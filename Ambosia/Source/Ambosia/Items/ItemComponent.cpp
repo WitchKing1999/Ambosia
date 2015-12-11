@@ -14,7 +14,8 @@ UItemComponent::UItemComponent()
 	Description = "Does nothing at all!";
 	StackSize = 1;
 	TimeTillCooled = 0;
-	CooldownTime = 1;
+	CooldownTime = 0;
+	bStackable = false;
 }
 
 void UItemComponent::TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
@@ -66,7 +67,7 @@ void UItemComponent::AffectStackSize(float Delta)
 
 void UItemComponent::AddItemToStack(UItemComponent* Item)
 {
-	if (this->GetClass() == Item->GetClass())
+	if ((this->GetClass() == Item->GetClass()) && (Item != this) && this->IsStackable())
 	{
 		this->AffectStackSize(Item->GetStackSize());
 		Item->DestroyComponent();
@@ -91,6 +92,11 @@ float UItemComponent::GetTimeTillCooled()
 float UItemComponent::GetCooldownTime()
 {
 	return this->CooldownTime;
+}
+
+bool UItemComponent::IsStackable()
+{
+	return this->bStackable;
 }
 
 float UItemComponent::ModifyHealthPoints(float HealthPoints)
