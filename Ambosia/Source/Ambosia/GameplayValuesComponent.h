@@ -97,25 +97,25 @@ public:
 	*/
 
 protected:
-	UPROPERTY(BlueprintReadOnly, Category = "Gameplay Values|Health Points")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Gameplay Values|Health Points")
 	float HealthPoints;
 
-	UPROPERTY(BlueprintReadOnly, Category = "Gameplay Values|Health Points")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Gameplay Values|Health Points")
 	float HealthPointsLimit;
 
-	UPROPERTY(BlueprintReadOnly, Category = "Gameplay Values|Attack Points")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Gameplay Values|Attack Points")
 	float AttackPoints;
 
-	UPROPERTY(BlueprintReadOnly, Category = "Gameplay Values|Attack Points")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Gameplay Values|Attack Points")
 	float MagicalAttackPoints;
 
-	UPROPERTY(BlueprintReadOnly, Category = "Gameplay Values|Mana")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Gameplay Values|Mana")
 	float Mana;
 
-	UPROPERTY(BlueprintReadOnly, Category = "Gameplay Values|Mana")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Gameplay Values|Mana")
 	float ManaLimit;
 
-	UPROPERTY(BlueprintReadOnly, Category = "Gameplay Values|Mana")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Gameplay Values|Mana")
 	float ManaRegenerationPerSec;
 	
 };

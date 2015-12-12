@@ -17,20 +17,27 @@ bool UPotionComponent::Action_Implementation()
 		return false;
 	if (this->GetTimeTillCooled() <= 0)
 	{
-		UGameplayValuesComponent* GVComponent = dynamic_cast<UGameplayValuesComponent*>(this->GetOwner()->GetComponentByClass(TSubclassOf<UGameplayValuesComponent>()));
+		TInlineComponentArray<UGameplayValuesComponent*> GVComponents;
+		this->GetOwner()->GetComponents(GVComponents);
+		UGameplayValuesComponent* GVComponent = GVComponents[0];
 		if (GVComponent == nullptr)
 			return false;
 
-		float NewHP = this->ModifyHealthPoints(GVComponent->GetHealthPoints());
-		GVComponent->SetHealthPoints(NewHP);
+		if (GVComponent->GetHealthPoints() < GVComponent->GetHealthPointsLimit())
+		{
+			float NewHP = this->ModifyHealthPoints(GVComponent->GetHealthPoints());
+			GVComponent->SetHealthPoints(NewHP);
 
-		float NewMana = this->ModifyMana(GVComponent->GetMana());
-		GVComponent->SetMana(NewMana);
+			float NewMana = this->ModifyMana(GVComponent->GetMana());
+			GVComponent->SetMana(NewMana);
 
-		this->AffectStackSize(-1);
-		this->StartCooldown();
+			this->AffectStackSize(-1);
+			this->StartCooldown();
 
-		return true;
+			return true;
+		}
+
+		return false;
 	}
 	else
 	{
@@ -38,7 +45,7 @@ bool UPotionComponent::Action_Implementation()
 	}
 }
 
-float UPotionComponent::ModifyHealthPoints(float HealthPoint)
+float UPotionComponent::ModifyHealthPoints(float HealthPoints)
 {
 	return HealthPoints + this->GetHealthPoints();
 }

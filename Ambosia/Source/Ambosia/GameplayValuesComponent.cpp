@@ -71,7 +71,7 @@ void UGameplayValuesComponent::AffectHealthPoints(float Delta)
 
 float UGameplayValuesComponent::GetHealthPointsLimit()
 {
-	return this->HealthPoints;
+	return this->HealthPointsLimit;
 }
 
 void UGameplayValuesComponent::SetHealthPointsLimit(float NewHealthPointsLimit)
