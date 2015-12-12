@@ -67,7 +67,7 @@ void UItemComponent::AffectStackSize(float Delta)
 
 void UItemComponent::AddItemToStack(UItemComponent* Item)
 {
-	if ((this->GetClass() == Item->GetClass()) && (Item != this) && this->IsStackable())
+	if ((this->GetClass() == Item->GetClass()) && (Item != this) && this->IsStackable() && (! Item->IsBeingDestroyed()))
 	{
 		this->AffectStackSize(Item->GetStackSize());
 		Item->DestroyComponent();

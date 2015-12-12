@@ -9,6 +9,7 @@ UPotionComponent::UPotionComponent()
 	Description = "Gives you health points or mana!";
 	HealthPoints = 0;
 	Mana = 0;
+	bStackable = true;
 }
 
 bool UPotionComponent::Action_Implementation()
