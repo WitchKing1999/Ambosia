@@ -18,7 +18,7 @@ bool UWeaponComponent::Action_Implementation()
 {
 	if (!Super::Action_Implementation())
 		return false;
-	if (this->GetTimeTillCooled())
+	if (this->GetTimeTillCooled() <= 0)
 	{
 		this->StartCooldown();
 		return true;
