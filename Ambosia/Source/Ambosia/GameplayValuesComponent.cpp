@@ -13,8 +13,10 @@ UGameplayValuesComponent::UGameplayValuesComponent()
 	bWantsBeginPlay = true;
 	PrimaryComponentTick.bCanEverTick = true;
 
+	// needs to be set to make the regeneration work.
 	TimeToNextRegen = 1;
 
+	// sets the gameplay values to standart
 	HealthPoints = 200;
 	HealthPointsLimit = 200;
 	AttackPoints = 100;

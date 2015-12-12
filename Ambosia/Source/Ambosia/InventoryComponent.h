@@ -8,8 +8,11 @@
 #include "Items/PotionComponent.h"
 #include "InventoryComponent.generated.h"
 
-// This component manages all items that are attached to it.
-// It provides an action item and an passive item.
+/*
+This component manages all items that are attached to it.
+Currently it holds a weapon-, an armor- and a potion item pointer.
+All these items need to be attached to us.
+*/
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class AMBOSIA_API UInventoryComponent : public USceneComponent
 {

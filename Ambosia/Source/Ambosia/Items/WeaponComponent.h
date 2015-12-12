@@ -5,9 +5,9 @@
 #include "Items/ItemComponent.h"
 #include "WeaponComponent.generated.h"
 
-/**
- * 
- */
+/*
+ This Item hurts everything!
+*/
 UCLASS(ClassGroup = (Items), meta = (BlueprintSpawnableComponent))
 class AMBOSIA_API UWeaponComponent : public UItemComponent
 {

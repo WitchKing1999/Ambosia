@@ -5,8 +5,15 @@
 #include "Components/ActorComponent.h"
 #include "GameplayValuesComponent.generated.h"
 
-// This component holds all gameplay values of a NPC or the Player.
-// You just need to add this to your controller and it will be used!
+/*
+This component holds all gameplay values of a NPC or the Player.
+You just need to add this to your controller and it will be used!
+Every gameplay value has three realted functions: GetX, SetX and AffectX.
+GetX returns the value, SetX sets it and AffectX in- or decreases it.
+HealthPoints and Mana can't be bigger than their Limit, which is controlled
+in SetX; AffectX uses SetX, so it sticks to that rule too.
+For more information see the gameplay document.
+*/
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class AMBOSIA_API UGameplayValuesComponent : public UActorComponent
 {
@@ -92,11 +99,13 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Variables|Gameplay Values|Mana")
 	void AffectManaRegeneration(float Delta);
 
+protected:
+
 	/*
 	Variables
+	See gameplay document for more information.
 	*/
 
-protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Gameplay Values|Health Points")
 	float HealthPoints;
 

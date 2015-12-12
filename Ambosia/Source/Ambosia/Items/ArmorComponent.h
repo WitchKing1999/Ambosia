@@ -5,9 +5,10 @@
 #include "Items/ItemComponent.h"
 #include "ArmorComponent.generated.h"
 
-/**
- * 
- */
+/*
+This item saves the player or NPC from receiving the complete damage
+by multpiling it with a certain factor.
+*/
 UCLASS(ClassGroup = (Items), meta = (BlueprintSpawnableComponent))
 class AMBOSIA_API UArmorComponent : public UItemComponent
 {

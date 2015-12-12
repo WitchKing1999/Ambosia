@@ -6,9 +6,10 @@
 #include "GameplayValuesComponent.h"
 #include "PotionComponent.generated.h"
 
-/**
- * 
- */
+/*
+This helpful item gives some health points and/or mana to the player,
+but it isn't infinite.
+*/
 UCLASS(ClassGroup = (Items), meta = (BlueprintSpawnableComponent))
 class AMBOSIA_API UPotionComponent : public UItemComponent
 {
