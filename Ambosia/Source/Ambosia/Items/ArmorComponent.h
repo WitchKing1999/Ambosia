@@ -18,11 +18,11 @@ public:
 
 	float GetDefenceFactor();
 	
-	float ModifyAttackPoints(float AttackPoints) override;
+	virtual float ModifyAttackPoints_Implementation(float AttackPoints) override;
 
 	float GetMagicalDefenceFactor();
 
-	float ModifyMagicalAttackPoints(float MagicalAttackPoints) override;
+	virtual float ModifyMagicalAttackPoints_Implementation(float MagicalAttackPoints) override;
 
 protected:
 

@@ -22,7 +22,7 @@ float UArmorComponent::GetDefenceFactor()
 	return this->DefenceFactor;
 }
 
-float UArmorComponent::ModifyAttackPoints(float AttackPoints)
+float UArmorComponent::ModifyAttackPoints_Implementation(float AttackPoints)
 {
 	if (AttackPoints < 0)
 	{
@@ -37,7 +37,7 @@ float UArmorComponent::GetMagicalDefenceFactor()
 	return this->MagicalDefenceFactor;
 }
 
-float UArmorComponent::ModifyMagicalAttackPoints(float MagicalAttackPoints)
+float UArmorComponent::ModifyMagicalAttackPoints_Implementation(float MagicalAttackPoints)
 {
 	if (MagicalAttackPoints < 0)
 	{

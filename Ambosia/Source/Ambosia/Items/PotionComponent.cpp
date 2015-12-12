@@ -46,12 +46,12 @@ bool UPotionComponent::Action_Implementation()
 	}
 }
 
-float UPotionComponent::ModifyHealthPoints(float HealthPoints)
+float UPotionComponent::ModifyHealthPoints_Implementation(float HealthPoints)
 {
 	return HealthPoints + this->GetHealthPoints();
 }
 
-float UPotionComponent::ModifyMana(float Mana)
+float UPotionComponent::ModifyMana_Implementation(float Mana)
 {
 	return Mana + this->GetMana();
 }

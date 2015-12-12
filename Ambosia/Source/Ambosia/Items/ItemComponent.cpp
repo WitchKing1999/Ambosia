@@ -99,37 +99,37 @@ bool UItemComponent::IsStackable()
 	return this->bStackable;
 }
 
-float UItemComponent::ModifyHealthPoints(float HealthPoints)
+float UItemComponent::ModifyHealthPoints_Implementation(float HealthPoints)
 {
 	return HealthPoints;
 }
 
-float UItemComponent::ModifyHealthPointsLimit(float HealthPointsLimit)
+float UItemComponent::ModifyHealthPointsLimit_Implementation(float HealthPointsLimit)
 {
 	return HealthPointsLimit;
 }
 
-float UItemComponent::ModifyAttackPoints(float AttackPoints)
+float UItemComponent::ModifyAttackPoints_Implementation(float AttackPoints)
 {
 	return AttackPoints;
 }
 
-float UItemComponent::ModifyMagicalAttackPoints(float MagicalAttackPoints)
+float UItemComponent::ModifyMagicalAttackPoints_Implementation(float MagicalAttackPoints)
 {
 	return MagicalAttackPoints;
 }
 
-float UItemComponent::ModifyMana(float Mana)
+float UItemComponent::ModifyMana_Implementation(float Mana)
 {
 	return Mana;
 }
 
-float UItemComponent::ModifyManaLimit(float ManaLimit)
+float UItemComponent::ModifyManaLimit_Implementation(float ManaLimit)
 {
 	return ManaLimit;
 }
 
-float UItemComponent::ModifyManaRegeneration(float ManaRegeneration)
+float UItemComponent::ModifyManaRegeneration_Implementation(float ManaRegeneration)
 {
 	return ManaRegeneration;
 }

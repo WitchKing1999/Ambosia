@@ -34,7 +34,7 @@ float UWeaponComponent::GetAttackFactor()
 	return this->AttackFactor;
 }
 
-float UWeaponComponent::ModifyAttackPoints(float AttackPoints)
+float UWeaponComponent::ModifyAttackPoints_Implementation(float AttackPoints)
 {
 	return AttackPoints * this->AttackFactor;
 }
@@ -49,7 +49,7 @@ float UWeaponComponent::GetMagicalAttackFactor()
 	return this->MagicalAttackFactor;
 }
 
-float UWeaponComponent::ModifyMagicalAttackPoints(float MagicalAttackPoints)
+float UWeaponComponent::ModifyMagicalAttackPoints_Implementation(float MagicalAttackPoints)
 {
 	return MagicalAttackPoints * this->MagicalAttackFactor;
 }

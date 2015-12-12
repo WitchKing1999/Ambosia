@@ -20,9 +20,9 @@ public:
 
 	virtual bool Action_Implementation() override;
 
-	float ModifyHealthPoints(float HealthPoints) override;
+	virtual float ModifyHealthPoints_Implementation(float HealthPoints) override;
 
-	float ModifyMana(float Mana) override;
+	virtual float ModifyMana_Implementation(float Mana) override;
 
 	float GetHealthPoints();
 

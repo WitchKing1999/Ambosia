@@ -49,26 +49,40 @@ public:
 
 	bool IsStackable();
 
-	UFUNCTION(BlueprintCallable, Category = "Item")
-	virtual float ModifyHealthPoints(float HealthPoints);
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Item")
+	float ModifyHealthPoints(float HealthPoints);
 
-	UFUNCTION(BlueprintCallable, Category = "Item")
-	virtual float ModifyHealthPointsLimit(float HealthPointsLimit);
+	virtual float ModifyHealthPoints_Implementation(float HealthPoints);
 
-	UFUNCTION(BlueprintCallable, Category = "Item")
-	virtual float ModifyAttackPoints(float AttackPoints);
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Item")
+	float ModifyHealthPointsLimit(float HealthPointsLimit);
 
-	UFUNCTION(BlueprintCallable, Category = "Item")
-	virtual float ModifyMagicalAttackPoints(float MagicalAttackPoints);
+	virtual float ModifyHealthPointsLimit_Implementation(float HealthPointsLimit);
 
-	UFUNCTION(BlueprintCallable, Category = "Item")
-	virtual float ModifyMana(float Mana);
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Item")
+	float ModifyAttackPoints(float AttackPoints);
 
-	UFUNCTION(BlueprintCallable, Category = "Item")
-	virtual float ModifyManaLimit(float ManaLimit);
+	virtual float ModifyAttackPoints_Implementation(float AttackPoints);
 
-	UFUNCTION(BlueprintCallable, Category = "Item")
-	virtual float ModifyManaRegeneration(float ManaRegeneration);
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Item")
+	float ModifyMagicalAttackPoints(float MagicalAttackPoints);
+
+	virtual float ModifyMagicalAttackPoints_Implementation(float MagicalAttackPoints);
+
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Item")
+	float ModifyMana(float Mana);
+
+	virtual float ModifyMana_Implementation(float Mana);
+
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Item")
+	float ModifyManaLimit(float ManaLimit);
+
+	virtual float ModifyManaLimit_Implementation(float ManaLimit);
+
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Item")
+	float ModifyManaRegeneration(float ManaRegeneration);
+
+	virtual float ModifyManaRegeneration_Implementation(float ManaRegeneration);
 
 protected:
 

@@ -59,12 +59,16 @@ void UGameplayValuesComponent::SetHealthPoints(float NewHealthPoints)
 
 void UGameplayValuesComponent::AffectHealthPoints(float Delta)
 {
-	UInventoryComponent* Inventory = dynamic_cast<UInventoryComponent*>(this->GetOwner()->GetComponentByClass(TSubclassOf<UInventoryComponent>()));
+	TInlineComponentArray<UInventoryComponent*> Inventories;
+	this->GetOwner()->GetComponents(Inventories);
+	UInventoryComponent* Inventory = Inventories[0];
 	if (Inventory == nullptr)
 		return;
+
 	UArmorComponent* Armor = Inventory->GetArmor();
 	if (Armor == nullptr)
 		return;
+
 	Delta = Armor->ModifyAttackPoints(Delta);
 	this->SetHealthPoints(this->GetHealthPoints() + Delta);
 }
