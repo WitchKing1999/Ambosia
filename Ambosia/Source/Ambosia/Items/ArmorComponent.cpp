@@ -26,7 +26,7 @@ float UArmorComponent::ModifyAttackPoints_Implementation(float AttackPoints)
 {
 	if (AttackPoints < 0)
 	{
-		return AttackPoints / this->DefenceFactor;
+		return AttackPoints * this->DefenceFactor;
 	}
 	else
 		return AttackPoints;
