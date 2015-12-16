@@ -6,6 +6,7 @@
 #include "Items/WeaponComponent.h"
 #include "Items/ArmorComponent.h"
 #include "Items/PotionComponent.h"
+#include "Items/ArrowBundleComponent.h"
 #include "InventoryComponent.generated.h"
 
 /*
@@ -51,6 +52,15 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Variables|Inventory")
 	bool SetPotion(UPotionComponent* NewPotion);
 
+	/*
+	Arrow Bundle
+	*/
+
+	UArrowBundleComponent* GetArrowBundle();
+
+	UFUNCTION(BlueprintCallable, Category = "Variables|Inventory")
+	bool SetArrowBundle(UArrowBundleComponent* NewArrowBundle);
+
 protected:
 	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inventory")
@@ -61,4 +71,8 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inventory")
 	UPotionComponent* Potion;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inventory")
+	UArrowBundleComponent* ArrowBundle;
+
 };
