@@ -29,6 +29,8 @@ bool UBowComponent::Action_Implementation()
 	UArrowBundleComponent* ArrowBundle = Inventory->GetArrowBundle();
 	if (ArrowBundle == nullptr)
 		return false;
+	if (this->GetAcceptedArrows().Find(ArrowBundle->GetClass()) == INDEX_NONE)
+		return false;
 	UClass* ProjectileClass = ArrowBundle->GetArrowClass();
 	if (ProjectileClass == nullptr)
 		return false;
@@ -59,4 +61,9 @@ void UBowComponent::SetSpawnOffset(FVector NewSpawnOffset)
 FVector UBowComponent::GetSpawnOffset()
 {
 	return this->SpawnOffset;
+}
+
+TArray<UClass*> UBowComponent::GetAcceptedArrows()
+{
+	return this->AcceptedArrows;
 }

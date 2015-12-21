@@ -23,9 +23,14 @@ public:
 
 	FVector GetSpawnOffset();
 
+	TArray<UClass*> GetAcceptedArrows();
+
 protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Item")
 	FVector SpawnOffset;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Item")
+	TArray<UClass*> AcceptedArrows;
 
 };
