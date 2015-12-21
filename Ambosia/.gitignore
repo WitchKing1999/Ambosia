@@ -3,6 +3,7 @@ Binaries
 DerivedDataCache
 Intermediate
 Saved
+*.opendb
 *.opensdf
 *.sdf
 *.sln

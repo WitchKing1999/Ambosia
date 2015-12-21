@@ -27,10 +27,10 @@ public:
 
 protected:
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Item")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Bow")
 	FVector SpawnOffset;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Item")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Bow")
 	TArray<UClass*> AcceptedArrows;
 
 };
