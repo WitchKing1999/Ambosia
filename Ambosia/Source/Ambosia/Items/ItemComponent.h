@@ -10,7 +10,7 @@ This is the item base class. It has a name, a description,
 is stackable and provides an action, which may require us to be cooled
 down. Also it can modify all gameplay values.
 */
-UCLASS( ClassGroup=(Items), meta=(BlueprintSpawnableComponent), Blueprintable)
+UCLASS(ClassGroup=(Items), meta=(BlueprintSpawnableComponent), Blueprintable)
 class AMBOSIA_API UItemComponent : public USceneComponent
 {
 	GENERATED_BODY()
