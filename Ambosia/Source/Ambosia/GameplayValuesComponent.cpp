@@ -73,10 +73,9 @@ void UGameplayValuesComponent::AffectHealthPoints(float Delta)
 		return;
 
 	UArmorComponent* Armor = Inventory->GetArmor();
-	if (Armor == nullptr)
-		return;
+	if (Armor != nullptr)
+		Delta = Armor->ModifyAttackPoints(Delta);
 
-	Delta = Armor->ModifyAttackPoints(Delta);
 	this->SetHealthPoints(this->GetHealthPoints() + Delta);
 }
 
