@@ -2,6 +2,7 @@
 
 #include "Ambosia.h"
 #include "GameplayValuesComponent.h"
+#include "Kismet/KismetSystemLibrary.h"
 #include "WeaponComponent.h"
 
 UWeaponComponent::UWeaponComponent()
@@ -13,6 +14,7 @@ UWeaponComponent::UWeaponComponent()
 	AttackFactor = 1.0;
 	ManaCost = 0;
 	MagicalAttackFactor = 1.0;
+	CriticalDamageChance = 0;
 }
 
 bool UWeaponComponent::Action_Implementation()
@@ -39,14 +41,27 @@ bool UWeaponComponent::Action_Implementation()
 	return true;
 }
 
+float UWeaponComponent::ModifyAttackPoints_Implementation(float AttackPoints)
+{
+	float CriticalFactor = 1;
+	float RandomNumber = FMath::FRandRange(0, 100);
+	UKismetSystemLibrary::PrintString(this, FString::FromInt((int)RandomNumber));
+	if (RandomNumber <= this->GetCriticalDamageChance())
+	{
+		CriticalFactor = 2;
+	}
+
+	return AttackPoints * this->AttackFactor * CriticalFactor;
+}
+
+float UWeaponComponent::ModifyMagicalAttackPoints_Implementation(float MagicalAttackPoints)
+{
+	return MagicalAttackPoints * this->MagicalAttackFactor;
+}
+
 float UWeaponComponent::GetAttackFactor()
 {
 	return this->AttackFactor;
-}
-
-float UWeaponComponent::ModifyAttackPoints_Implementation(float AttackPoints)
-{
-	return AttackPoints * this->AttackFactor;
 }
 
 float UWeaponComponent::GetManaCost()
@@ -59,7 +74,7 @@ float UWeaponComponent::GetMagicalAttackFactor()
 	return this->MagicalAttackFactor;
 }
 
-float UWeaponComponent::ModifyMagicalAttackPoints_Implementation(float MagicalAttackPoints)
+float UWeaponComponent::GetCriticalDamageChance()
 {
-	return MagicalAttackPoints * this->MagicalAttackFactor;
+	return this->CriticalDamageChance;
 }

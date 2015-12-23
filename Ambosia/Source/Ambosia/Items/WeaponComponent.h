@@ -18,15 +18,17 @@ public:
 
 	virtual bool Action_Implementation() override;
 
-	float GetAttackFactor();
-
 	virtual float ModifyAttackPoints_Implementation(float AttackPoints) override;
+
+	virtual float ModifyMagicalAttackPoints_Implementation(float MagicalAttackPoints) override;
+
+	float GetAttackFactor();
 
 	float GetManaCost();
 
 	float GetMagicalAttackFactor();
 
-	virtual float ModifyMagicalAttackPoints_Implementation(float MagicalAttackPoints) override;
+	float GetCriticalDamageChance();
 	
 protected:
 
@@ -38,4 +40,7 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Weapon")
 	float MagicalAttackFactor;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Weapon")
+	float CriticalDamageChance;
 };
