@@ -54,9 +54,14 @@ void UGameplayValuesComponent::SetHealthPoints(float NewHealthPoints)
 		AController* OwnerAsController = dynamic_cast<AController*>(this->GetOwner());
 		if (OwnerAsController != nullptr)
 		{
-			OwnerAsController->GetPawn()->Destroy();
+			APawn* Pawn = OwnerAsController->GetPawn();
+			OwnerAsController->UnPossess();
+			Pawn->Destroy();
 		}
-		this->GetOwner()->Destroy();
+		else
+		{
+			this->GetOwner()->Destroy();
+		}
 	}
 	else
 	{
