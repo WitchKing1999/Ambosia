@@ -2,7 +2,6 @@
 
 #include "Ambosia.h"
 #include "GameplayValuesComponent.h"
-#include "Kismet/KismetSystemLibrary.h"
 #include "WeaponComponent.h"
 
 UWeaponComponent::UWeaponComponent()
@@ -21,6 +20,7 @@ bool UWeaponComponent::Action_Implementation()
 {
 	if (!Super::Action_Implementation())
 		return false;
+
 	if (this->GetTimeTillCooled() > 0)
 		return false;
 	this->StartCooldown();
@@ -45,7 +45,6 @@ float UWeaponComponent::ModifyAttackPoints_Implementation(float AttackPoints)
 {
 	float CriticalFactor = 1;
 	float RandomNumber = FMath::FRandRange(0, 100);
-	UKismetSystemLibrary::PrintString(this, FString::FromInt((int)RandomNumber));
 	if (RandomNumber <= this->GetCriticalDamageChance())
 	{
 		CriticalFactor = 2;
