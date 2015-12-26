@@ -12,59 +12,76 @@ UInventoryComponent::UInventoryComponent()
 	bWantsBeginPlay = true;
 	PrimaryComponentTick.bCanEverTick = true;
 
-	ActionItem = nullptr;
+	Weapon = nullptr;
+	Armor = nullptr;
 }
 
 void UInventoryComponent::OnChildDetached(USceneComponent* ChildComponent)
 {
-	Super::OnChildDetached(ChildComponent);
-
-	UItemComponent* ChildAsItem = dynamic_cast<UItemComponent*>(ChildComponent);
-	if (ChildAsItem == this->ActionItem)
+	if (ChildComponent == this->GetWeapon())
 	{
-		this->ActionItem = nullptr;
+		this->Weapon = nullptr;
 	}
-	else if (ChildAsItem == this->PassiveItem)
+	else if (ChildComponent == this->GetArmor())
 	{
-		this->PassiveItem = nullptr;
+		this->Armor = nullptr;
 	}
-}
-
-void UInventoryComponent::ActivateActionItem()
-{
-	if (this->ActionItem != nullptr)
-		this->ActionItem->Activate();
-}
-
-void UInventoryComponent::DeactivateActionItem()
-{
-	if (this->ActionItem != nullptr)
-		this->ActionItem->Deactivate();
-}
-
-UItemComponent* UInventoryComponent::GetActionItem()
-{
-	return this->ActionItem;
-}
-
-void UInventoryComponent::SetActionItem(UItemComponent* Item)
-{
-	if (Item->AttachParent == this)
+	else if (ChildComponent == this->GetPotion())
 	{
-		this->ActionItem = Item;
+		this->Potion = nullptr;
 	}
 }
 
-UItemComponent* UInventoryComponent::GetPassiveItem()
+UWeaponComponent* UInventoryComponent::GetWeapon()
 {
-	return this->PassiveItem;
+	return this->Weapon;
 }
 
-void UInventoryComponent::SetPassiveItem(UItemComponent* Item)
+bool UInventoryComponent::SetWeapon(UWeaponComponent* NewWeapon)
 {
-	if (Item->AttachParent == this)
+	if (NewWeapon->GetAttachParent() == this)
 	{
-		this->PassiveItem = Item;
+		this->Weapon = NewWeapon;
+		return true;
+	}
+	else
+	{
+		return false;
 	}
 }
 
+UArmorComponent* UInventoryComponent::GetArmor()
+{
+	return this->Armor;
+}
+
+bool UInventoryComponent::SetArmor(UArmorComponent* NewArmor)
+{
+	if (NewArmor->GetAttachParent() == this)
+	{
+		this->Armor = NewArmor;
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+UPotionComponent* UInventoryComponent::GetPotion()
+{
+	return this->Potion;
+}
+
+bool UInventoryComponent::SetPotion(UPotionComponent* NewPotion)
+{
+	if (NewPotion->GetAttachParent() == this)
+	{
+		this->Potion = NewPotion;
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
