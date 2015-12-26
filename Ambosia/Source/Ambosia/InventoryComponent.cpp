@@ -30,6 +30,10 @@ void UInventoryComponent::OnChildDetached(USceneComponent* ChildComponent)
 	{
 		this->Potion = nullptr;
 	}
+	else if (ChildComponent == this->GetArrowBundle())
+	{
+		this->ArrowBundle = nullptr;
+	}
 }
 
 UWeaponComponent* UInventoryComponent::GetWeapon()
@@ -78,6 +82,24 @@ bool UInventoryComponent::SetPotion(UPotionComponent* NewPotion)
 	if (NewPotion->GetAttachParent() == this)
 	{
 		this->Potion = NewPotion;
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+UArrowBundleComponent* UInventoryComponent::GetArrowBundle()
+{
+	return this->ArrowBundle;
+}
+
+bool UInventoryComponent::SetArrowBundle(UArrowBundleComponent* NewArrowBundle)
+{
+	if (NewArrowBundle->GetAttachParent() == this)
+	{
+		this->ArrowBundle = NewArrowBundle;
 		return true;
 	}
 	else

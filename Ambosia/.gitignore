@@ -1,8 +1,9 @@
-Build/Receipts/AmbosiaEditor-Win64-Development.target.xml
+Build
 Binaries
 DerivedDataCache
 Intermediate
 Saved
+*.opendb
 *.opensdf
 *.sdf
 *.sln
