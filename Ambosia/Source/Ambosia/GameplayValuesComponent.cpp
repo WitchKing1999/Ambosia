@@ -55,7 +55,6 @@ void UGameplayValuesComponent::SetHealthPoints(float NewHealthPoints)
 		if (OwnerAsController != nullptr)
 		{
 			APawn* Pawn = OwnerAsController->GetPawn();
-			OwnerAsController->UnPossess();
 			Pawn->Destroy();
 		}
 		else
