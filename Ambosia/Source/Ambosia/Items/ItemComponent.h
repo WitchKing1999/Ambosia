@@ -20,7 +20,7 @@ public:
 	void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	/**
-	Runs an action and returns true, if the action was successful and false it not.
+	Runs an action and returns true, if the action was successfull and false it not.
 	By default, this does nothing and is always successful.
 	*/
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Item")

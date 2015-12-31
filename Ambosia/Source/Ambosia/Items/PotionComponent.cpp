@@ -14,36 +14,44 @@ UPotionComponent::UPotionComponent()
 
 bool UPotionComponent::Action_Implementation()
 {
+	bool successfull = false;
+
 	if (!Super::Action_Implementation())
 		return false;
-	if (this->GetTimeTillCooled() <= 0)
-	{
-		TInlineComponentArray<UGameplayValuesComponent*> GVComponents;
-		this->GetOwner()->GetComponents(GVComponents);
-		UGameplayValuesComponent* GVComponent = GVComponents[0];
-		if (GVComponent == nullptr)
-			return false;
 
-		if (GVComponent->GetHealthPoints() < GVComponent->GetHealthPointsLimit())
-		{
-			float NewHP = this->ModifyHealthPoints(GVComponent->GetHealthPoints());
-			GVComponent->SetHealthPoints(NewHP);
-
-			float NewMana = this->ModifyMana(GVComponent->GetMana());
-			GVComponent->SetMana(NewMana);
-
-			this->AffectStackSize(-1);
-			this->StartCooldown();
-
-			return true;
-		}
-
+	if (this->GetTimeTillCooled() > 0)
 		return false;
-	}
-	else
-	{
+
+	TInlineComponentArray<UGameplayValuesComponent*> GVComponents;
+	this->GetOwner()->GetComponents(GVComponents);
+	UGameplayValuesComponent* GVComponent = GVComponents[0];
+	if (GVComponent == nullptr)
 		return false;
+
+		
+	if (GVComponent->GetHealthPoints() < GVComponent->GetHealthPointsLimit())
+	{
+		float NewHP = this->ModifyHealthPoints(GVComponent->GetHealthPoints());
+		GVComponent->SetHealthPoints(NewHP);
+
+		successfull = true;
 	}
+
+	if (GVComponent->GetMana() < GVComponent->GetManaLimit())
+	{
+		float NewMana = this->ModifyMana(GVComponent->GetMana());
+		GVComponent->SetMana(NewMana);
+	
+		successfull = true;
+	}
+	
+	if (successfull)
+	{
+		this->AffectStackSize(-1);
+		this->StartCooldown();
+		return true;
+	}
+	return false;
 }
 
 float UPotionComponent::ModifyHealthPoints_Implementation(float HealthPoints)

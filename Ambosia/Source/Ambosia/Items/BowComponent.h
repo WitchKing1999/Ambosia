@@ -18,9 +18,10 @@ public:
 	UBowComponent();
 
 	/*
-	Spawns a projectile and returns true, if it was successful and false, if not.
+	Spawns a projectile and returns true, if it was successfull and false, if not.
 	To be successfull, it requires that there is enough mana, that the weapon is cooled down
 	and that the inventory has some arrows which are accepted by the weapon.
+	Also, it will reduce the stack of the arrow bundle by 1.
 	*/
 	virtual bool Action_Implementation() override;
 
