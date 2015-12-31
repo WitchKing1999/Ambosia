@@ -9,10 +9,9 @@
 #include "Items/ArrowBundleComponent.h"
 #include "InventoryComponent.generated.h"
 
-/*
-This component manages all items that are attached to it.
-Currently it holds a weapon-, an armor- and a potion item pointer.
-All these items need to be attached to us.
+/**
+This component has some pointers to our selected items.
+These items need to be attached to us.
 */
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class AMBOSIA_API UInventoryComponent : public USceneComponent
@@ -31,6 +30,10 @@ public:
 
 	UWeaponComponent* GetWeapon();
 
+	/**
+	Sets our weapon to the new weapon.
+	Doesn't work if the new weapon ism't attached to us.
+	*/
 	UFUNCTION(BlueprintCallable, Category = "Variables|Inventory")
 	bool SetWeapon(UWeaponComponent* NewWeapon);
 
@@ -40,6 +43,10 @@ public:
 
 	UArmorComponent* GetArmor();
 
+	/**
+	Sets our armor to the new armor.
+	Doesn't work if the new armor isn't attached to us.
+	*/
 	UFUNCTION(BlueprintCallable, Category = "Variables|Inventory")
 	bool SetArmor(UArmorComponent* NewArmor);
 
@@ -49,6 +56,10 @@ public:
 
 	UPotionComponent* GetPotion();
 
+	/**
+	Sets our potion to the new potion.
+	Doesn't work if the new potion ism't attached to us.
+	*/
 	UFUNCTION(BlueprintCallable, Category = "Variables|Inventory")
 	bool SetPotion(UPotionComponent* NewPotion);
 
@@ -58,11 +69,19 @@ public:
 
 	UArrowBundleComponent* GetArrowBundle();
 
+	/**
+	Sets our arrow bundle to the new arrow bundle.
+	Doesn't work if the new arrow bundle isn't attached to us.
+	*/
 	UFUNCTION(BlueprintCallable, Category = "Variables|Inventory")
 	bool SetArrowBundle(UArrowBundleComponent* NewArrowBundle);
 
 protected:
 	
+	/*
+	Our Properties
+	*/
+
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inventory")
 	UWeaponComponent* Weapon;
 

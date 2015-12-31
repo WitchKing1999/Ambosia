@@ -2,6 +2,7 @@
 
 #include "Ambosia.h"
 #include "InventoryComponent.h"
+#include "Pawns/Projectile.h"
 #include "Items/ArrowBundleComponent.h"
 #include "BowComponent.h"
 
@@ -46,9 +47,27 @@ bool UBowComponent::Action_Implementation()
 	FActorSpawnParameters SpawnParameters = FActorSpawnParameters();
 	SpawnParameters.Owner = this->GetOwner();
 
-	this->GetWorld()->SpawnActor(ProjectileClass, &SpawnTransform, SpawnParameters);
+	AProjectile* Projectile = dynamic_cast<AProjectile*>(this->GetWorld()->SpawnActor(ProjectileClass, &SpawnTransform, SpawnParameters));
 
 	ArrowBundle->AffectStackSize(-1);
+
+	if (Projectile != nullptr)
+	{
+		UGameplayValuesComponent* GameplayValues = nullptr;
+		for (UActorComponent* Component : this->GetOwner()->GetComponents())
+		{
+			UGameplayValuesComponent* ComponentAsGV = dynamic_cast<UGameplayValuesComponent*>(Component);
+			if (ComponentAsGV != nullptr)
+			{
+				GameplayValues = ComponentAsGV;
+				break;
+			}
+		}
+		if (GameplayValues != nullptr)
+		{
+			Projectile->SetAttackPoints(this->ModifyAttackPoints(GameplayValues->GetAttackPoints()));
+		}
+	}
 
 	return true;
 }
