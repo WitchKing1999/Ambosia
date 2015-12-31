@@ -5,9 +5,9 @@
 #include "Items/WeaponComponent.h"
 #include "BowComponent.generated.h"
 
-/**
- * 
- */
+/*
+The Bow is a Weapon that spawns projectiles when its action-Function is called.
+*/
 UCLASS(ClassGroup = (Items), meta = (BlueprintSpawnableComponent), Blueprintable)
 class AMBOSIA_API UBowComponent : public UWeaponComponent
 {
@@ -17,19 +17,39 @@ public:
 	
 	UBowComponent();
 
+	/*
+	Spawns a projectile and returns true, if it was successful and false, if not.
+	To be successfull, it requires that there is enough mana, that the weapon is cooled down
+	and that the inventory has some arrows which are accepted by the weapon.
+	*/
 	virtual bool Action_Implementation() override;
 
-	void SetSpawnOffset(FVector NewSpawnOffset);
-
+	/*
+	Returns the spawn offset
+	*/
 	FVector GetSpawnOffset();
 
+	/*
+	Sets the spawn offset to the new spawn offset
+	*/
+	void SetSpawnOffset(FVector NewSpawnOffset);
+
+	/*
+	Returns an array of all accepted arrow bundle classes
+	*/
 	TArray<UClass*> GetAcceptedArrows();
 
 protected:
 
+	/*
+	The offset to spawn the projectile at.
+	*/
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Bow")
 	FVector SpawnOffset;
 
+	/*
+	All accepted arrow bundle classes
+	*/
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Bow")
 	TArray<UClass*> AcceptedArrows;
 
