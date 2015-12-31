@@ -44,7 +44,7 @@ bool UWeaponComponent::Action_Implementation()
 float UWeaponComponent::ModifyAttackPoints_Implementation(float AttackPoints)
 {
 	float CriticalFactor = 1;
-	float RandomNumber = FMath::FRandRange(0, 100);
+	float RandomNumber = FMath::FRandRange(0.0f, 1.0f);
 	if (RandomNumber <= this->GetCriticalDamageChance())
 	{
 		CriticalFactor = 2;
