@@ -3,7 +3,6 @@
 #pragma once
 
 #include "Items/ItemComponent.h"
-#include "GameplayValuesComponent.h"
 #include "PotionComponent.generated.h"
 
 /*

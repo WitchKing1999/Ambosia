@@ -1,7 +1,7 @@
 // (C) Flumminard 2015
 
 #include "Ambosia.h"
-#include "GameplayValuesComponent.h"
+#include "GameplaySystemComponent.h"
 #include "WeaponComponent.h"
 
 UWeaponComponent::UWeaponComponent()
@@ -25,18 +25,12 @@ bool UWeaponComponent::Action_Implementation()
 		return false;
 	this->StartCooldown();
 
-	UGameplayValuesComponent* GameplayValues = nullptr;
-	for (UActorComponent* Component : this->GetOwner()->GetComponents())
-	{
-		UGameplayValuesComponent* ComponentAsGameplayValues = dynamic_cast<UGameplayValuesComponent*>(Component);
-		if (ComponentAsGameplayValues != nullptr)
-			GameplayValues = ComponentAsGameplayValues;
-	}
-	if (GameplayValues == nullptr)
+	UGameplaySystemComponent* GameplaySystem = dynamic_cast<UGameplaySystemComponent*>(this->GetAttachParent());
+	if (GameplaySystem == nullptr)
 		return false;
-	if (GameplayValues->GetMana() < this->GetManaCost())
+	if (GameplaySystem->GetMana() < this->GetManaCost())
 		return false;
-	GameplayValues->AffectMana(this->GetManaCost() * -1);
+	GameplaySystem->AffectMana(this->GetManaCost() * -1);
 
 	return true;
 }

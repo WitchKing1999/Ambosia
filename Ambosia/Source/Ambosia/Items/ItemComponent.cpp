@@ -1,7 +1,6 @@
 // (C) Flumminard 2015
 
 #include "Ambosia.h"
-#include "Text.h"
 #include "ItemComponent.h"
 
 

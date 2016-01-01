@@ -1,0 +1,297 @@
+// (C) Flumminard 2015-2016
+
+#include "Ambosia.h"
+#include "GameplaySystemComponent.h"
+
+
+// Sets default values for this component's properties
+UGameplaySystemComponent::UGameplaySystemComponent()
+{
+	PrimaryComponentTick.bCanEverTick = true;
+
+	TimeToNextRegen = 1;
+	HealthPoints = 200;
+	HealthPointsLimit = 200;
+	AttackPoints = 100;
+	Mana = 0;
+	ManaLimit = 0;
+	MagicalAttackPoints = 0;
+	ManaRegenerationPerSec = 0;
+	Weapon = nullptr;
+	Armor = nullptr;
+	Potion = nullptr;
+	ArrowBundle = nullptr;
+}
+
+void UGameplaySystemComponent::TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
+{
+	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
+
+	this->TimeToNextRegen -= DeltaTime;
+	if (this->TimeToNextRegen <= 0)
+	{
+		this->SetMana(this->GetMana() + GetManaRegenerationPerSec());
+		this->TimeToNextRegen = 1;
+	}
+}
+
+void UGameplaySystemComponent::OnChildDetached(USceneComponent* ChildComponent)
+
+{
+	if (ChildComponent == this->GetWeapon())
+	{
+		this->Weapon = nullptr;
+	}
+	else if (ChildComponent == this->GetArmor())
+	{
+		this->Armor = nullptr;
+	}
+	else if (ChildComponent == this->GetPotion())
+	{
+		this->Potion = nullptr;
+	}
+	else if (ChildComponent == this->GetArrowBundle())
+	{
+		this->ArrowBundle = nullptr;
+	}
+}
+
+float UGameplaySystemComponent::GetHealthPoints()
+{
+	return this->HealthPoints;
+}
+
+void UGameplaySystemComponent::SetHealthPoints(float NewHealthPoints)
+{
+	if (NewHealthPoints > this->HealthPointsLimit)
+	{
+		this->HealthPoints = this->HealthPointsLimit;
+	}
+	else if (NewHealthPoints <= 0)
+	{
+		AController* OwnerAsController = dynamic_cast<AController*>(this->GetOwner());
+		if (OwnerAsController != nullptr)
+		{
+			APawn* Pawn = OwnerAsController->GetPawn();
+			Pawn->Destroy();
+		}
+		else
+		{
+			this->GetOwner()->Destroy();
+		}
+	}
+	else
+	{
+		this->HealthPoints = NewHealthPoints;
+	}
+}
+
+void UGameplaySystemComponent::AffectHealthPoints(float Delta)
+{
+	if (this->GetArmor() != nullptr && Delta < 0)
+		Delta = this->GetArmor()->ModifyAttackPoints(Delta);
+
+	this->SetHealthPoints(this->GetHealthPoints() + Delta);
+}
+
+float UGameplaySystemComponent::GetRawHealthPointsLimit()
+{
+	return this->HealthPointsLimit;
+}
+
+float UGameplaySystemComponent::GetHealthPointsLimit()
+{
+	return this->HealthPointsLimit;
+}
+
+void UGameplaySystemComponent::SetHealthPointsLimit(float NewHealthPointsLimit)
+{
+	this->HealthPointsLimit = NewHealthPointsLimit;
+	if (this->HealthPoints > this->HealthPointsLimit)
+		this->HealthPoints = this->HealthPointsLimit;
+}
+
+void UGameplaySystemComponent::AffectHealthPointsLimit(float Delta)
+{
+	this->SetHealthPointsLimit(this->GetHealthPoints() + Delta);
+}
+
+float UGameplaySystemComponent::GetRawAttackPoints()
+{
+	return this->AttackPoints;
+}
+
+float UGameplaySystemComponent::GetAttackPoints()
+{
+	float ProperAttackPoints = this->AttackPoints;
+	if (this->Weapon != nullptr)
+	{
+		ProperAttackPoints = this->Weapon->ModifyAttackPoints(ProperAttackPoints);
+	}
+	return ProperAttackPoints;
+}
+
+void UGameplaySystemComponent::SetAttackPoints(float NewAttackPoints)
+{
+	this->AttackPoints = NewAttackPoints;
+}
+
+void UGameplaySystemComponent::AffectAttackPoints(float Delta)
+{
+	this->SetAttackPoints(this->AttackPoints + Delta);
+}
+
+float UGameplaySystemComponent::GetRawMagicalAttackPoints()
+{
+	return this->MagicalAttackPoints;
+}
+
+float UGameplaySystemComponent::GetMagicalAttackPoints()
+{
+	float ProperMagicalAttackPoints = this->MagicalAttackPoints;
+	if (this->Weapon != nullptr)
+	{
+		ProperMagicalAttackPoints = this->Weapon->ModifyMagicalAttackPoints(ProperMagicalAttackPoints);
+	}
+	return ProperMagicalAttackPoints;
+}
+
+void UGameplaySystemComponent::SetMagicalAttackPoints(float NewMagicalAttackPoints)
+{
+	this->MagicalAttackPoints = NewMagicalAttackPoints;
+}
+
+void UGameplaySystemComponent::AffectMagicalAttackPoints(float Delta)
+{
+	this->SetMagicalAttackPoints(this->MagicalAttackPoints + Delta);
+}
+
+float UGameplaySystemComponent::GetMana()
+{
+	return this->Mana;
+}
+
+void UGameplaySystemComponent::SetMana(float NewMana)
+{
+	if (NewMana <= this->ManaLimit)
+		this->Mana = NewMana;
+	else
+		this->Mana = this->ManaLimit;
+}
+
+void UGameplaySystemComponent::AffectMana(float Delta)
+{
+	this->SetMana(this->GetMana() + Delta);
+}
+
+float UGameplaySystemComponent::GetRawManaLimit()
+{
+	return this->ManaLimit;
+}
+
+float UGameplaySystemComponent::GetManaLimit()
+{
+	return this->ManaLimit;
+}
+
+void UGameplaySystemComponent::SetManaLimit(float NewManaLimit)
+{
+	this->ManaLimit = NewManaLimit;
+}
+
+void UGameplaySystemComponent::AffectManaLimit(float Delta)
+{
+	this->SetManaLimit(this->ManaLimit + Delta);
+}
+
+float UGameplaySystemComponent::GetRawManaRegenerationPerSec()
+{
+	return this->ManaRegenerationPerSec;
+}
+
+float UGameplaySystemComponent::GetManaRegenerationPerSec()
+{
+	return this->ManaRegenerationPerSec;
+}
+
+void UGameplaySystemComponent::SetManaRegenerationPerSec(float NewManaReg)
+{
+	this->ManaRegenerationPerSec = NewManaReg;
+}
+
+void UGameplaySystemComponent::AffectManaRegeneration(float Delta)
+{
+	this->SetManaRegenerationPerSec(this->ManaRegenerationPerSec + Delta);
+}
+
+UWeaponComponent* UGameplaySystemComponent::GetWeapon()
+{
+	return this->Weapon;
+}
+
+bool UGameplaySystemComponent::SetWeapon(UWeaponComponent* NewWeapon)
+{
+	if (NewWeapon->GetAttachParent() == this)
+	{
+		this->Weapon = NewWeapon;
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+UArmorComponent* UGameplaySystemComponent::GetArmor()
+{
+	return this->Armor;
+}
+
+bool UGameplaySystemComponent::SetArmor(UArmorComponent* NewArmor)
+{
+	if (NewArmor->GetAttachParent() == this)
+	{
+		this->Armor = NewArmor;
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+UPotionComponent* UGameplaySystemComponent::GetPotion()
+{
+	return this->Potion;
+}
+
+bool UGameplaySystemComponent::SetPotion(UPotionComponent* NewPotion)
+{
+	if (NewPotion->GetAttachParent() == this)
+	{
+		this->Potion = NewPotion;
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+UArrowBundleComponent* UGameplaySystemComponent::GetArrowBundle()
+{
+	return this->ArrowBundle;
+}
+
+bool UGameplaySystemComponent::SetArrowBundle(UArrowBundleComponent* NewArrowBundle)
+{
+	if (NewArrowBundle->GetAttachParent() == this)
+	{
+		this->ArrowBundle = NewArrowBundle;
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}

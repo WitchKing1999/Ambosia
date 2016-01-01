@@ -1,6 +1,7 @@
 // (C) Flumminard 2015
 
 #include "Ambosia.h"
+#include "GameplaySystemComponent.h"
 #include "PotionComponent.h"
 
 UPotionComponent::UPotionComponent()
@@ -22,25 +23,23 @@ bool UPotionComponent::Action_Implementation()
 	if (this->GetTimeTillCooled() > 0)
 		return false;
 
-	TInlineComponentArray<UGameplayValuesComponent*> GVComponents;
-	this->GetOwner()->GetComponents(GVComponents);
-	UGameplayValuesComponent* GVComponent = GVComponents[0];
-	if (GVComponent == nullptr)
+	UGameplaySystemComponent* GSComponent = dynamic_cast<UGameplaySystemComponent*>(this->GetAttachParent());
+	if (GSComponent == nullptr)
 		return false;
 
 		
-	if (GVComponent->GetHealthPoints() < GVComponent->GetHealthPointsLimit())
+	if (GSComponent->GetHealthPoints() < GSComponent->GetHealthPointsLimit())
 	{
-		float NewHP = this->ModifyHealthPoints(GVComponent->GetHealthPoints());
-		GVComponent->SetHealthPoints(NewHP);
+		float NewHP = this->ModifyHealthPoints(GSComponent->GetHealthPoints());
+		GSComponent->SetHealthPoints(NewHP);
 
 		successfull = true;
 	}
 
-	if (GVComponent->GetMana() < GVComponent->GetManaLimit())
+	if (GSComponent->GetMana() < GSComponent->GetManaLimit())
 	{
-		float NewMana = this->ModifyMana(GVComponent->GetMana());
-		GVComponent->SetMana(NewMana);
+		float NewMana = this->ModifyMana(GSComponent->GetMana());
+		GSComponent->SetMana(NewMana);
 	
 		successfull = true;
 	}
