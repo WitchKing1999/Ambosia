@@ -43,7 +43,7 @@ Pflanzen haben die selbe Funktion, sind  aber schwächer.
 ### Ringe und Amulette
 
 Ringe und Amulette erhöhen dauerhaft, wenn getragen, Werte des Spielers z.B. Rüstung, Leben, Nahkampfschaden, usw.
-Allerdings sind sie passiv und haben deshalb keinen weiteren Nutzen.
+Allerdings sind sie passiv und haben deshalb keinen weiteren Nutzen. Der Spieler kann zwei Ringe/Amulette auf einmal tragen.
 
 ### kritische Treffer
 
