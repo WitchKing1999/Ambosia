@@ -7,6 +7,7 @@
 #include "Items/ArmorComponent.h"
 #include "Items/PotionComponent.h"
 #include "Items/ArrowBundleComponent.h"
+#include "Items/RingComponent.h"
 #include "GameplaySystemComponent.generated.h"
 
 
@@ -289,6 +290,36 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Variables|Inventory")
 	bool SetArrowBundle(UArrowBundleComponent* NewArrowBundle);
 
+	/*
+	=================================================================
+	Rings
+	=================================================================
+	*/
+
+	/*
+	Returns our first ring
+	*/
+	URingComponent* GetFirstRing();
+
+	/**
+	Sets our first ring to the new ring.
+	Doesn't work if the new ring isn't attached to us.
+	*/
+	UFUNCTION(BlueprintCallable, Category = "Variables|Inventory")
+	bool SetFirstRing(URingComponent* NewRing);
+
+	/*
+	Returns our second ring
+	*/
+	URingComponent* GetSecondRing();
+
+	/**
+	Sets our second ring to the new ring.
+	Doesn't work if the new ring isn't attached to us.
+	*/
+	UFUNCTION(BlueprintCallable, Category = "Variables|Inventory")
+	bool SetSecondRing(URingComponent* NewRing);
+
 protected:
 
 	/*
@@ -329,5 +360,11 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inventory")
 	UArrowBundleComponent* ArrowBundle;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inventory")
+	URingComponent* FirstRing;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inventory")
+	URingComponent* SecondRing;
 	
 };
