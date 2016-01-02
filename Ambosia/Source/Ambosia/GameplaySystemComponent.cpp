@@ -1,6 +1,7 @@
 // (C) Flumminard 2015-2016
 
 #include "Ambosia.h"
+#include "Kismet/KismetSystemLibrary.h"
 #include "GameplaySystemComponent.h"
 
 
@@ -94,6 +95,8 @@ void UGameplaySystemComponent::SetHealthPoints(float NewHealthPoints)
 	{
 		this->HealthPoints = NewHealthPoints;
 	}
+	FString DebugString = FString::FromInt((int) this->HealthPoints) + " / " + FString::FromInt((int) this->HealthPointsLimit);
+	UKismetSystemLibrary::PrintString(this, DebugString);
 }
 
 void UGameplaySystemComponent::AffectHealthPoints(float Delta)
@@ -101,6 +104,7 @@ void UGameplaySystemComponent::AffectHealthPoints(float Delta)
 	if (this->GetArmor() != nullptr && Delta < 0)
 		Delta = this->GetArmor()->ModifyAttackPoints(Delta);
 
+	UKismetSystemLibrary::PrintString(this, FString::FromInt((int) Delta) + " !");
 	this->SetHealthPoints(this->GetHealthPoints() + Delta);
 }
 
