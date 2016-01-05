@@ -20,6 +20,13 @@ public:
 	// Sets default values for this component's properties
 	UGameplaySystemComponent();
 
+	/*
+	Creates an Item from the given class and attaches it to us.
+	Returns the created Item or NULL, if the creation failed.
+	*/
+	UFUNCTION(BlueprintCallable, Category = "Component|AddComponent")
+	UItemComponent* CreateAndAddItem(UClass* ItemClass);
+
 	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	virtual void OnChildDetached(USceneComponent* ChildComponent) override;

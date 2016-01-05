@@ -95,6 +95,11 @@ public:
 	float GetCooldownTime();
 
 	/*
+	Returns our drop chance.
+	*/
+	float GetDropChance();
+
+	/*
 	Takes the health points and modifies and returns them.
 	By default, this does nothing.
 	*/
@@ -167,7 +172,7 @@ protected:
 	/*
 	Our stack size
 	*/
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Stacking")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Stacking")
 	int32 StackSize;
 
 	/*
@@ -187,5 +192,11 @@ protected:
 	*/
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Cooldown")
 	float CooldownTime;
+
+	/*
+	The chance that we will be droped after the death of our owner
+	*/
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")
+	float DropChance;
 	
 };

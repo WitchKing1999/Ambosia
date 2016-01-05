@@ -26,6 +26,25 @@ UGameplaySystemComponent::UGameplaySystemComponent()
 	SecondRing = nullptr;
 }
 
+UItemComponent* UGameplaySystemComponent::CreateAndAddItem(UClass* ItemClass)
+{
+	UClass * baseClass = FindObject<UClass>(ANY_PACKAGE, TEXT("ActorComponent"));
+	if (ItemClass->IsChildOf(baseClass))
+	{
+		UItemComponent* NewItem = NewObject<UItemComponent>(this, ItemClass);
+		if (!NewItem)
+		{
+			return NULL;
+		}
+		//~~~~~~~~~~~~~
+		NewItem->RegisterComponent();        //You must ConstructObject with a valid Outer that has world, see above    
+		NewItem->AttachTo(this);
+		return NewItem;
+	}
+	else
+		return NULL;
+}
+
 void UGameplaySystemComponent::TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
