@@ -27,6 +27,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Component|AddComponent")
 	UItemComponent* CreateAndAddItem(UClass* ItemClass);
 
+	UFUNCTION(BlueprintCallable, Category = "Game|Damage")
+	virtual float TakeDamage(float DamageAmount, UDamageType* DamageType, AController* EventInstigator, AActor* DamageCauser);
+
 	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	virtual void OnChildDetached(USceneComponent* ChildComponent) override;

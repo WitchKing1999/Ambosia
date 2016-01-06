@@ -1,6 +1,7 @@
 // (C) Flumminard 2015-2016
 
 #include "Ambosia.h"
+#include "DamageTypes/AmbosiaDamageType.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "GameplaySystemComponent.h"
 
@@ -43,6 +44,29 @@ UItemComponent* UGameplaySystemComponent::CreateAndAddItem(UClass* ItemClass)
 	}
 	else
 		return NULL;
+}
+
+float UGameplaySystemComponent::TakeDamage(float DamageAmount, UDamageType* DamageType, AController* EventInstigator, AActor* DamageCauser)
+{
+	UAmbosiaDamageType* AmbosiaDamageType = dynamic_cast<UAmbosiaDamageType*>(DamageType);
+
+	if (AmbosiaDamageType != nullptr)
+	{
+		if (AmbosiaDamageType->IsMagical())
+		{
+			if (this->GetArmor() != nullptr)
+				DamageAmount = this->GetArmor()->ModifyMagicalAttackPoints(DamageAmount);
+		}
+		else
+		{
+			if (this->GetArmor() != nullptr)
+				DamageAmount = this->GetArmor()->ModifyAttackPoints(DamageAmount);
+		}
+	}
+
+	this->AffectHealthPoints(DamageAmount * -1);
+
+	return DamageAmount;
 }
 
 void UGameplaySystemComponent::TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
@@ -120,9 +144,6 @@ void UGameplaySystemComponent::SetHealthPoints(float NewHealthPoints)
 
 void UGameplaySystemComponent::AffectHealthPoints(float Delta)
 {
-	if (this->GetArmor() != nullptr && Delta < 0)
-		Delta = this->GetArmor()->ModifyAttackPoints(Delta);
-
 	UKismetSystemLibrary::PrintString(this, FString::FromInt((int) Delta) + " !");
 	this->SetHealthPoints(this->GetHealthPoints() + Delta);
 }
