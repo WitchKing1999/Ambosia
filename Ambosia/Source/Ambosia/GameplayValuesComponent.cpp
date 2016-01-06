@@ -54,9 +54,13 @@ void UGameplayValuesComponent::SetHealthPoints(float NewHealthPoints)
 		AController* OwnerAsController = dynamic_cast<AController*>(this->GetOwner());
 		if (OwnerAsController != nullptr)
 		{
-			OwnerAsController->GetPawn()->Destroy();
+			APawn* Pawn = OwnerAsController->GetPawn();
+			Pawn->Destroy();
 		}
-		this->GetOwner()->Destroy();
+		else
+		{
+			this->GetOwner()->Destroy();
+		}
 	}
 	else
 	{
@@ -73,7 +77,7 @@ void UGameplayValuesComponent::AffectHealthPoints(float Delta)
 		return;
 
 	UArmorComponent* Armor = Inventory->GetArmor();
-	if (Armor != nullptr)
+	if (Armor != nullptr && Delta < 0)
 		Delta = Armor->ModifyAttackPoints(Delta);
 
 	this->SetHealthPoints(this->GetHealthPoints() + Delta);
@@ -141,6 +145,16 @@ void UGameplayValuesComponent::SetMana(float NewMana)
 
 void UGameplayValuesComponent::AffectMana(float Delta)
 {
+	TInlineComponentArray<UInventoryComponent*> Inventories;
+	this->GetOwner()->GetComponents(Inventories);
+	UInventoryComponent* Inventory = Inventories[0];
+	if (Inventory == nullptr)
+		return;
+
+	UArmorComponent* Armor = Inventory->GetArmor();
+	if (Armor != nullptr && Delta < 0)
+		Delta = Armor->ModifyMagicalAttackPoints(Delta);
+
 	this->SetMana(this->GetMana() + Delta);
 }
 

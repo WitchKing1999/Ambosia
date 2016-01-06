@@ -16,6 +16,10 @@ UInventoryComponent::UInventoryComponent()
 	Armor = nullptr;
 }
 
+/*
+If a child detaches from us, we need to make sure that our pointers
+doesn't point to them.
+*/
 void UInventoryComponent::OnChildDetached(USceneComponent* ChildComponent)
 {
 	if (ChildComponent == this->GetWeapon())
@@ -36,6 +40,10 @@ void UInventoryComponent::OnChildDetached(USceneComponent* ChildComponent)
 	}
 }
 
+/*
+Weapon
+*/
+
 UWeaponComponent* UInventoryComponent::GetWeapon()
 {
 	return this->Weapon;
@@ -53,6 +61,10 @@ bool UInventoryComponent::SetWeapon(UWeaponComponent* NewWeapon)
 		return false;
 	}
 }
+
+/*
+Armor
+*/
 
 UArmorComponent* UInventoryComponent::GetArmor()
 {
@@ -72,6 +84,10 @@ bool UInventoryComponent::SetArmor(UArmorComponent* NewArmor)
 	}
 }
 
+/*
+Potion
+*/
+
 UPotionComponent* UInventoryComponent::GetPotion()
 {
 	return this->Potion;
@@ -89,6 +105,10 @@ bool UInventoryComponent::SetPotion(UPotionComponent* NewPotion)
 		return false;
 	}
 }
+
+/*
+Arrows
+*/
 
 UArrowBundleComponent* UInventoryComponent::GetArrowBundle()
 {
