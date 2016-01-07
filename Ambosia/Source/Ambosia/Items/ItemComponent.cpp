@@ -1,7 +1,6 @@
 // (C) Flumminard 2015
 
 #include "Ambosia.h"
-#include "Text.h"
 #include "ItemComponent.h"
 
 
@@ -16,6 +15,7 @@ UItemComponent::UItemComponent()
 	TimeTillCooled = 0;
 	CooldownTime = 0;
 	bStackable = false;
+	DropChance = 0;
 }
 
 void UItemComponent::TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
@@ -46,12 +46,12 @@ FString UItemComponent::GetDescription()
 	return this->Description;
 }
 
-float UItemComponent::GetStackSize()
+int32 UItemComponent::GetStackSize()
 {
 	return this->StackSize;
 }
 
-void UItemComponent::SetStackSize(float NewStackSize)
+void UItemComponent::SetStackSize(int32 NewStackSize)
 {
 	this->StackSize = NewStackSize;
 	if (this->StackSize <= 0)
@@ -60,7 +60,7 @@ void UItemComponent::SetStackSize(float NewStackSize)
 	}
 }
 
-void UItemComponent::AffectStackSize(float Delta)
+void UItemComponent::AffectStackSize(int32 Delta)
 {
 	this->SetStackSize(this->StackSize + Delta);
 }
@@ -79,7 +79,7 @@ void UItemComponent::StartCooldown()
 	this->TimeTillCooled = this->CooldownTime;
 }
 
-void UItemComponent::OnCooledDown()
+void UItemComponent::OnCooledDown_Implementation()
 {
 	return; // do nothing!
 }
@@ -97,6 +97,11 @@ float UItemComponent::GetCooldownTime()
 bool UItemComponent::IsStackable()
 {
 	return this->bStackable;
+}
+
+float UItemComponent::GetDropChance()
+{
+	return this->DropChance;
 }
 
 float UItemComponent::ModifyHealthPoints_Implementation(float HealthPoints)

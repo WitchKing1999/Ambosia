@@ -1,7 +1,7 @@
 // (C) Flumminard 2015
 
 #include "Ambosia.h"
-#include "InventoryComponent.h"
+#include "GameplaySystemComponent.h"
 #include "Pawns/Projectile.h"
 #include "Items/ArrowBundleComponent.h"
 #include "BowComponent.h"
@@ -24,10 +24,10 @@ bool UBowComponent::Action_Implementation()
 	APawn* ControlledPawn = OwnerAsController->GetPawn();
 	if (ControlledPawn == nullptr)
 		return false;
-	UInventoryComponent* Inventory = dynamic_cast<UInventoryComponent*>(this->GetAttachParent());
-	if (Inventory == nullptr)
+	UGameplaySystemComponent* GameplaySystem = dynamic_cast<UGameplaySystemComponent*>(this->GetAttachParent());
+	if (GameplaySystem == nullptr)
 		return false;
-	UArrowBundleComponent* ArrowBundle = Inventory->GetArrowBundle();
+	UArrowBundleComponent* ArrowBundle = GameplaySystem->GetArrowBundle();
 	if (ArrowBundle == nullptr)
 		return false;
 	if (this->GetAcceptedArrows().Find(ArrowBundle->GetClass()) == INDEX_NONE)
@@ -53,20 +53,7 @@ bool UBowComponent::Action_Implementation()
 
 	if (Projectile != nullptr)
 	{
-		UGameplayValuesComponent* GameplayValues = nullptr;
-		for (UActorComponent* Component : this->GetOwner()->GetComponents())
-		{
-			UGameplayValuesComponent* ComponentAsGV = dynamic_cast<UGameplayValuesComponent*>(Component);
-			if (ComponentAsGV != nullptr)
-			{
-				GameplayValues = ComponentAsGV;
-				break;
-			}
-		}
-		if (GameplayValues != nullptr)
-		{
-			Projectile->SetAttackPoints(this->ModifyAttackPoints(GameplayValues->GetAttackPoints()));
-		}
+		Projectile->SetAttackPoints(GameplaySystem->GetAttackPoints());
 	}
 
 	return true;

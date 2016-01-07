@@ -1,8 +1,6 @@
 // (C) Flumminard 2015
 
 #include "Ambosia.h"
-#include "Kismet/KismetSystemLibrary.h"
-#include "GameplayValuesComponent.h"
 #include "Projectile.h"
 
 
