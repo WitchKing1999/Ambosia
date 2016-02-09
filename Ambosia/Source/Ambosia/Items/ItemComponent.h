@@ -21,7 +21,6 @@ public:
 
 	/**
 	Runs an action and returns true, if the action was successfull and false it not.
-	By default, this does nothing and is always successful.
 	*/
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Item")
 	bool Action();
@@ -74,7 +73,7 @@ public:
 	Sets the time till we are cooled down to our cooldown time.
 	*/
 	UFUNCTION(BlueprintCallable, Category = "Cooldown")
-	void StartCooldown();
+	bool StartCooldown();
 
 	/*
 	Will be called when we are cooled down.

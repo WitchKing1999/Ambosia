@@ -74,9 +74,15 @@ void UItemComponent::AddItemToStack(UItemComponent* Item)
 	}
 }
 
-void UItemComponent::StartCooldown()
+bool UItemComponent::StartCooldown()
 {
-	this->TimeTillCooled = this->CooldownTime;
+	if (this->TimeTillCooled <= 0)
+	{
+		this->TimeTillCooled = this->CooldownTime;
+		return true;
+	}
+	else
+		return false;
 }
 
 void UItemComponent::OnCooledDown_Implementation()
