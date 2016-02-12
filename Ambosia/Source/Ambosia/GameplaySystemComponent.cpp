@@ -148,12 +148,12 @@ void UGameplaySystemComponent::AffectHealthPoints(float Delta)
 	this->SetHealthPoints(this->GetHealthPoints() + Delta);
 }
 
-float UGameplaySystemComponent::GetRawHealthPointsLimit()
+float UGameplaySystemComponent::GetHealthPointsLimit()
 {
 	return this->HealthPointsLimit;
 }
 
-float UGameplaySystemComponent::GetHealthPointsLimit()
+float UGameplaySystemComponent::GetEffectiveHealthPointsLimit()
 {
 	float ProperHealthPointsLimit = this->HealthPointsLimit;
 	if (this->FirstRing != nullptr)
@@ -176,7 +176,7 @@ void UGameplaySystemComponent::SetHealthPointsLimit(float NewHealthPointsLimit)
 
 void UGameplaySystemComponent::AffectHealthPointsLimit(float Delta)
 {
-	this->SetHealthPointsLimit(this->GetHealthPoints() + Delta);
+	this->SetHealthPointsLimit(this->GetHealthPointsLimit() + Delta);
 }
 
 float UGameplaySystemComponent::GetRawAttackPoints()

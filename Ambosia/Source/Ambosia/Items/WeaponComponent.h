@@ -105,36 +105,36 @@ protected:
 	/*
 	Our attack factor
 	*/
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Weapon")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Weapon")
 	float AttackFactor;
 
 	/*
 	Our mana costs
 	*/
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Weapon")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Weapon")
 	float ManaCost;
 
 	/*
 	Our magical attack factor
 	*/
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Weapon")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Weapon")
 	float MagicalAttackFactor;
 
 	/*
 	Our chance for a critical hit.
 	*/
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Weapon")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Weapon")
 	float CriticalDamageChance;
 
 	/*
 	Our arrow bundle costs
 	*/
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Weapon")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Weapon")
 	int32 ArrowBundleCosts;
 
 	/*
 	All accepted arrow bundle classes
 	*/
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Weapon")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Weapon")
 	TArray<UClass*> AcceptedArrowBundles;
 };

@@ -72,31 +72,31 @@ protected:
 	/*
 	Our health points limit
 	*/
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Ring")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Ring")
 	float HealthPointsLimit;
 
 	/*
 	Our mana limit
 	*/
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Ring")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Ring")
 	float ManaLimit;
 
 	/*
 	Our attack points
 	*/
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Ring")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Ring")
 	float AttackPoints;
 
 	/*
 	Our magical attack points
 	*/
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Ring")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Ring")
 	float MagicalAttackPoints;
 
 	/*
 	Our mana regeneration
 	*/
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Ring")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Ring")
 	float ManaRegenerationPerSec;
 
 };

@@ -27,9 +27,9 @@ public:
 
 protected:
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Armor")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Armor")
 	float DefenceFactor;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Armor")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Armor")
 	float MagicalDefenceFactor;
 };

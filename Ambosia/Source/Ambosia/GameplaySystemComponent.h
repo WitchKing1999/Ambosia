@@ -76,13 +76,13 @@ public:
 	/*
 	Returns our raw health points limit
 	*/
-	float GetRawHealthPointsLimit();
+	float GetHealthPointsLimit();
 
 	/*
 	Returns our health points limit, modified by our items
 	*/
 	UFUNCTION(BlueprintPure, Category = "Variables|Gameplay Values|Health Points")
-	float GetHealthPointsLimit();
+	float GetEffectiveHealthPointsLimit();
 
 	/*
 	Sets our health points limit. If our health points are bigger than
@@ -338,43 +338,43 @@ protected:
 	=================================================================
 	*/
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Gameplay Values|Health Points")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Gameplay Values|Health Points")
 	float HealthPoints;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Gameplay Values|Health Points")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Gameplay Values|Health Points")
 	float HealthPointsLimit;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Gameplay Values|Attack Points")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Gameplay Values|Attack Points")
 	float AttackPoints;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Gameplay Values|Attack Points")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Gameplay Values|Attack Points")
 	float MagicalAttackPoints;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Gameplay Values|Mana")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Gameplay Values|Mana")
 	float Mana;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Gameplay Values|Mana")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Gameplay Values|Mana")
 	float ManaLimit;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Gameplay Values|Mana")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Gameplay Values|Mana")
 	float ManaRegenerationPerSec;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inventory")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Inventory")
 	UWeaponComponent* Weapon;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inventory")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Inventory")
 	UArmorComponent* Armor;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inventory")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Inventory")
 	UPotionComponent* Potion;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inventory")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Inventory")
 	UArrowBundleComponent* ArrowBundle;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inventory")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Inventory")
 	URingComponent* FirstRing;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Inventory")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Inventory")
 	URingComponent* SecondRing;
 	
 };
