@@ -49,12 +49,12 @@ protected:
 	/*
 	Our Health Points
 	*/
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Potion")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Potion")
 	float HealthPoints;
 
 	/*
 	Our Mana
 	*/
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Potion")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Potion")
 	float Mana;
 };

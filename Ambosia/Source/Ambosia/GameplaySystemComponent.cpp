@@ -25,6 +25,7 @@ UGameplaySystemComponent::UGameplaySystemComponent()
 	ArrowBundle = nullptr;
 	FirstRing = nullptr;
 	SecondRing = nullptr;
+	Amulet = nullptr;
 }
 
 UItemComponent* UGameplaySystemComponent::CreateAndAddItem(UClass* ItemClass)
@@ -108,6 +109,10 @@ void UGameplaySystemComponent::OnChildDetached(USceneComponent* ChildComponent)
 	{
 		this->SecondRing = nullptr;
 	}
+	else if (ChildComponent == this->GetAmulet())
+	{
+		this->Amulet = nullptr;
+	}
 }
 
 float UGameplaySystemComponent::GetHealthPoints()
@@ -148,12 +153,12 @@ void UGameplaySystemComponent::AffectHealthPoints(float Delta)
 	this->SetHealthPoints(this->GetHealthPoints() + Delta);
 }
 
-float UGameplaySystemComponent::GetRawHealthPointsLimit()
+float UGameplaySystemComponent::GetHealthPointsLimit()
 {
 	return this->HealthPointsLimit;
 }
 
-float UGameplaySystemComponent::GetHealthPointsLimit()
+float UGameplaySystemComponent::GetEffectiveHealthPointsLimit()
 {
 	float ProperHealthPointsLimit = this->HealthPointsLimit;
 	if (this->FirstRing != nullptr)
@@ -163,6 +168,10 @@ float UGameplaySystemComponent::GetHealthPointsLimit()
 	if (this->SecondRing != nullptr)
 	{
 		ProperHealthPointsLimit = this->SecondRing->ModifyHealthPointsLimit(ProperHealthPointsLimit);
+	}
+	if (this->Amulet != nullptr)
+	{
+		ProperHealthPointsLimit = this->Amulet->ModifyHealthPointsLimit(ProperHealthPointsLimit);
 	}
 	return ProperHealthPointsLimit;
 }
@@ -176,7 +185,7 @@ void UGameplaySystemComponent::SetHealthPointsLimit(float NewHealthPointsLimit)
 
 void UGameplaySystemComponent::AffectHealthPointsLimit(float Delta)
 {
-	this->SetHealthPointsLimit(this->GetHealthPoints() + Delta);
+	this->SetHealthPointsLimit(this->GetHealthPointsLimit() + Delta);
 }
 
 float UGameplaySystemComponent::GetRawAttackPoints()
@@ -194,6 +203,10 @@ float UGameplaySystemComponent::GetAttackPoints()
 	if (this->SecondRing != nullptr)
 	{
 		ProperAttackPoints = this->SecondRing->ModifyAttackPoints(ProperAttackPoints);
+	}
+	if (this->Amulet != nullptr)
+	{
+		ProperAttackPoints = this->Amulet->ModifyAttackPoints(ProperAttackPoints);
 	}
 	if (this->Weapon != nullptr)
 	{
@@ -227,6 +240,10 @@ float UGameplaySystemComponent::GetMagicalAttackPoints()
 	if (this->SecondRing != nullptr)
 	{
 		ProperMagicalAttackPoints = this->SecondRing->ModifyMagicalAttackPoints(ProperMagicalAttackPoints);
+	}
+	if (this->Amulet != nullptr)
+	{
+		ProperMagicalAttackPoints = this->Amulet->ModifyMagicalAttackPoints(ProperMagicalAttackPoints);
 	}
 	if (this->Weapon != nullptr)
 	{
@@ -279,6 +296,10 @@ float UGameplaySystemComponent::GetManaLimit()
 	{
 		ProperManaLimit = this->SecondRing->ModifyManaLimit(ProperManaLimit);
 	}
+	if (this->Amulet != nullptr)
+	{
+		ProperManaLimit = this->Amulet->ModifyManaLimit(ProperManaLimit);
+	}
 	return ProperManaLimit;
 }
 
@@ -307,6 +328,10 @@ float UGameplaySystemComponent::GetManaRegenerationPerSec()
 	if (this->SecondRing != nullptr)
 	{
 		ProperManaRegeneration = this->SecondRing->ModifyManaRegeneration(ProperManaRegeneration);
+	}
+	if (this->Amulet != nullptr)
+	{
+		ProperManaRegeneration = this->Amulet->ModifyManaRegeneration(ProperManaRegeneration);
 	}
 	return ProperManaRegeneration;
 }
@@ -421,6 +446,24 @@ bool UGameplaySystemComponent::SetSecondRing(URingComponent* NewRing)
 	if ((NewRing->GetAttachParent() == this) | (NewRing == nullptr))
 	{
 		this->SecondRing = NewRing;
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+UAmuletComponent* UGameplaySystemComponent::GetAmulet()
+{
+	return this->Amulet;
+}
+
+bool UGameplaySystemComponent::SetAmulet(UAmuletComponent* NewAmulet)
+{
+	if ((NewAmulet->GetAttachParent() == this) | (NewAmulet == nullptr))
+	{
+		this->Amulet = NewAmulet;
 		return true;
 	}
 	else

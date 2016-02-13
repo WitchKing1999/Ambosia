@@ -3,19 +3,19 @@
 #pragma once
 
 #include "Items/ItemComponent.h"
-#include "RingComponent.generated.h"
+#include "AmuletComponent.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class AMBOSIA_API URingComponent : public UItemComponent
+class AMBOSIA_API UAmuletComponent : public UItemComponent
 {
 	GENERATED_BODY()
 	
 public:
 
-	URingComponent();
+	UAmuletComponent();
 
 	/*
 	Adds our health points limit to the given health points limit and returns it.
@@ -66,37 +66,38 @@ public:
 	Returns our mana regeneration
 	*/
 	float GetManaRegeneration();
-	
+
 protected:
 
 	/*
 	Our health points limit
 	*/
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Ring")
-	float HealthPointsLimit;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Amulet")
+		float HealthPointsLimit;
 
 	/*
 	Our mana limit
 	*/
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Ring")
-	float ManaLimit;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Amulet")
+		float ManaLimit;
 
 	/*
 	Our attack points
 	*/
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Ring")
-	float AttackPoints;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Amulet")
+		float AttackPoints;
 
 	/*
 	Our magical attack points
 	*/
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Ring")
-	float MagicalAttackPoints;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Amulet")
+		float MagicalAttackPoints;
 
 	/*
 	Our mana regeneration
 	*/
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Ring")
-	float ManaRegenerationPerSec;
-
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Amulet")
+		float ManaRegenerationPerSec;
+	
+	
 };

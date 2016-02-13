@@ -21,7 +21,6 @@ public:
 
 	/**
 	Runs an action and returns true, if the action was successfull and false it not.
-	By default, this does nothing and is always successful.
 	*/
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Item")
 	bool Action();
@@ -74,7 +73,7 @@ public:
 	Sets the time till we are cooled down to our cooldown time.
 	*/
 	UFUNCTION(BlueprintCallable, Category = "Cooldown")
-	void StartCooldown();
+	bool StartCooldown();
 
 	/*
 	Will be called when we are cooled down.
@@ -160,13 +159,13 @@ protected:
 	/*
 	Our screen name
 	*/
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item")
 	FString Name;
 
 	/*
 	Our screen description
 	*/
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item")
 	FString Description;
 
 	/*
@@ -178,25 +177,25 @@ protected:
 	/*
 	Holds the information whether we are stackable or not.
 	*/
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Stacking")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Stacking")
 	bool bStackable;
 
 	/*
 	The time till we are cooled down
 	*/
-	UPROPERTY(BlueprintReadOnly, Category = "Cooldown")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Cooldown")
 	float TimeTillCooled;
 
 	/*
 	The time it takes us to cool down
 	*/
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Cooldown")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Cooldown")
 	float CooldownTime;
 
 	/*
 	The chance that we will be droped after the death of our owner
 	*/
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item")
 	float DropChance;
 	
 };
