@@ -8,6 +8,7 @@
 #include "Items/PotionComponent.h"
 #include "Items/ArrowBundleComponent.h"
 #include "Items/RingComponent.h"
+#include "Items/AmuletComponent.h"
 #include "GameplaySystemComponent.generated.h"
 
 
@@ -330,6 +331,18 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Variables|Inventory")
 	bool SetSecondRing(URingComponent* NewRing);
 
+	/*
+	Returns our amulet
+	*/
+	UAmuletComponent* GetAmulet();
+
+	/**
+	Sets our amulet to the amulet.
+	Doesn't work if the new amulet isn't attached to us.
+	*/
+	UFUNCTION(BlueprintCallable, Category = "Variables|Inventory")
+	bool SetAmulet(UAmuletComponent* NewAmulet);
+
 protected:
 
 	/*
@@ -376,5 +389,8 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Inventory")
 	URingComponent* SecondRing;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Inventory")
+	UAmuletComponent* Amulet;
 	
 };
