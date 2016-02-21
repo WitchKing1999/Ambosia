@@ -122,9 +122,9 @@ float UGameplaySystemComponent::GetHealthPoints()
 
 void UGameplaySystemComponent::SetHealthPoints(float NewHealthPoints)
 {
-	if (NewHealthPoints > this->HealthPointsLimit)
+	if (NewHealthPoints > this->GetEffectiveHealthPointsLimit())
 	{
-		this->HealthPoints = this->HealthPointsLimit;
+		this->HealthPoints = this->GetEffectiveHealthPointsLimit();
 	}
 	else if (NewHealthPoints <= 0)
 	{
@@ -143,7 +143,7 @@ void UGameplaySystemComponent::SetHealthPoints(float NewHealthPoints)
 	{
 		this->HealthPoints = NewHealthPoints;
 	}
-	FString DebugString = FString::FromInt((int) this->HealthPoints) + " / " + FString::FromInt((int) this->HealthPointsLimit);
+	FString DebugString = FString::FromInt((int) this->HealthPoints) + " / " + FString::FromInt((int) this->GetEffectiveHealthPointsLimit());
 	UKismetSystemLibrary::PrintString(this, DebugString);
 }
 
@@ -269,10 +269,10 @@ float UGameplaySystemComponent::GetMana()
 
 void UGameplaySystemComponent::SetMana(float NewMana)
 {
-	if (NewMana <= this->ManaLimit)
+	if (NewMana <= this->GetManaLimit())
 		this->Mana = NewMana;
 	else
-		this->Mana = this->ManaLimit;
+		this->Mana = this->GetManaLimit();
 }
 
 void UGameplaySystemComponent::AffectMana(float Delta)
