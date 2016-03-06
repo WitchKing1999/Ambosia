@@ -16,6 +16,11 @@ UItemComponent::UItemComponent()
 	CooldownTime = 0;
 	bStackable = false;
 	DropChance = 0;
+	static ConstructorHelpers::FObjectFinder<UTexture> IconAsset(TEXT("/Game/Icons/Floppy"));
+	if (IconAsset.Succeeded())
+	{
+		Icon = IconAsset.Object;
+	}
 }
 
 void UItemComponent::TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
@@ -44,6 +49,11 @@ FString UItemComponent::GetName()
 FString UItemComponent::GetDescription()
 {
 	return this->Description;
+}
+
+UTexture* UItemComponent::GetIcon()
+{
+	return this->Icon;
 }
 
 int32 UItemComponent::GetStackSize()
