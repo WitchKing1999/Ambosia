@@ -2,6 +2,7 @@
 
 #include "Ambosia.h"
 #include "DamageTypes/AmbosiaDamageType.h"
+#include "Kismet/KismetSystemLibrary.h"
 #include "GameplaySystemComponent.h"
 
 
@@ -142,10 +143,13 @@ void UGameplaySystemComponent::SetHealthPoints(float NewHealthPoints)
 	{
 		this->HealthPoints = NewHealthPoints;
 	}
+	FString DebugString = FString::FromInt((int) this->HealthPoints) + " / " + FString::FromInt((int) this->GetEffectiveHealthPointsLimit());
+	UKismetSystemLibrary::PrintString(this, DebugString);
 }
 
 void UGameplaySystemComponent::AffectHealthPoints(float Delta)
 {
+	UKismetSystemLibrary::PrintString(this, FString::FromInt((int) Delta) + " !");
 	this->SetHealthPoints(this->GetHealthPoints() + Delta);
 }
 
