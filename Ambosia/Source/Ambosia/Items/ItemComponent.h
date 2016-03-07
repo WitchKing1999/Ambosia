@@ -3,6 +3,7 @@
 #pragma once
 
 #include "Components/SceneComponent.h"
+#include "Engine/Texture.h"
 #include "ItemComponent.generated.h"
 
 /*
@@ -35,6 +36,11 @@ public:
 	Returns the description of this item.
 	*/
 	FString GetDescription();
+
+	/*
+	Returns the icon of this item.
+	*/
+	UTexture* GetIcon();
 
 	/*
 	Returns whether we are stackable or not.
@@ -167,6 +173,12 @@ protected:
 	*/
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item")
 	FString Description;
+
+	/*
+	Our icon
+	*/
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item")
+	UTexture* Icon;
 
 	/*
 	Our stack size
