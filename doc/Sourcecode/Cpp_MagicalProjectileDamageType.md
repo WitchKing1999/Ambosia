@@ -1,0 +1,1 @@
+# Magical Projectile Damage Type
