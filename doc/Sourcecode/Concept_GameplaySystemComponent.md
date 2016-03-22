@@ -33,7 +33,7 @@ Basicly, the GSC keeps pointers to items, which are used as it's active items.
 * amulet
 
 There is a pointer for every base item class, but there are two rings, since you can wear two at the same time.  
-All these items must be attached to the GSC instance, otherwise the setter denies the setting. These pointers are public readable, so every other part of the program can use them.
+All these items must be attached to the GSC instance, otherwise the setter denies the setting. These pointers are public readable, so every other part of the program can use them. Some of those items modify one or more gameplay stats: The armor reduces the damage you take by a fixed factor and your rings and your amulet modify the health points and mana limit, your mana regeneration and your attack points.
 
 ## Continue reading
 
