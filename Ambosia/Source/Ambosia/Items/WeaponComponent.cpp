@@ -46,7 +46,11 @@ AActor* UWeaponComponent::PlotHitLine(float LineLength, AController* Instigator,
 	{
 		if (GameplaySystem == nullptr)
 			return nullptr;
-		HitResult.Actor->TakeDamage(GameplaySystem->GetAttackPoints(), FDamageEvent(DamageType), Instigator, Instigator->GetPawn());
+		APawn* TargetAsPawn = dynamic_cast<APawn*>(HitResult.Actor.Get());
+		if (TargetAsPawn)
+		{
+			TargetAsPawn->GetController()->TakeDamage(GameplaySystem->GetAttackPoints(), FDamageEvent(DamageType), Instigator, Instigator->GetPawn());
+		}
 		return HitResult.GetActor();
 	}
 	else
