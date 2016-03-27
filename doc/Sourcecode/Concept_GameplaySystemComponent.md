@@ -53,8 +53,9 @@ you take by a fixed factor and your rings and your amulet modify the health poin
 your mana regeneration and your attack points.
 
 
-## Continue reading
+## Other concepts
 
-* [Items](Concept_ItemComponent.md)
-* [Fighting & dealing damage](Concept_Fighting.md)
-* [Looting & experience](Concept_Looting&Experience.md)
+* [Fighting](Concept_Fighting.md)
+* [ItemComponent](Concept_ItemComponent.md)
+* [Looting and experience](Concept_Looting&Experience.md)
+* [Saving and level transitions](Concept_Saving&LevelTransitions.md)

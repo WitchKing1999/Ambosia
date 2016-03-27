@@ -13,3 +13,10 @@ that.
 
 Why does the `GSC` want an `AmbosiaDamageType`? It tells it whether the damage is magical or not and
 whether it should ask the armor to use magical or the plain defence factor.
+
+## Other concepts
+
+* [GameplaySystemComponent](Concept_GameplaySystemComponent.md)
+* [ItemComponent](Concept_ItemComponent.md)
+* [Looting and experience](Concept_Looting&Experience.md)
+* [Saving and level transitions](Concept_Saving&LevelTransitions.md)

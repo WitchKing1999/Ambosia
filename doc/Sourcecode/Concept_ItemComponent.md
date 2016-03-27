@@ -18,8 +18,9 @@ The **arrow bundle** holds a fixed actor class which may be used by some weapons
 
 The **ring** and the **amulet** are absolutly identical and modify the health points and mana limits, the attack points and the mana regeneration.
 
-## Continue reading
+## Other concepts
 
-* [GameplaySystemComponent](Concept_GameplaySystemComponent.md)
 * [Fighting](Concept_Fighting.md)
+* [GameplaySystemComponent](Concept_GameplaySystemComponent.md)
 * [Looting and experience](Concept_Looting&Experience.md)
+* [Saving and level transitions](Concept_Saving&LevelTransitions.md)
