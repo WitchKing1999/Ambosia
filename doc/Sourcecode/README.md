@@ -4,8 +4,7 @@ This is the documentation of the technical basement of Ambosia. You get all info
 
 ## Concepts
 
-* [Inventory System](Concept_InventorySystem.md)
-* [Gameplay Stats System](Concept_GameplayStatsSystem.md)
+* [GameplaySystemComponent](Concept_GameplaySystemComponent.md)
 * [Looting and Experience](Concept_Looting&Experience.md)
 * [Fighting and dealing damage](Concept_Fighting.md)
 * [Saving and level transitions](Concept_Saving&LevelTransitions.md)
