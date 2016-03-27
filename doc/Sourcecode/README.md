@@ -2,14 +2,17 @@
 
 This is the documentation of the technical basement of Ambosia. You get all information you need to understand and modify Ambosia here. On one hand, there are the documentations of all classes and their members and on the other hand there are concept descriptions which describe the thoughts behind them.
 
-## Concepts
+You shoud read all concepts descriptions before you dive into gathering specialized information
+about the structure of Ambosia. It is recommended to read the text in the order they are listed,
+since some of them depend on others.
 
 * [GameplaySystemComponent](Concept_GameplaySystemComponent.md)
-* [Looting and Experience](Concept_Looting&Experience.md)
-* [Fighting and dealing damage](Concept_Fighting.md)
+* [ItemComponent](Concept_ItemComponent.md)
+* [Fighting](Concept_Fighting.md)
+* [Looting and experience](Concept_Looting&Experience.md)
 * [Saving and level transitions](Concept_Saving&LevelTransitions.md)
-* [Loading Screen](Concept_LoadingScreen.md)
-* [Splashscreen](Concept_Splashscreen.md)
+
+When you finished reading them, you are ready to build everything you like too.
 
 ## C++ Classes
 
