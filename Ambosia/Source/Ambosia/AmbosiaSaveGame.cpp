@@ -15,15 +15,15 @@ UAmbosiaSaveGame::UAmbosiaSaveGame()
 	ExperiencePoints = 0;
 	SkillPoints = 0;
 	SkillLevel = 0;
-	Spawnpoint = FTransform();
-	LevelName = FName();
+	Spawnpoint = FTransform(FRotator(0,0,0),FVector(0,0,0));
+	LevelName = FName("/Game/Levels/DebugLevel");
 	Items = TArray<UClass*>();
 	ItemStacks = TArray<int32>();
-	WeaponIndex = -2;
-	ArmorIndex = -2;
-	PotionIndex = -2;
-	ArrowBundleIndex = -2;
-	FirstRingIndex = -2;
-	SecondRingIndex = -2;
-	AmuletIndex = -2;
+	WeaponIndex = -1;
+	ArmorIndex = -1;
+	PotionIndex = -1;
+	ArrowBundleIndex = -1;
+	FirstRingIndex = -1;
+	SecondRingIndex = -1;
+	AmuletIndex = -1;
 }

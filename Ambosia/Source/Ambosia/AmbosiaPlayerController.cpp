@@ -10,7 +10,6 @@
 AAmbosiaPlayerController::AAmbosiaPlayerController()
 {
 	GameplaySystem = CreateDefaultSubobject<UGameplaySystemComponent>(TEXT("GameplaySystemComponent"));
-	RootComponent = GameplaySystem;
 
 	LookRate = 2;
 
@@ -31,7 +30,6 @@ AAmbosiaPlayerController::AAmbosiaPlayerController()
 void AAmbosiaPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
-
 	UAmbosiaSaveGame* SaveGame = Cast<UAmbosiaSaveGame>(UGameplayStatics::LoadGameFromSlot("Ambosia", 0));
 	if (SaveGame)
 	{
@@ -39,11 +37,11 @@ void AAmbosiaPlayerController::BeginPlay()
 		LoadGameplayValues(SaveGame);
 		LoadPosition(SaveGame);
 	}
-
+	
 	InputComponent->BindAxis("MoveForward", this, &AAmbosiaPlayerController::MoveForward);
 	InputComponent->BindAxis("MoveRight", this, &AAmbosiaPlayerController::MoveRight);
 	InputComponent->BindAxis("LookRight", this, &AAmbosiaPlayerController::LookRight);
-
+	
 	InputComponent->BindAction("Attack", IE_Pressed, this, &AAmbosiaPlayerController::AttackPressed);
 	InputComponent->BindAction("Potion", IE_Pressed, this, &AAmbosiaPlayerController::PotionPressed);
 	InputComponent->BindAction("MainMenu", IE_Pressed, this, &AAmbosiaPlayerController::MainMenuPressed);
@@ -125,7 +123,7 @@ void AAmbosiaPlayerController::ReceiveLoot(TArray<UClass*> ItemClasses, TArray<i
 			}
 		}
 	}
-
+	
 	for (int32 x = 0; x < ItemClasses.Num(); x++)
 	{
 		GameplaySystem->CreateAndAddItem(ItemClasses[x])->SetStackSize(ItemStacks[x]);
@@ -175,68 +173,71 @@ void AAmbosiaPlayerController::LoadItems(UAmbosiaSaveGame* Savegame)
 	for (int x = 0; x < Savegame->Items.Num(); x++)
 	{
 		UItemComponent* NewItem = GameplaySystem->CreateAndAddItem(Savegame->Items[x]);
-		NewItem->SetStackSize(Savegame->ItemStacks[x]);
-
-		if (x == Savegame->WeaponIndex)
+		if (NewItem)
 		{
-			UWeaponComponent* NewWeapon = Cast<UWeaponComponent>(NewItem);
-			if (NewWeapon)
+			NewItem->SetStackSize(Savegame->ItemStacks[x]);
+
+			if (x == Savegame->WeaponIndex)
 			{
-				GameplaySystem->SetWeapon(NewWeapon);
+				UWeaponComponent* NewWeapon = Cast<UWeaponComponent>(NewItem);
+				if (NewWeapon)
+				{
+					GameplaySystem->SetWeapon(NewWeapon);
+				}
 			}
-		}
 
-		if (x == Savegame->ArmorIndex)
-		{
-			UArmorComponent* NewArmor = Cast<UArmorComponent>(NewItem);
-			if (NewArmor)
+			if (x == Savegame->ArmorIndex)
 			{
-				GameplaySystem->SetArmor(NewArmor);
+				UArmorComponent* NewArmor = Cast<UArmorComponent>(NewItem);
+				if (NewArmor)
+				{
+					GameplaySystem->SetArmor(NewArmor);
+				}
 			}
-		}
 
-		if (x == Savegame->PotionIndex)
-		{
-			UPotionComponent* NewPotion = Cast<UPotionComponent>(NewItem);
-			if (NewPotion)
+			if (x == Savegame->PotionIndex)
 			{
-				GameplaySystem->SetPotion(NewPotion);
+				UPotionComponent* NewPotion = Cast<UPotionComponent>(NewItem);
+				if (NewPotion)
+				{
+					GameplaySystem->SetPotion(NewPotion);
+				}
 			}
-		}
 
-		if (x == Savegame->ArrowBundleIndex)
-		{
-			UArrowBundleComponent* NewArrowBundle = Cast<UArrowBundleComponent>(NewItem);
-			if (NewArrowBundle)
+			if (x == Savegame->ArrowBundleIndex)
 			{
-				GameplaySystem->SetArrowBundle(NewArrowBundle);
+				UArrowBundleComponent* NewArrowBundle = Cast<UArrowBundleComponent>(NewItem);
+				if (NewArrowBundle)
+				{
+					GameplaySystem->SetArrowBundle(NewArrowBundle);
+				}
 			}
-		}
 
-		if (x == Savegame->FirstRingIndex)
-		{
-			URingComponent* NewFirstRing = Cast<URingComponent>(NewItem);
-			if (NewFirstRing)
+			if (x == Savegame->FirstRingIndex)
 			{
-				GameplaySystem->SetFirstRing(NewFirstRing);
+				URingComponent* NewFirstRing = Cast<URingComponent>(NewItem);
+				if (NewFirstRing)
+				{
+					GameplaySystem->SetFirstRing(NewFirstRing);
+				}
 			}
-		}
 
-		if (x == Savegame->SecondRingIndex)
-		{
-			URingComponent* NewSecondRing = Cast<URingComponent>(NewItem);
-			if (NewSecondRing)
+			if (x == Savegame->SecondRingIndex)
 			{
-				GameplaySystem->SetSecondRing(NewSecondRing);
+				URingComponent* NewSecondRing = Cast<URingComponent>(NewItem);
+				if (NewSecondRing)
+				{
+					GameplaySystem->SetSecondRing(NewSecondRing);
+				}
 			}
-		}
 
-		if (x == Savegame->AmuletIndex)
-		{
-			UAmuletComponent* NewAmulet = Cast<UAmuletComponent>(NewItem);
-			if (NewAmulet)
+			if (x == Savegame->AmuletIndex)
 			{
-				GameplaySystem->SetAmulet(NewAmulet);
+				UAmuletComponent* NewAmulet = Cast<UAmuletComponent>(NewItem);
+				if (NewAmulet)
+				{
+					GameplaySystem->SetAmulet(NewAmulet);
+				}
 			}
 		}
 
@@ -245,7 +246,10 @@ void AAmbosiaPlayerController::LoadItems(UAmbosiaSaveGame* Savegame)
 
 void AAmbosiaPlayerController::LoadPosition(UAmbosiaSaveGame* Savegame)
 {
-	this->GetPawn()->SetActorTransform(Savegame->Spawnpoint, false, nullptr, ETeleportType::TeleportPhysics);
+	if (Savegame)
+	{
+		this->GetPawn()->SetActorTransform(Savegame->Spawnpoint, true, nullptr, ETeleportType::TeleportPhysics);
+	}
 }
 
 float AAmbosiaPlayerController::GetLookRate()
