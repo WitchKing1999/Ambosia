@@ -35,6 +35,8 @@ public:
 
 	virtual void OnChildDetached(USceneComponent* ChildComponent) override;
 
+	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
+
 private:
 
 	/**

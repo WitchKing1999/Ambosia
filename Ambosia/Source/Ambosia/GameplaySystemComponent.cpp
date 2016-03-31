@@ -114,6 +114,16 @@ void UGameplaySystemComponent::OnChildDetached(USceneComponent* ChildComponent)
 	}
 }
 
+void UGameplaySystemComponent::EndPlay(const EEndPlayReason::Type EndPlayReason)
+{
+	TArray<USceneComponent*> Items;
+	this->GetChildrenComponents(true, Items);
+	for (USceneComponent* Item : Items)
+	{
+		Item->DestroyComponent();
+	}
+}
+
 float UGameplaySystemComponent::GetHealthPoints()
 {
 	return this->HealthPoints;
