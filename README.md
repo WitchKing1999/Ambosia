@@ -4,8 +4,8 @@ The Adventures of Heron
 This game is about the adventures of the farmer Heron. He lives in his farm near the good castle and
 supplies it with his yield. But once, when he got home, he sees a group of demons kidnaping his
 wife! Heron chases them and suddenly, a silhouette appears in a shadow, which transforms Heron's
-wife to a golden sword. Then, the silhouette disapears together with the sword. Help Heron finding
-his wife and getting her back.
+wife to a golden sword. Then, both the silhouette and the sword disapeared.  
+Help Heron finding his wife and turning her into a human again.
 
 This game is in a very early development stage where we are building the technical basement of the
 game. If you are interested in seeing our progress, you can download and run the [latest development
