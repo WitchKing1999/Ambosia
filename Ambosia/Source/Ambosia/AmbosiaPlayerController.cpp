@@ -16,14 +16,14 @@ AAmbosiaPlayerController::AAmbosiaPlayerController()
 	XPLevels = TArray<float>();
 	XPLevels.Add(0);
 	XPLevels.Add(5);
-	XPLevels.Add(10);
-	XPLevels.Add(15);
+	XPLevels.Add(20);
+	XPLevels.Add(40);
 
 	SkillPointsList = TArray<float>();
 	SkillPointsList.Add(0);
 	SkillPointsList.Add(5);
-	SkillPointsList.Add(10);
 	SkillPointsList.Add(20);
+	SkillPointsList.Add(40);
 
 }
 
