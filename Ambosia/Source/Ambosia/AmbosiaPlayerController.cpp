@@ -94,7 +94,7 @@ void AAmbosiaPlayerController::PotionPressed()
 
 void AAmbosiaPlayerController::MainMenuPressed()
 {
-	UKismetSystemLibrary::QuitGame(this, this, EQuitPreference::Quit);
+	UGameplayStatics::OpenLevel(this, "/Game/Menues/MainMenuWorld", true);
 }
 
 void AAmbosiaPlayerController::InventoryPressed()
