@@ -170,6 +170,9 @@ void AAmbosiaPlayerController::LoadGameplayValues(UAmbosiaSaveGame* Savegame)
 	GameplaySystem->SetMana(Savegame->Mana);
 	GameplaySystem->SetManaRegenerationPerSec(Savegame->ManaRegeneration);
 	GameplaySystem->SetAttackPoints(Savegame->AttackPoints);
+	this->ExperiencePoints = Savegame->ExperiencePoints;
+	this->CurrentLevel = Savegame->SkillLevel;
+	this->SkillPoints = Savegame->SkillPoints;
 }
 
 void AAmbosiaPlayerController::LoadItems(UAmbosiaSaveGame* Savegame)
