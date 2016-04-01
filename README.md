@@ -8,8 +8,8 @@ wife to a golden sword. Then, the silhouette disapears together with the sword. 
 his wife and getting her back.
 
 This game is in a very early development stage where we are building the technical basement of the
-game. If you are interested in seeing our progress, you can download and run the latest development
-snapshot. Since this is published under the terms of the MIT License, you may download, modify and
+game. If you are interested in seeing our progress, you can download and run the [latest development
+snapshot](../../releases). Since this is published under the terms of the MIT License, you may download, modify and
 upload the sourcecode. If you want to support us with code or assets, just create a pull request!
 
 You can find the game project files in the [`Ambosia`](Ambosia) folder, documentations in the
