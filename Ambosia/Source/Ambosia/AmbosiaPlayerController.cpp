@@ -253,10 +253,7 @@ void AAmbosiaPlayerController::LoadItems(UAmbosiaSaveGame* Savegame)
 
 void AAmbosiaPlayerController::LoadPosition(UAmbosiaSaveGame* Savegame)
 {
-	if (Savegame)
-	{
-		this->GetPawn()->SetActorTransform(Savegame->Spawnpoint, true, nullptr, ETeleportType::TeleportPhysics);
-	}
+	this->GetPawn()->SetActorTransform(Savegame->Spawnpoint, false, nullptr, ETeleportType::TeleportPhysics);
 }
 
 float AAmbosiaPlayerController::GetLookRate()
