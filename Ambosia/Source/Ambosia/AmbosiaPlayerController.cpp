@@ -122,6 +122,10 @@ void AAmbosiaPlayerController::ReceiveLoot(TArray<UClass*> ItemClasses, TArray<i
 				NewLevelReached = true;
 			}
 		}
+		else
+		{
+			NewLevelReached = true;
+		}
 	}
 	
 	for (int32 x = 0; x < ItemClasses.Num(); x++)
