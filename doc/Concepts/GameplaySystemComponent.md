@@ -1,6 +1,6 @@
 # Concept: Gameplay System Component
 
-The [`GameplaySystemComponent`](Cpp_GameplaySystemComponent.md) (or short `GSC`) provides core
+The `GameplaySystemComponent` (or short `GSC`) provides core
 elements for the gameplay of Ambosia. It's purposes can be devided in two parts: **gameplay stats**
 and **inventory**. The player and every AI controller has a GSC to deal and take damage.
 
@@ -33,7 +33,7 @@ That's it.
 There is another core component class in Ambosia: the items! They are also childs of the famous
 SceneComponent, so they can be attached to other SceneComponents like the GameplaySystemComponent.
 This document doesn't dig too much into the ItemComponent and it child classes, but you can read
-more about it [here](Concept_ItemComponent.md). Basicly, the GSC keeps pointers to items, which are
+more about it [here](ItemComponent.md). Basicly, the GSC keeps pointers to items, which are
 used as it's active items.
 
 * weapon
@@ -55,7 +55,7 @@ your mana regeneration and your attack points.
 
 ## Other concepts
 
-* [Fighting](Concept_Fighting.md)
-* [ItemComponent](Concept_ItemComponent.md)
-* [Looting and experience](Concept_Looting&Experience.md)
-* [Saving and level transitions](Concept_Saving&LevelTransitions.md)
+* [Fighting](Fighting.md)
+* [ItemComponent](ItemComponent.md)
+* [Looting and experience](Looting&Experience.md)
+* [Saving and level transitions](Saving&LevelTransitions.md)

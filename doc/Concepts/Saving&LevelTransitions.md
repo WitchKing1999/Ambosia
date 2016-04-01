@@ -16,7 +16,7 @@ with the savepoint, it will gather all required values and store them.
 
 ## Other concepts
 
-* [Fighting](Concept_Fighting.md)
-* [GameplaySystemComponent](Concept_GameplaySystemComponent.md)
-* [ItemComponent](Concept_ItemComponent.md)
-* [Looting and experience](Concept_Looting&Experience.md)
+* [Fighting](Fighting.md)
+* [GameplaySystemComponent](GameplaySystemComponent.md)
+* [ItemComponent](ItemComponent.md)
+* [Looting and experience](Looting&Experience.md)

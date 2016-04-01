@@ -1,3 +1,0 @@
-# WeaponComponent
-
-Work in Progress!
