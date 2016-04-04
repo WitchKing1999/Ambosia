@@ -18,18 +18,16 @@ class AMBOSIA_API ABaseSavingPortal : public ABaseSavepoint
 public:
 	ABaseSavingPortal();
 
-	UFUNCTION()
-	virtual void BeginPlay();
 
 	UFUNCTION()
 	virtual void OnOverlapBegin(class AActor* OtherActor) override;
-
-	UFUNCTION()
-	virtual bool SavePosition(class UAmbosiaSaveGame* SaveGame) override;
 
 protected:
 
 	UPROPERTY(EditAnywhere, Category = "SavefileSaving")
 	FTransform TargetTransform;
+
+	UPROPERTY(EditAnywhere, Category = "SavefileSaving")
+	FName TargetWorldPath;
 	
 };

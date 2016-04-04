@@ -56,14 +56,29 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Experience")
 	void SpendSkillPoints(float Amount, ESkillableValue Value);
 
-	UFUNCTION(BlueprintCallable, Category = "SavefileLoading")
-	void LoadGameplayValues(UAmbosiaSaveGame* Savegame);
+	UFUNCTION(BlueprintCallable, Category = "Saving")
+	bool SaveSaveGame();
 
-	UFUNCTION(BlueprintCallable, Category = "SavefileLoading")
-	void LoadItems(UAmbosiaSaveGame* Savegame);
+	UFUNCTION(BlueprintCallable, Category = "Saving")
+	bool SaveGameplayValues(UAmbosiaSaveGame* Savegame);
 
-	UFUNCTION(BlueprintCallable, Category = "SavefileLoading")
-	void LoadPosition(UAmbosiaSaveGame* Savegame);
+	UFUNCTION(BlueprintCallable, Category = "Saving")
+	bool SaveItems(UAmbosiaSaveGame* Savegame);
+
+	UFUNCTION(BlueprintCallable, Category = "Saving")
+	bool SavePosition(UAmbosiaSaveGame* Savegame);
+
+	UFUNCTION(BlueprintCallable, Category = "Saving")
+	bool LoadSaveGame();
+
+	UFUNCTION(BlueprintCallable, Category = "Saving")
+	bool LoadGameplayValues(UAmbosiaSaveGame* Savegame);
+
+	UFUNCTION(BlueprintCallable, Category = "Saving")
+	bool LoadItems(UAmbosiaSaveGame* Savegame);
+
+	UFUNCTION(BlueprintCallable, Category = "Saveing")
+	bool LoadPosition(UAmbosiaSaveGame* Savegame);
 
 	float GetLookRate();
 
@@ -74,6 +89,9 @@ public:
 	float GetSkillPoints();
 
 	int32 GetCurrentLevel();
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FName CurrentWorldPath;
 	
 protected:
 

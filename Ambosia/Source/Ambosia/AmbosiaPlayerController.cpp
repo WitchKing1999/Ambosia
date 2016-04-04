@@ -30,13 +30,7 @@ AAmbosiaPlayerController::AAmbosiaPlayerController()
 void AAmbosiaPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
-	UAmbosiaSaveGame* SaveGame = Cast<UAmbosiaSaveGame>(UGameplayStatics::LoadGameFromSlot("Ambosia", 0));
-	if (SaveGame)
-	{
-		LoadItems(SaveGame);
-		LoadGameplayValues(SaveGame);
-		LoadPosition(SaveGame);
-	}
+	this->LoadSaveGame();
 	
 	InputComponent->BindAxis("MoveForward", this, &AAmbosiaPlayerController::MoveForward);
 	InputComponent->BindAxis("MoveRight", this, &AAmbosiaPlayerController::MoveRight);
@@ -162,7 +156,117 @@ void AAmbosiaPlayerController::SpendSkillPoints(float Amount, ESkillableValue Va
 	}
 }
 
-void AAmbosiaPlayerController::LoadGameplayValues(UAmbosiaSaveGame* Savegame)
+bool AAmbosiaPlayerController::SaveSaveGame()
+{
+	UAmbosiaSaveGame* SaveGame = Cast<UAmbosiaSaveGame>(UGameplayStatics::CreateSaveGameObject(UAmbosiaSaveGame::StaticClass()));
+	if (!SaveGame)
+	{
+		return false;
+	}
+
+	bool SavingSuccessfull = true;
+
+	if (!this->SaveGameplayValues(SaveGame))
+	{
+		SavingSuccessfull = false;
+	}
+	if (!this->SavePosition(SaveGame))
+	{
+		SavingSuccessfull = false;
+	}
+	if (!this->SaveItems(SaveGame))
+	{
+		SavingSuccessfull = false;
+	}
+	if (!UGameplayStatics::SaveGameToSlot(SaveGame, "Ambosia", 0))
+	{
+		SavingSuccessfull = false;
+	}
+
+	if (SavingSuccessfull)
+	{
+		UKismetSystemLibrary::PrintString(this, "Game Saved!");
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool AAmbosiaPlayerController::SaveGameplayValues(UAmbosiaSaveGame* Savegame)
+{
+	Savegame->HealthPoints = GameplaySystem->GetHealthPoints();
+	Savegame->HealthPointsLimit = GameplaySystem->GetHealthPointsLimit();
+	Savegame->Mana = GameplaySystem->GetMana();
+	Savegame->ManaLimit = GameplaySystem->GetRawManaLimit();
+	Savegame->ManaRegeneration = GameplaySystem->GetRawManaRegenerationPerSec();
+	Savegame->AttackPoints = GameplaySystem->GetRawAttackPoints();
+	Savegame->MagicalAttackPoints = GameplaySystem->GetRawMagicalAttackPoints();
+	Savegame->ExperiencePoints = ExperiencePoints;
+	Savegame->SkillPoints = SkillPoints;
+	Savegame->SkillLevel = CurrentLevel;
+	return true;
+}
+
+bool AAmbosiaPlayerController::SaveItems(UAmbosiaSaveGame* SaveGame)
+{
+	TArray<USceneComponent*> Items;
+	GameplaySystem->GetChildrenComponents(false, Items);
+	for (int x = 0; x < Items.Num(); x++)
+	{
+		UItemComponent* Item = Cast<UItemComponent>(Items[x]);
+		if (Item)
+		{
+			SaveGame->Items.Add(Item->GetClass());
+			SaveGame->ItemStacks.Add(Item->GetStackSize());
+			if (Item == GameplaySystem->GetWeapon())
+				SaveGame->WeaponIndex = x;
+			if (Item == GameplaySystem->GetArmor())
+				SaveGame->ArmorIndex = x;
+			if (Item == GameplaySystem->GetPotion())
+				SaveGame->PotionIndex = x;
+			if (Item == GameplaySystem->GetArrowBundle())
+				SaveGame->ArrowBundleIndex = x;
+			if (Item == GameplaySystem->GetFirstRing())
+				SaveGame->FirstRingIndex = x;
+			if (Item == GameplaySystem->GetSecondRing())
+				SaveGame->SecondRingIndex = x;
+			if (Item == GameplaySystem->GetAmulet())
+				SaveGame->AmuletIndex = x;
+		}
+		else
+			return false;
+	}
+	return true;
+}
+
+bool AAmbosiaPlayerController::SavePosition(UAmbosiaSaveGame* Savegame)
+{
+	Savegame->Spawnpoint = this->GetPawn()->GetTransform();
+	Savegame->LevelName = CurrentWorldPath;
+	return true;
+}
+
+bool AAmbosiaPlayerController::LoadSaveGame()
+{
+	UAmbosiaSaveGame* SaveGame = Cast<UAmbosiaSaveGame>(UGameplayStatics::LoadGameFromSlot("Ambosia", 0));
+	bool SaveSuccessfull = true;
+	if (SaveGame)
+	{
+		if (!LoadItems(SaveGame))
+			SaveSuccessfull = false;
+		if (!LoadGameplayValues(SaveGame))
+			SaveSuccessfull = false;
+		if (!LoadPosition(SaveGame))
+			SaveSuccessfull = false;
+	}
+	else
+		SaveSuccessfull = false;
+	return SaveSuccessfull;
+}
+
+bool AAmbosiaPlayerController::LoadGameplayValues(UAmbosiaSaveGame* Savegame)
 {
 	GameplaySystem->SetHealthPointsLimit(Savegame->HealthPointsLimit);
 	GameplaySystem->SetHealthPoints(Savegame->HealthPoints);
@@ -173,9 +277,10 @@ void AAmbosiaPlayerController::LoadGameplayValues(UAmbosiaSaveGame* Savegame)
 	this->ExperiencePoints = Savegame->ExperiencePoints;
 	this->CurrentLevel = Savegame->SkillLevel;
 	this->SkillPoints = Savegame->SkillPoints;
+	return true;
 }
 
-void AAmbosiaPlayerController::LoadItems(UAmbosiaSaveGame* Savegame)
+bool AAmbosiaPlayerController::LoadItems(UAmbosiaSaveGame* Savegame)
 {
 	for (int x = 0; x < Savegame->Items.Num(); x++)
 	{
@@ -247,13 +352,17 @@ void AAmbosiaPlayerController::LoadItems(UAmbosiaSaveGame* Savegame)
 				}
 			}
 		}
-
+		else
+			return false;
 	}
+	return true;
 }
 
-void AAmbosiaPlayerController::LoadPosition(UAmbosiaSaveGame* Savegame)
+bool AAmbosiaPlayerController::LoadPosition(UAmbosiaSaveGame* Savegame)
 {
 	this->GetPawn()->SetActorTransform(Savegame->Spawnpoint, false, nullptr, ETeleportType::TeleportPhysics);
+	this->CurrentWorldPath = Savegame->LevelName;
+	return true;
 }
 
 float AAmbosiaPlayerController::GetLookRate()

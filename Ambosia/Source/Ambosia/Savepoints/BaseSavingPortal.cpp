@@ -1,27 +1,27 @@
 // (C) Flumminard 2015-2016
 
 #include "Ambosia.h"
-#include "Kismet/KismetSystemLibrary.h"
+#include "Saving/AmbosiaSaveGame.h"
+#include "Kismet/GameplayStatics.h"
 #include "BaseSavingPortal.h"
 
 ABaseSavingPortal::ABaseSavingPortal()
 {
-	
-}
-
-void ABaseSavingPortal::BeginPlay()
-{
+	TargetWorldPath = FName();
+	TargetTransform = FTransform();
 }
 
 void ABaseSavingPortal::OnOverlapBegin(class AActor* OtherActor)
 {
 	Super::OnOverlapBegin(OtherActor);
-	UGameplayStatics::OpenLevel(this, LOADINGSCREEN_PATH, true);
-}
-
-bool ABaseSavingPortal::SavePosition(UAmbosiaSaveGame* SaveGame)
-{
-	SaveGame->Spawnpoint = TargetTransform;
-	SaveGame->LevelName = TargetWorldName;
-	return true;
+	UAmbosiaSaveGame* SaveGame = Cast<UAmbosiaSaveGame>(UGameplayStatics::LoadGameFromSlot("Ambosia", 0));
+	if (SaveGame)
+	{
+		SaveGame->LevelName = TargetWorldPath;
+		SaveGame->Spawnpoint = TargetTransform;
+		if (UGameplayStatics::SaveGameToSlot(SaveGame, "Ambosia", 0))
+		{
+			UGameplayStatics::OpenLevel(this, LOADINGSCREEN_PATH, true);
+		}
+	}
 }
