@@ -15,7 +15,7 @@ UAmbosiaSaveGame::UAmbosiaSaveGame()
 	ExperiencePoints = 0;
 	SkillPoints = 0;
 	SkillLevel = 0;
-	Spawnpoint = FTransform(FRotator(0,0,0),FVector(0,0,0));
+	Spawnpoint = FTransform(FRotator(0, 0, 0), FVector(0, 0, 0));
 	LevelName = FName("/Game/Levels/DebugLevel");
 	Items = TArray<UClass*>();
 	ItemStacks = TArray<int32>();

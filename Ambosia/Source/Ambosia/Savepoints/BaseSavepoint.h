@@ -4,7 +4,7 @@
 
 #include "GameFramework/Actor.h"
 #include "AmbosiaPlayerController.h"
-#include "AmbosiaSaveGame.h"
+#include "Saving/AmbosiaSaveGame.h"
 #include "BaseSavepoint.generated.h"
 
 UCLASS()

@@ -4,7 +4,7 @@
 
 #include "GameFramework/PlayerController.h"
 
-#include "AmbosiaSaveGame.h"
+#include "Saving/AmbosiaSaveGame.h"
 #include "GameplaySystemComponent.h"
 
 #include "AmbosiaPlayerController.generated.h"

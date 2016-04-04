@@ -12,72 +12,72 @@ UCLASS()
 class AMBOSIA_API UAmbosiaSaveGame : public USaveGame
 {
 	GENERATED_BODY()
-	
+
 public:
 
 	UAmbosiaSaveGame();
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay Values")
-	float HealthPoints;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay Values")
-	float HealthPointsLimit;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay Values")
-	float Mana;
+		float HealthPoints;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay Values")
-	float ManaLimit;
+		float HealthPointsLimit;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay Values")
-	float ManaRegeneration;
+		float Mana;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay Values")
-	float AttackPoints;
+		float ManaLimit;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay Values")
-	float MagicalAttackPoints;
+		float ManaRegeneration;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay Values")
+		float AttackPoints;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay Values")
+		float MagicalAttackPoints;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Experience")
-	float ExperiencePoints;
+		float ExperiencePoints;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Experience")
-	float SkillPoints;
+		float SkillPoints;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Experience")
-	int32 SkillLevel;
-	
+		int32 SkillLevel;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Level")
-	FTransform Spawnpoint;
-	
+		FTransform Spawnpoint;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Level")
-	FName LevelName;
+		FName LevelName;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory")
-	TArray<UClass*> Items;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory")
-	TArray<int32> ItemStacks;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory")
-	int32 WeaponIndex;
+		TArray<UClass*> Items;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory")
-	int32 ArmorIndex;
+		TArray<int32> ItemStacks;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory")
-	int32 PotionIndex;
+		int32 WeaponIndex;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory")
-	int32 ArrowBundleIndex;
+		int32 ArmorIndex;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory")
-	int32 FirstRingIndex;
+		int32 PotionIndex;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory")
-	int32 SecondRingIndex;
+		int32 ArrowBundleIndex;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory")
-	int32 AmuletIndex;
-	
+		int32 FirstRingIndex;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory")
+		int32 SecondRingIndex;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory")
+		int32 AmuletIndex;
+
 };
