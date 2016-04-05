@@ -2,6 +2,7 @@
 
 #include "Ambosia.h"
 
+#include "Saving/MetaSaveGame.h"
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetSystemLibrary.h"
 
@@ -158,6 +159,12 @@ void AAmbosiaPlayerController::SpendSkillPoints(float Amount, ESkillableValue Va
 
 bool AAmbosiaPlayerController::SaveSaveGame()
 {
+	UMetaSaveGame* MetaSG = Cast<UMetaSaveGame>(UGameplayStatics::LoadGameFromSlot("Meta", 0));
+	if (!MetaSG)
+	{
+		return false;
+	}
+
 	UAmbosiaSaveGame* SaveGame = Cast<UAmbosiaSaveGame>(UGameplayStatics::CreateSaveGameObject(UAmbosiaSaveGame::StaticClass()));
 	if (!SaveGame)
 	{
@@ -178,7 +185,7 @@ bool AAmbosiaPlayerController::SaveSaveGame()
 	{
 		SavingSuccessfull = false;
 	}
-	if (!UGameplayStatics::SaveGameToSlot(SaveGame, "Ambosia", 0))
+	if (!UGameplayStatics::SaveGameToSlot(SaveGame, MetaSG->GetCurrentUserName(), MetaSG->CurrentUserIndex))
 	{
 		SavingSuccessfull = false;
 	}
@@ -250,7 +257,13 @@ bool AAmbosiaPlayerController::SavePosition(UAmbosiaSaveGame* Savegame)
 
 bool AAmbosiaPlayerController::LoadSaveGame()
 {
-	UAmbosiaSaveGame* SaveGame = Cast<UAmbosiaSaveGame>(UGameplayStatics::LoadGameFromSlot("Ambosia", 0));
+	UMetaSaveGame* MetaSG = Cast<UMetaSaveGame>(UGameplayStatics::LoadGameFromSlot("Meta", 0));
+	if (!MetaSG)
+	{
+		return false;
+	}
+
+	UAmbosiaSaveGame* SaveGame = Cast<UAmbosiaSaveGame>(UGameplayStatics::LoadGameFromSlot(MetaSG->GetCurrentUserName(), MetaSG->CurrentUserIndex));
 	bool SaveSuccessfull = true;
 	if (SaveGame)
 	{
