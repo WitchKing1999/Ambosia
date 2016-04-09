@@ -19,5 +19,7 @@ void ABaseSavepoint::OnOverlapBegin(class AActor* OtherActor)
 	AAmbosiaPlayerController* OtherPC = Cast<AAmbosiaPlayerController>(OtherPawn->GetController());
 	if (!OtherPC)
 		return;
+	if (!OtherPC->GetSaveGameLoaded())
+		return;
 	OtherPC->SaveSaveGame();
 }

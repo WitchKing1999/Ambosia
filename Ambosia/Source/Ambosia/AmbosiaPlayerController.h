@@ -92,6 +92,8 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FName CurrentWorldPath;
+
+	bool GetSaveGameLoaded();
 	
 protected:
 
@@ -115,5 +117,8 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Experience")
 	int32 CurrentLevel;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	bool SaveGameLoaded;
 
 };

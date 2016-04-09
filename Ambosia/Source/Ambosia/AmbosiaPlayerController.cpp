@@ -13,6 +13,7 @@ AAmbosiaPlayerController::AAmbosiaPlayerController()
 	GameplaySystem = CreateDefaultSubobject<UGameplaySystemComponent>(TEXT("GameplaySystemComponent"));
 
 	LookRate = 2;
+	SaveGameLoaded = false;
 
 	XPLevels = TArray<float>();
 	XPLevels.Add(0);
@@ -31,7 +32,7 @@ AAmbosiaPlayerController::AAmbosiaPlayerController()
 void AAmbosiaPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
-	this->LoadSaveGame();
+	SaveGameLoaded = this->LoadSaveGame();
 	
 	InputComponent->BindAxis("MoveForward", this, &AAmbosiaPlayerController::MoveForward);
 	InputComponent->BindAxis("MoveRight", this, &AAmbosiaPlayerController::MoveRight);
@@ -401,4 +402,9 @@ float AAmbosiaPlayerController::GetSkillPoints()
 int32 AAmbosiaPlayerController::GetCurrentLevel()
 {
 	return this->CurrentLevel;
+}
+
+bool AAmbosiaPlayerController::GetSaveGameLoaded()
+{
+	return this->SaveGameLoaded;
 }
