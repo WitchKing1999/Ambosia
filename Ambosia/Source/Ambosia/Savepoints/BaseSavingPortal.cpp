@@ -1,6 +1,7 @@
 // (C) Flumminard 2015-2016
 
 #include "Ambosia.h"
+#include "Saving/MetaSaveGame.h"
 #include "Saving/AmbosiaSaveGame.h"
 #include "Kismet/GameplayStatics.h"
 #include "BaseSavingPortal.h"
@@ -14,12 +15,15 @@ ABaseSavingPortal::ABaseSavingPortal()
 void ABaseSavingPortal::OnOverlapBegin(class AActor* OtherActor)
 {
 	Super::OnOverlapBegin(OtherActor);
-	UAmbosiaSaveGame* SaveGame = Cast<UAmbosiaSaveGame>(UGameplayStatics::LoadGameFromSlot("Ambosia", 0));
+	UMetaSaveGame* MetaSave = Cast<UMetaSaveGame>(UGameplayStatics::LoadGameFromSlot("Meta", 0));
+	if (!MetaSave)
+		return;
+	UAmbosiaSaveGame* SaveGame = Cast<UAmbosiaSaveGame>(UGameplayStatics::LoadGameFromSlot(MetaSave->GetCurrentUserName(),MetaSave->CurrentUserIndex));
 	if (SaveGame)
 	{
 		SaveGame->LevelName = TargetWorldPath;
 		SaveGame->Spawnpoint = TargetTransform;
-		if (UGameplayStatics::SaveGameToSlot(SaveGame, "Ambosia", 0))
+		if (UGameplayStatics::SaveGameToSlot(SaveGame, MetaSave->GetCurrentUserName(), MetaSave->CurrentUserIndex))
 		{
 			UGameplayStatics::OpenLevel(this, LOADINGSCREEN_PATH, true);
 		}
