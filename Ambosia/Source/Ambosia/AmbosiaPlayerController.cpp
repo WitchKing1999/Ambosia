@@ -126,7 +126,15 @@ void AAmbosiaPlayerController::ReceiveLoot(TArray<UClass*> ItemClasses, TArray<i
 	
 	for (int32 x = 0; x < ItemClasses.Num(); x++)
 	{
-		GameplaySystem->CreateAndAddItem(ItemClasses[x])->SetStackSize(ItemStacks[x]);
+		UItemComponent* Item = Cast<UItemComponent>(this->GetComponentByClass(TSubclassOf<UActorComponent>(ItemClasses[x])));
+		if (Item && Item->GetAttachParent() == GameplaySystem && Item->IsStackable())
+		{
+			Item->SetStackSize(Item->GetStackSize() + ItemStacks[x]);
+		}
+		else
+		{
+			GameplaySystem->CreateAndAddItem(ItemClasses[x])->SetStackSize(ItemStacks[x]);
+		}
 	}
 }
 
