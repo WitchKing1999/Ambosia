@@ -48,6 +48,9 @@ private:
 
 public:
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool bLoadGameOverScreenOnDying;
+
 	/*
 	=================================================================
 	Health Points

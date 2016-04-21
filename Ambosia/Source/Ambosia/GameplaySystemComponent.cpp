@@ -11,6 +11,7 @@ UGameplaySystemComponent::UGameplaySystemComponent()
 	PrimaryComponentTick.bCanEverTick = true;
 
 	TimeToNextRegen = 1;
+	bLoadGameOverScreenOnDying = false;
 	HealthPoints = 200;
 	HealthPointsLimit = 200;
 	AttackPoints = 100;
@@ -138,14 +139,21 @@ void UGameplaySystemComponent::SetHealthPoints(float NewHealthPoints)
 	else if (NewHealthPoints <= 0)
 	{
 		AController* OwnerAsController = dynamic_cast<AController*>(this->GetOwner());
-		if (OwnerAsController != nullptr)
+		if (bLoadGameOverScreenOnDying)
 		{
-			APawn* Pawn = OwnerAsController->GetPawn();
-			Pawn->Destroy();
+			UGameplayStatics::OpenLevel(this, "/Game/Menues/GameOverScreen", true);
 		}
 		else
 		{
-			this->GetOwner()->Destroy();
+			if (OwnerAsController != nullptr)
+			{
+				APawn* Pawn = OwnerAsController->GetPawn();
+				Pawn->Destroy();
+			}
+			else
+			{
+				this->GetOwner()->Destroy();
+			}
 		}
 	}
 	else

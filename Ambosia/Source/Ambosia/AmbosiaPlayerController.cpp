@@ -11,6 +11,7 @@
 AAmbosiaPlayerController::AAmbosiaPlayerController()
 {
 	GameplaySystem = CreateDefaultSubobject<UGameplaySystemComponent>(TEXT("GameplaySystemComponent"));
+	GameplaySystem->bLoadGameOverScreenOnDying = true;
 
 	LookRate = 2;
 	SaveGameLoaded = false;
