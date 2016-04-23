@@ -18,7 +18,6 @@ class AMBOSIA_API ABaseSavingPortal : public ABaseSavepoint
 public:
 	ABaseSavingPortal();
 
-
 	UFUNCTION()
 	virtual void OnOverlapBegin(class AActor* OtherActor) override;
 

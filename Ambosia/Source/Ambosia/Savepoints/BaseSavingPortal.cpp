@@ -1,6 +1,7 @@
 // (C) Flumminard 2015-2016
 
 #include "Ambosia.h"
+#include "AmbosiaPlayerController.h"
 #include "Saving/MetaSaveGame.h"
 #include "Saving/AmbosiaSaveGame.h"
 #include "Kismet/GameplayStatics.h"
@@ -15,6 +16,8 @@ ABaseSavingPortal::ABaseSavingPortal()
 void ABaseSavingPortal::OnOverlapBegin(class AActor* OtherActor)
 {
 	Super::OnOverlapBegin(OtherActor);
+	if (this->GetWorld()->GetFirstPlayerController()->GetPawn() != OtherActor)
+		return;
 	UMetaSaveGame* MetaSave = Cast<UMetaSaveGame>(UGameplayStatics::LoadGameFromSlot("Meta", 0));
 	if (!MetaSave)
 		return;
