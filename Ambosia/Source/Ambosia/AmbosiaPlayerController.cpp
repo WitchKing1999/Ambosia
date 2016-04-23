@@ -15,6 +15,7 @@ AAmbosiaPlayerController::AAmbosiaPlayerController()
 
 	LookRate = 2;
 	SaveGameLoaded = false;
+	ControlsEnabled = true;
 
 	XPLevels = TArray<float>();
 	XPLevels.Add(0);
@@ -58,24 +59,31 @@ float AAmbosiaPlayerController::TakeDamage(float DamageAmount, FDamageEvent cons
 
 void AAmbosiaPlayerController::MoveForward(float AxisValue)
 {
-	this->GetPawn()->AddMovementInput(this->GetControlRotation().Vector(), AxisValue);
+	if (this->ControlsEnabled)
+		this->GetPawn()->AddMovementInput(this->GetControlRotation().Vector(), AxisValue);
 }
 
 void AAmbosiaPlayerController::MoveRight(float AxisValue)
 {
-	FVector WorldDirection = this->GetControlRotation().Vector();
-	WorldDirection = FRotator(0, 90, 0).RotateVector(WorldDirection);
-	this->GetPawn()->AddMovementInput(WorldDirection, AxisValue);
+	if (this->ControlsEnabled)
+	{
+		FVector WorldDirection = this->GetControlRotation().Vector();
+		WorldDirection = FRotator(0, 90, 0).RotateVector(WorldDirection);
+		this->GetPawn()->AddMovementInput(WorldDirection, AxisValue);
+	}
 }
 
 void AAmbosiaPlayerController::LookRight(float AxisValue)
 {
-	this->AddYawInput(AxisValue * LookRate);
+	if (this->ControlsEnabled)
+	{
+		this->AddYawInput(AxisValue * LookRate);
+	}
 }
 
 void AAmbosiaPlayerController::AttackPressed()
 {
-	if (GameplaySystem->GetWeapon())
+	if (this->ControlsEnabled && GameplaySystem->GetWeapon())
 	{
 		GameplaySystem->GetWeapon()->Action();
 	}
@@ -83,7 +91,7 @@ void AAmbosiaPlayerController::AttackPressed()
 
 void AAmbosiaPlayerController::PotionPressed()
 {
-	if (GameplaySystem->GetPotion())
+	if (this->ControlsEnabled && GameplaySystem->GetPotion())
 	{
 		GameplaySystem->GetPotion()->Action();
 	}
@@ -96,7 +104,24 @@ void AAmbosiaPlayerController::MainMenuPressed()
 
 void AAmbosiaPlayerController::InventoryPressed()
 {
-	this->SpendSkillPoints(5, ESkillableValue::VE_HealthPointsLimit);
+	ABaseAmbosiaHUD* HUD = Cast<ABaseAmbosiaHUD>(this->GetHUD());
+	if (HUD->bInventoryOpen)
+	{
+		HUD->CloseInventory();
+
+		this->bShowMouseCursor = false;
+		this->bEnableClickEvents = false;
+		this->bEnableMouseOverEvents = false;
+		this->ControlsEnabled = true;
+	}
+	else
+	{
+		HUD->OpenInventory();
+		this->bShowMouseCursor = true;
+		this->bEnableClickEvents = true;
+		this->bEnableMouseOverEvents = true;
+		this->ControlsEnabled = false;
+	}
 }
 
 void AAmbosiaPlayerController::ReceiveLoot(TArray<UClass*> ItemClasses, TArray<int32> ItemStacks, float Experience)

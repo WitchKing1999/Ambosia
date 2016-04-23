@@ -6,6 +6,7 @@
 
 #include "Saving/AmbosiaSaveGame.h"
 #include "GameplaySystemComponent.h"
+#include "BaseAmbosiaHUD.h"
 
 #include "AmbosiaPlayerController.generated.h"
 
@@ -36,18 +37,25 @@ public:
 
 	virtual float TakeDamage(float DamageAmount, FDamageEvent const & DamageEvent, AController* EventInstigator, AActor* DamageCauser) override;
 
+	UFUNCTION(BlueprintCallable, Category = "Events")
 	void MoveForward(float AxisValue);
 
+	UFUNCTION(BlueprintCallable, Category = "Events")
 	void MoveRight(float AxisValue);
 
+	UFUNCTION(BlueprintCallable, Category = "Events")
 	void LookRight(float AxisValue);
 
+	UFUNCTION(BlueprintCallable, Category = "Events")
 	void AttackPressed();
 
+	UFUNCTION(BlueprintCallable, Category = "Events")
 	void PotionPressed();
 
+	UFUNCTION(BlueprintCallable, Category = "Events")
 	void MainMenuPressed();
 
+	UFUNCTION(BlueprintCallable, Category = "Events")
 	void InventoryPressed();
 
 	UFUNCTION(BlueprintCallable, Category = "Experience")
@@ -120,5 +128,8 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	bool SaveGameLoaded;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	bool ControlsEnabled;
 
 };
