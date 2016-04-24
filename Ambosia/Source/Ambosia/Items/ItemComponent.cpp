@@ -16,7 +16,7 @@ UItemComponent::UItemComponent()
 	CooldownTime = 0;
 	bStackable = false;
 	DropChance = 0;
-	static ConstructorHelpers::FObjectFinder<UTexture> IconAsset(TEXT("/Game/Icons/Floppy"));
+	static ConstructorHelpers::FObjectFinder<UTexture> IconAsset(TEXT("/Game/Icons/Grey_Circle"));
 	if (IconAsset.Succeeded())
 	{
 		Icon = IconAsset.Object;
