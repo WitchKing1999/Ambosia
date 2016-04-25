@@ -28,21 +28,6 @@ public:
 	virtual bool Action_Implementation();
 
 	/*
-	Returns the name of this item.
-	*/
-	FString GetName();
-
-	/*
-	Returns the description of this item.
-	*/
-	FString GetDescription();
-
-	/*
-	Returns the icon of this item.
-	*/
-	UTexture* GetIcon();
-
-	/*
 	Returns whether we are stackable or not.
 	*/
 	bool IsStackable();
@@ -160,25 +145,25 @@ public:
 	float ModifyManaRegeneration(float ManaRegeneration);
 	virtual float ModifyManaRegeneration_Implementation(float ManaRegeneration);
 
-protected:
-
 	/*
 	Our screen name
 	*/
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item")
-	FString Name;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")
+	FText Name;
 
 	/*
 	Our screen description
 	*/
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item")
-	FString Description;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")
+	FText Description;
 
 	/*
 	Our icon
 	*/
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item")
 	UTexture* Icon;
+
+protected:
 
 	/*
 	Our stack size

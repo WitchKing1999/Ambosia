@@ -6,8 +6,8 @@
 
 UPotionComponent::UPotionComponent()
 {
-	Name = "Potion";
-	Description = "Gives you health points or mana!";
+	Name = FText::FromString("Potion");
+	Description = FText::FromString("Gives you health points or mana!");
 	HealthPoints = 0;
 	Mana = 0;
 	bStackable = true;

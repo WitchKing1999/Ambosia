@@ -9,8 +9,8 @@ UItemComponent::UItemComponent()
 {
 	PrimaryComponentTick.bCanEverTick = true;
 
-	Name = "Item";
-	Description = "Does nothing at all!";
+	Name = FText::FromString("Item");
+	Description = FText::FromString("Does nothing at all!");
 	StackSize = 1;
 	TimeTillCooled = 0;
 	CooldownTime = 0;
@@ -39,21 +39,6 @@ void UItemComponent::TickComponent(float DeltaTime, enum ELevelTick TickType, FA
 bool UItemComponent::Action_Implementation()
 {
 	return true;
-}
-
-FString UItemComponent::GetName()
-{
-	return this->Name;
-}
-
-FString UItemComponent::GetDescription()
-{
-	return this->Description;
-}
-
-UTexture* UItemComponent::GetIcon()
-{
-	return this->Icon;
 }
 
 int32 UItemComponent::GetStackSize()
