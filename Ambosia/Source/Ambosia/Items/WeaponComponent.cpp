@@ -11,6 +11,7 @@ UWeaponComponent::UWeaponComponent()
 
 	Name = FText::FromString("Weapon");
 	Description = FText::FromString("Hurts everything!");
+	ItemType = EItemType::VE_Weapon;
 	AttackFactor = 1.0;
 	ManaCost = 0;
 	MagicalAttackFactor = 1.0;

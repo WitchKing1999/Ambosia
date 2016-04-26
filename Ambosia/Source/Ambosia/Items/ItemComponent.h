@@ -6,6 +6,18 @@
 #include "Engine/Texture.h"
 #include "ItemComponent.generated.h"
 
+UENUM(BlueprintType)
+enum class EItemType : uint8
+{
+	VE_Item			UMETA(DisplayName = "Item"),
+	VE_Weapon		UMETA(DisplayName = "Weapon"),
+	VE_Armor		UMETA(DisplayName = "Armor"),
+	VE_ArrowBundle	UMETA(DisplayName = "Arrow Bundle"),
+	VE_Potion		UMETA(DisplayName = "Potion"),
+	VE_Ring			UMETA(DisplayName = "Ring"),
+	VE_Amulet		UMETA(DisplayName = "Amulet")
+};
+
 /*
 This is the item base class.
 */
@@ -26,6 +38,8 @@ public:
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Item")
 	bool Action();
 	virtual bool Action_Implementation();
+
+	EItemType GetItemType();
 
 	/*
 	Returns whether we are stackable or not.
@@ -164,6 +178,9 @@ public:
 	UTexture* Icon;
 
 protected:
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item")
+	EItemType ItemType;
 
 	/*
 	Our stack size

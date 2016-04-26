@@ -12,6 +12,7 @@ UArmorComponent::UArmorComponent()
 
 	Name = FText::FromString("Armor");
 	Description = FText::FromString("Saves you from receiving the complete damage!");
+	ItemType = EItemType::VE_Armor;
 
 	DefenceFactor = 1.0;
 	MagicalDefenceFactor = 1.0;

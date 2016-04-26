@@ -5,6 +5,7 @@
 
 URingComponent::URingComponent()
 {
+	ItemType = EItemType::VE_Ring;
 	HealthPointsLimit = 0;
 	ManaLimit = 0;
 	AttackPoints = 0;

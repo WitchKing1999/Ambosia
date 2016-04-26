@@ -5,6 +5,7 @@
 
 UAmuletComponent::UAmuletComponent()
 {
+	ItemType = EItemType::VE_Amulet;
 	HealthPointsLimit = 0;
 	ManaLimit = 0;
 	AttackPoints = 0;

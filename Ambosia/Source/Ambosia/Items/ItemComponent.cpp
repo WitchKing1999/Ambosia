@@ -11,6 +11,7 @@ UItemComponent::UItemComponent()
 
 	Name = FText::FromString("Item");
 	Description = FText::FromString("Does nothing at all!");
+	ItemType = EItemType::VE_Item;
 	StackSize = 1;
 	TimeTillCooled = 0;
 	CooldownTime = 0;
@@ -39,6 +40,11 @@ void UItemComponent::TickComponent(float DeltaTime, enum ELevelTick TickType, FA
 bool UItemComponent::Action_Implementation()
 {
 	return true;
+}
+
+EItemType UItemComponent::GetItemType()
+{
+	return this->ItemType;
 }
 
 int32 UItemComponent::GetStackSize()
