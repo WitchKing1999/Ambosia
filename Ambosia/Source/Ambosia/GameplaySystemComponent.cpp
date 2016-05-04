@@ -442,6 +442,10 @@ bool UGameplaySystemComponent::SetFirstRing(URingComponent* NewRing)
 	if ((NewRing->GetAttachParent() == this) | (NewRing == nullptr))
 	{
 		this->FirstRing = NewRing;
+		if (NewRing == this->SecondRing)
+		{
+			this->SecondRing = nullptr;
+		}
 		return true;
 	}
 	else
@@ -460,6 +464,10 @@ bool UGameplaySystemComponent::SetSecondRing(URingComponent* NewRing)
 	if ((NewRing->GetAttachParent() == this) | (NewRing == nullptr))
 	{
 		this->SecondRing = NewRing;
+		if (NewRing == this->FirstRing)
+		{
+			this->SecondRing = nullptr;
+		}
 		return true;
 	}
 	else
