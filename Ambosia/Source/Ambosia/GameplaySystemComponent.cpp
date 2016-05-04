@@ -367,7 +367,12 @@ UWeaponComponent* UGameplaySystemComponent::GetWeapon()
 
 bool UGameplaySystemComponent::SetWeapon(UWeaponComponent* NewWeapon)
 {
-	if ((NewWeapon->GetAttachParent() == this) | (NewWeapon == nullptr))
+	if (NewWeapon == nullptr)
+	{
+		this->Weapon = nullptr;
+		return true;
+	}
+	else if (NewWeapon->GetAttachParent() == this)
 	{
 		this->Weapon = NewWeapon;
 		return true;
@@ -385,7 +390,12 @@ UArmorComponent* UGameplaySystemComponent::GetArmor()
 
 bool UGameplaySystemComponent::SetArmor(UArmorComponent* NewArmor)
 {
-	if ((NewArmor->GetAttachParent() == this) | (NewArmor == nullptr))
+	if (NewArmor == nullptr)
+	{
+		this->Armor = nullptr;
+		return true;
+	}
+	else if (NewArmor->GetAttachParent() == this)
 	{
 		this->Armor = NewArmor;
 		return true;
@@ -403,7 +413,12 @@ UPotionComponent* UGameplaySystemComponent::GetPotion()
 
 bool UGameplaySystemComponent::SetPotion(UPotionComponent* NewPotion)
 {
-	if ((NewPotion->GetAttachParent() == this) | (NewPotion == nullptr))
+	if (NewPotion == nullptr)
+	{
+		this->Potion = nullptr;
+		return true;
+	}
+	else if (NewPotion->GetAttachParent() == this)
 	{
 		this->Potion = NewPotion;
 		return true;
@@ -421,7 +436,12 @@ UArrowBundleComponent* UGameplaySystemComponent::GetArrowBundle()
 
 bool UGameplaySystemComponent::SetArrowBundle(UArrowBundleComponent* NewArrowBundle)
 {
-	if ((NewArrowBundle->GetAttachParent() == this) | (NewArrowBundle == nullptr))
+	if (NewArrowBundle == nullptr)
+	{
+		this->ArrowBundle = nullptr;
+		return true;
+	}
+	else if (NewArrowBundle->GetAttachParent() == this)
 	{
 		this->ArrowBundle = NewArrowBundle;
 		return true;
@@ -439,10 +459,15 @@ URingComponent* UGameplaySystemComponent::GetFirstRing()
 
 bool UGameplaySystemComponent::SetFirstRing(URingComponent* NewRing)
 {
-	if ((NewRing->GetAttachParent() == this) | (NewRing == nullptr))
+	if (NewRing == nullptr)
+	{
+		this->FirstRing = nullptr;
+		return true;
+	}
+	else if (NewRing->GetAttachParent() == this)
 	{
 		this->FirstRing = NewRing;
-		if (NewRing == this->SecondRing)
+		if (this->FirstRing == this->SecondRing)
 		{
 			this->SecondRing = nullptr;
 		}
@@ -461,12 +486,17 @@ URingComponent* UGameplaySystemComponent::GetSecondRing()
 
 bool UGameplaySystemComponent::SetSecondRing(URingComponent* NewRing)
 {
-	if ((NewRing->GetAttachParent() == this) | (NewRing == nullptr))
+	if (NewRing == nullptr)
+	{
+		this->SecondRing = nullptr;
+		return true;
+	}
+	else if (NewRing->GetAttachParent() == this)
 	{
 		this->SecondRing = NewRing;
-		if (NewRing == this->FirstRing)
+		if (this->FirstRing == this->SecondRing)
 		{
-			this->SecondRing = nullptr;
+			this->FirstRing = nullptr;
 		}
 		return true;
 	}
@@ -483,7 +513,12 @@ UAmuletComponent* UGameplaySystemComponent::GetAmulet()
 
 bool UGameplaySystemComponent::SetAmulet(UAmuletComponent* NewAmulet)
 {
-	if ((NewAmulet->GetAttachParent() == this) | (NewAmulet == nullptr))
+	if (NewAmulet == nullptr)
+	{
+		this->Amulet = nullptr;
+		return true;
+	}
+	else if (NewAmulet->GetAttachParent() == this)
 	{
 		this->Amulet = NewAmulet;
 		return true;
