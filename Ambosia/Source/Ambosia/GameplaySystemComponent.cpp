@@ -10,6 +10,9 @@ UGameplaySystemComponent::UGameplaySystemComponent()
 {
 	PrimaryComponentTick.bCanEverTick = true;
 
+	OnChildAttachedDispatcher = FChildAttachedDelegate();
+	OnChildDetachedDispatcher = FChildDetachedDelegate();
+
 	TimeToNextRegen = 1;
 	bLoadGameOverScreenOnDying = false;
 	HealthPoints = 200;
@@ -82,9 +85,16 @@ void UGameplaySystemComponent::TickComponent(float DeltaTime, enum ELevelTick Ti
 	}
 }
 
-void UGameplaySystemComponent::OnChildDetached(USceneComponent* ChildComponent)
-
+void UGameplaySystemComponent::OnChildAttached(USceneComponent* ChildComponent)
 {
+	Super::OnChildAttached(ChildComponent);
+	this->OnChildAttachedDispatcher.Broadcast(ChildComponent);
+}
+
+void UGameplaySystemComponent::OnChildDetached(USceneComponent* ChildComponent)
+{
+	Super::OnChildDetached(ChildComponent);
+	this->OnChildDetachedDispatcher.Broadcast(ChildComponent);
 	if (ChildComponent == this->GetWeapon())
 	{
 		this->Weapon = nullptr;

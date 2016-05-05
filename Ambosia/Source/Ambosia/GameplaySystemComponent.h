@@ -11,6 +11,8 @@
 #include "Items/AmuletComponent.h"
 #include "GameplaySystemComponent.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FChildAttachedDelegate, USceneComponent*, ChildComponent);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FChildDetachedDelegate, USceneComponent*, ChildComponent);
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class AMBOSIA_API UGameplaySystemComponent : public USceneComponent
@@ -33,7 +35,15 @@ public:
 
 	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
+	virtual void OnChildAttached(USceneComponent* ChildComponent) override;
+
 	virtual void OnChildDetached(USceneComponent* ChildComponent) override;
+
+	UPROPERTY(BlueprintAssignable, Category = "Event Dispatchers")
+	FChildAttachedDelegate OnChildAttachedDispatcher;
+
+	UPROPERTY(BlueprintAssignable, Category = "Event Dispatchers")
+	FChildDetachedDelegate OnChildDetachedDispatcher;
 
 	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 
