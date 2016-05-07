@@ -59,12 +59,12 @@ float UGameplaySystemComponent::TakeDamage(float DamageAmount, UDamageType* Dama
 		if (AmbosiaDamageType->IsMagical())
 		{
 			if (this->GetArmor() != nullptr)
-				DamageAmount = this->GetArmor()->ModifyMagicalAttackPoints(DamageAmount);
+				DamageAmount = this->GetArmor()->ModifyInfightMagicalAttackPoints(DamageAmount);
 		}
 		else
 		{
 			if (this->GetArmor() != nullptr)
-				DamageAmount = this->GetArmor()->ModifyAttackPoints(DamageAmount);
+				DamageAmount = this->GetArmor()->ModifyInfightAttackPoints(DamageAmount);
 		}
 	}
 
@@ -142,9 +142,9 @@ float UGameplaySystemComponent::GetHealthPoints()
 
 void UGameplaySystemComponent::SetHealthPoints(float NewHealthPoints)
 {
-	if (NewHealthPoints > this->GetEffectiveHealthPointsLimit())
+	if (NewHealthPoints > this->GetInfightHealthPointsLimit())
 	{
-		this->HealthPoints = this->GetEffectiveHealthPointsLimit();
+		this->HealthPoints = this->GetInfightHealthPointsLimit();
 	}
 	else if (NewHealthPoints <= 0)
 	{
@@ -182,20 +182,38 @@ float UGameplaySystemComponent::GetHealthPointsLimit()
 	return this->HealthPointsLimit;
 }
 
-float UGameplaySystemComponent::GetEffectiveHealthPointsLimit()
+float UGameplaySystemComponent::GetInfightHealthPointsLimit()
 {
 	float ProperHealthPointsLimit = this->HealthPointsLimit;
 	if (this->FirstRing != nullptr)
 	{
-		ProperHealthPointsLimit = this->FirstRing->ModifyHealthPointsLimit(ProperHealthPointsLimit);
+		ProperHealthPointsLimit = this->FirstRing->ModifyInfightHealthPointsLimit(ProperHealthPointsLimit);
 	}
 	if (this->SecondRing != nullptr)
 	{
-		ProperHealthPointsLimit = this->SecondRing->ModifyHealthPointsLimit(ProperHealthPointsLimit);
+		ProperHealthPointsLimit = this->SecondRing->ModifyInfightHealthPointsLimit(ProperHealthPointsLimit);
 	}
 	if (this->Amulet != nullptr)
 	{
-		ProperHealthPointsLimit = this->Amulet->ModifyHealthPointsLimit(ProperHealthPointsLimit);
+		ProperHealthPointsLimit = this->Amulet->ModifyInfightHealthPointsLimit(ProperHealthPointsLimit);
+	}
+	return ProperHealthPointsLimit;
+}
+
+float UGameplaySystemComponent::GetDisplayHealthPointsLimit()
+{
+	float ProperHealthPointsLimit = this->HealthPointsLimit;
+	if (this->FirstRing != nullptr)
+	{
+		ProperHealthPointsLimit = this->FirstRing->ModifyDisplayHealthPointsLimit(ProperHealthPointsLimit);
+	}
+	if (this->SecondRing != nullptr)
+	{
+		ProperHealthPointsLimit = this->SecondRing->ModifyDisplayHealthPointsLimit(ProperHealthPointsLimit);
+	}
+	if (this->Amulet != nullptr)
+	{
+		ProperHealthPointsLimit = this->Amulet->ModifyDisplayHealthPointsLimit(ProperHealthPointsLimit);
 	}
 	return ProperHealthPointsLimit;
 }
@@ -212,29 +230,51 @@ void UGameplaySystemComponent::AffectHealthPointsLimit(float Delta)
 	this->SetHealthPointsLimit(this->GetHealthPointsLimit() + Delta);
 }
 
-float UGameplaySystemComponent::GetRawAttackPoints()
+float UGameplaySystemComponent::GetAttackPoints()
 {
 	return this->AttackPoints;
 }
 
-float UGameplaySystemComponent::GetAttackPoints()
+float UGameplaySystemComponent::GetInfightAttackPoints()
 {
 	float ProperAttackPoints = this->AttackPoints;
 	if (this->FirstRing != nullptr)
 	{
-		ProperAttackPoints = this->FirstRing->ModifyAttackPoints(ProperAttackPoints);
+		ProperAttackPoints = this->FirstRing->ModifyInfightAttackPoints(ProperAttackPoints);
 	}
 	if (this->SecondRing != nullptr)
 	{
-		ProperAttackPoints = this->SecondRing->ModifyAttackPoints(ProperAttackPoints);
+		ProperAttackPoints = this->SecondRing->ModifyInfightAttackPoints(ProperAttackPoints);
 	}
 	if (this->Amulet != nullptr)
 	{
-		ProperAttackPoints = this->Amulet->ModifyAttackPoints(ProperAttackPoints);
+		ProperAttackPoints = this->Amulet->ModifyInfightAttackPoints(ProperAttackPoints);
 	}
 	if (this->Weapon != nullptr)
 	{
-		ProperAttackPoints = this->Weapon->ModifyAttackPoints(ProperAttackPoints);
+		ProperAttackPoints = this->Weapon->ModifyInfightAttackPoints(ProperAttackPoints);
+	}
+	return ProperAttackPoints;
+}
+
+float UGameplaySystemComponent::GetDisplayAttackPoints()
+{
+	float ProperAttackPoints = this->AttackPoints;
+	if (this->FirstRing != nullptr)
+	{
+		ProperAttackPoints = this->FirstRing->ModifyDisplayAttackPoints(ProperAttackPoints);
+	}
+	if (this->SecondRing != nullptr)
+	{
+		ProperAttackPoints = this->SecondRing->ModifyDisplayAttackPoints(ProperAttackPoints);
+	}
+	if (this->Amulet != nullptr)
+	{
+		ProperAttackPoints = this->Amulet->ModifyDisplayAttackPoints(ProperAttackPoints);
+	}
+	if (this->Weapon != nullptr)
+	{
+		ProperAttackPoints = this->Weapon->ModifyDisplayAttackPoints(ProperAttackPoints);
 	}
 	return ProperAttackPoints;
 }
@@ -249,29 +289,51 @@ void UGameplaySystemComponent::AffectAttackPoints(float Delta)
 	this->SetAttackPoints(this->AttackPoints + Delta);
 }
 
-float UGameplaySystemComponent::GetRawMagicalAttackPoints()
+float UGameplaySystemComponent::GetMagicalAttackPoints()
 {
 	return this->MagicalAttackPoints;
 }
 
-float UGameplaySystemComponent::GetMagicalAttackPoints()
+float UGameplaySystemComponent::GetInfightMagicalAttackPoints()
 {
 	float ProperMagicalAttackPoints = this->MagicalAttackPoints;
 	if (this->FirstRing != nullptr)
 	{
-		ProperMagicalAttackPoints = this->FirstRing->ModifyMagicalAttackPoints(ProperMagicalAttackPoints);
+		ProperMagicalAttackPoints = this->FirstRing->ModifyInfightMagicalAttackPoints(ProperMagicalAttackPoints);
 	}
 	if (this->SecondRing != nullptr)
 	{
-		ProperMagicalAttackPoints = this->SecondRing->ModifyMagicalAttackPoints(ProperMagicalAttackPoints);
+		ProperMagicalAttackPoints = this->SecondRing->ModifyInfightMagicalAttackPoints(ProperMagicalAttackPoints);
 	}
 	if (this->Amulet != nullptr)
 	{
-		ProperMagicalAttackPoints = this->Amulet->ModifyMagicalAttackPoints(ProperMagicalAttackPoints);
+		ProperMagicalAttackPoints = this->Amulet->ModifyInfightMagicalAttackPoints(ProperMagicalAttackPoints);
 	}
 	if (this->Weapon != nullptr)
 	{
-		ProperMagicalAttackPoints = this->Weapon->ModifyMagicalAttackPoints(ProperMagicalAttackPoints);
+		ProperMagicalAttackPoints = this->Weapon->ModifyInfightMagicalAttackPoints(ProperMagicalAttackPoints);
+	}
+	return ProperMagicalAttackPoints;
+}
+
+float UGameplaySystemComponent::GetDisplayMagicalAttackPoints()
+{
+	float ProperMagicalAttackPoints = this->MagicalAttackPoints;
+	if (this->FirstRing != nullptr)
+	{
+		ProperMagicalAttackPoints = this->FirstRing->ModifyDisplayMagicalAttackPoints(ProperMagicalAttackPoints);
+	}
+	if (this->SecondRing != nullptr)
+	{
+		ProperMagicalAttackPoints = this->SecondRing->ModifyDisplayMagicalAttackPoints(ProperMagicalAttackPoints);
+	}
+	if (this->Amulet != nullptr)
+	{
+		ProperMagicalAttackPoints = this->Amulet->ModifyDisplayMagicalAttackPoints(ProperMagicalAttackPoints);
+	}
+	if (this->Weapon != nullptr)
+	{
+		ProperMagicalAttackPoints = this->Weapon->ModifyDisplayMagicalAttackPoints(ProperMagicalAttackPoints);
 	}
 	return ProperMagicalAttackPoints;
 }
@@ -304,25 +366,43 @@ void UGameplaySystemComponent::AffectMana(float Delta)
 	this->SetMana(this->GetMana() + Delta);
 }
 
-float UGameplaySystemComponent::GetRawManaLimit()
+float UGameplaySystemComponent::GetManaLimit()
 {
 	return this->ManaLimit;
 }
 
-float UGameplaySystemComponent::GetManaLimit()
+float UGameplaySystemComponent::GetInfightManaLimit()
 {
 	float ProperManaLimit = this->ManaLimit;
 	if (this->FirstRing != nullptr)
 	{
-		ProperManaLimit = this->FirstRing->ModifyManaLimit(ProperManaLimit);
+		ProperManaLimit = this->FirstRing->ModifyInfightManaLimit(ProperManaLimit);
 	}
 	if (this->SecondRing != nullptr)
 	{
-		ProperManaLimit = this->SecondRing->ModifyManaLimit(ProperManaLimit);
+		ProperManaLimit = this->SecondRing->ModifyInfightManaLimit(ProperManaLimit);
 	}
 	if (this->Amulet != nullptr)
 	{
-		ProperManaLimit = this->Amulet->ModifyManaLimit(ProperManaLimit);
+		ProperManaLimit = this->Amulet->ModifyInfightManaLimit(ProperManaLimit);
+	}
+	return ProperManaLimit;
+}
+
+float UGameplaySystemComponent::GetDisplayManaLimit()
+{
+	float ProperManaLimit = this->ManaLimit;
+	if (this->FirstRing != nullptr)
+	{
+		ProperManaLimit = this->FirstRing->ModifyDisplayManaLimit(ProperManaLimit);
+	}
+	if (this->SecondRing != nullptr)
+	{
+		ProperManaLimit = this->SecondRing->ModifyDisplayManaLimit(ProperManaLimit);
+	}
+	if (this->Amulet != nullptr)
+	{
+		ProperManaLimit = this->Amulet->ModifyDisplayManaLimit(ProperManaLimit);
 	}
 	return ProperManaLimit;
 }
@@ -337,25 +417,43 @@ void UGameplaySystemComponent::AffectManaLimit(float Delta)
 	this->SetManaLimit(this->ManaLimit + Delta);
 }
 
-float UGameplaySystemComponent::GetRawManaRegenerationPerSec()
+float UGameplaySystemComponent::GetManaRegenerationPerSec()
 {
 	return this->ManaRegenerationPerSec;
 }
 
-float UGameplaySystemComponent::GetManaRegenerationPerSec()
+float UGameplaySystemComponent::GetInfightManaRegenerationPerSec()
 {
 	float ProperManaRegeneration = this->ManaRegenerationPerSec;
 	if (this->FirstRing != nullptr)
 	{
-		ProperManaRegeneration = this->FirstRing->ModifyManaRegeneration(ProperManaRegeneration);
+		ProperManaRegeneration = this->FirstRing->ModifyInfightManaRegeneration(ProperManaRegeneration);
 	}
 	if (this->SecondRing != nullptr)
 	{
-		ProperManaRegeneration = this->SecondRing->ModifyManaRegeneration(ProperManaRegeneration);
+		ProperManaRegeneration = this->SecondRing->ModifyInfightManaRegeneration(ProperManaRegeneration);
 	}
 	if (this->Amulet != nullptr)
 	{
-		ProperManaRegeneration = this->Amulet->ModifyManaRegeneration(ProperManaRegeneration);
+		ProperManaRegeneration = this->Amulet->ModifyInfightManaRegeneration(ProperManaRegeneration);
+	}
+	return ProperManaRegeneration;
+}
+
+float UGameplaySystemComponent::GetDisplayManaRegenerationPerSec()
+{
+	float ProperManaRegeneration = this->ManaRegenerationPerSec;
+	if (this->FirstRing != nullptr)
+	{
+		ProperManaRegeneration = this->FirstRing->ModifyDisplayManaRegeneration(ProperManaRegeneration);
+	}
+	if (this->SecondRing != nullptr)
+	{
+		ProperManaRegeneration = this->SecondRing->ModifyDisplayManaRegeneration(ProperManaRegeneration);
+	}
+	if (this->Amulet != nullptr)
+	{
+		ProperManaRegeneration = this->Amulet->ModifyDisplayManaRegeneration(ProperManaRegeneration);
 	}
 	return ProperManaRegeneration;
 }

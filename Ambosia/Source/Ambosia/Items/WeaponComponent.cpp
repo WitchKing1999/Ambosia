@@ -50,7 +50,7 @@ AActor* UWeaponComponent::PlotHitLine(float LineLength, AController* Instigator,
 		APawn* TargetAsPawn = dynamic_cast<APawn*>(HitResult.Actor.Get());
 		if (TargetAsPawn)
 		{
-			TargetAsPawn->GetController()->TakeDamage(GameplaySystem->GetAttackPoints(), FDamageEvent(DamageType), Instigator, Instigator->GetPawn());
+			TargetAsPawn->GetController()->TakeDamage(GameplaySystem->GetInfightAttackPoints(), FDamageEvent(DamageType), Instigator, Instigator->GetPawn());
 		}
 		return HitResult.GetActor();
 	}
@@ -78,7 +78,7 @@ AActor* UWeaponComponent::SpawnProjectile(UClass* ProjectileClass, FVector Relat
 
 	if (Projectile != nullptr)
 	{
-		Projectile->SetAttackPoints(GameplaySystem->GetAttackPoints());
+		Projectile->SetAttackPoints(GameplaySystem->GetInfightAttackPoints());
 	}
 
 	return SpawnedActor;
@@ -129,7 +129,7 @@ bool UWeaponComponent::ApplyArrowBundleCosts(UGameplaySystemComponent* GameplayS
 	}
 }
 
-float UWeaponComponent::ModifyAttackPoints_Implementation(float AttackPoints)
+float UWeaponComponent::ModifyInfightAttackPoints_Implementation(float AttackPoints)
 {
 	float CriticalFactor = 1;
 	float RandomNumber = FMath::FRandRange(0.0f, 1.0f);
@@ -141,7 +141,17 @@ float UWeaponComponent::ModifyAttackPoints_Implementation(float AttackPoints)
 	return AttackPoints * this->AttackFactor * CriticalFactor;
 }
 
-float UWeaponComponent::ModifyMagicalAttackPoints_Implementation(float MagicalAttackPoints)
+float UWeaponComponent::ModifyDisplayAttackPoints_Implementation(float AttackPoints)
+{
+	return AttackPoints * this->AttackFactor;
+}
+
+float UWeaponComponent::ModifyInfightMagicalAttackPoints_Implementation(float MagicalAttackPoints)
+{
+	return MagicalAttackPoints * this->MagicalAttackFactor;
+}
+
+float UWeaponComponent::ModifyDisplayMagicalAttackPoints_Implementation(float MagicalAttackPoints)
 {
 	return MagicalAttackPoints * this->MagicalAttackFactor;
 }

@@ -66,12 +66,23 @@ public:
 	Multiplies the attack points by our attack factor and returns them.
 	If we have a critical hit, it also multiplies the attack points by 2.
 	*/
-	virtual float ModifyAttackPoints_Implementation(float AttackPoints) override;
+	virtual float ModifyInfightAttackPoints_Implementation(float AttackPoints) override;
+
+	/*
+	Multiplies the attack points by our attack factor and returns them.
+	If we have a critical hit, it also multiplies the attack points by 2.
+	*/
+	virtual float ModifyDisplayAttackPoints_Implementation(float AttackPoints) override;
 
 	/*
 	Multiplies the magical attack points by our magical attack factor.
 	*/
-	virtual float ModifyMagicalAttackPoints_Implementation(float MagicalAttackPoints) override;
+	virtual float ModifyInfightMagicalAttackPoints_Implementation(float MagicalAttackPoints) override;
+
+	/*
+	Multiplies the magical attack points by our magical attack factor.
+	*/
+	virtual float ModifyDisplayMagicalAttackPoints_Implementation(float MagicalAttackPoints) override;
 
 	/*
 	Returns our mana costs

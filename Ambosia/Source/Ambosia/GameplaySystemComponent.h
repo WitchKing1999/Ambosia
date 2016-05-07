@@ -95,10 +95,16 @@ public:
 	float GetHealthPointsLimit();
 
 	/*
-	Returns our health points limit, modified by our items
+	Returns our health points limit, modified by our items, to be used in a fight
 	*/
 	UFUNCTION(BlueprintPure, Category = "Variables|Gameplay Values|Health Points")
-	float GetEffectiveHealthPointsLimit();
+	float GetInfightHealthPointsLimit();
+
+	/*
+	Returns our health points limit, modified by our items, to be displayed
+	*/
+	UFUNCTION(BlueprintPure, Category = "Variables|Gameplay Values|Health Points")
+	float GetDisplayHealthPointsLimit();
 
 	/*
 	Sets our health points limit. If our health points are bigger than
@@ -124,13 +130,19 @@ public:
 	/*
 	Returns our raw attack points
 	*/
-	float GetRawAttackPoints();
+	float GetAttackPoints();
 
 	/*
 	Returns our attack points, modified by our items
 	*/
 	UFUNCTION(BlueprintPure, Category = "Variables|Gameplay Values|Attack Points")
-	float GetAttackPoints();
+	float GetInfightAttackPoints();
+
+	/*
+	Returns our attack points, modified by our items
+	*/
+	UFUNCTION(BlueprintPure, Category = "Variables|Gameplay Values|Attack Points")
+	float GetDisplayAttackPoints();
 
 	/*
 	Sets our attack points to the new attack points.
@@ -147,13 +159,19 @@ public:
 	/*
 	Returns our raw magical attack points
 	*/
-	float GetRawMagicalAttackPoints();
+	float GetMagicalAttackPoints();
 
 	/*
 	Returns our magical attack points, modified by our items
 	*/
 	UFUNCTION(BlueprintPure, Category = "Variables|Gameplay Values|Attack Points")
-	float GetMagicalAttackPoints();
+	float GetDisplayMagicalAttackPoints();
+
+	/*
+	Returns our magical attack points, modified by our items
+	*/
+	UFUNCTION(BlueprintPure, Category = "Variables|Gameplay Values|Attack Points")
+	float GetInfightMagicalAttackPoints();
 
 	/*
 	Sets our magical attack points to the new magical attack points.
@@ -198,13 +216,19 @@ public:
 	/*
 	Returns our raw mana limt
 	*/
-	float GetRawManaLimit();
+	float GetManaLimit();
 
 	/*
 	Returns our mana limit, modified by our items
 	*/
 	UFUNCTION(BlueprintPure, Category = "Variables|Gameplay Values|Mana")
-	float GetManaLimit();
+	float GetInfightManaLimit();
+
+	/*
+	Returns our mana limit, modified by our items
+	*/
+	UFUNCTION(BlueprintPure, Category = "Variables|Gameplay Values|Mana")
+	float GetDisplayManaLimit();
 
 	/*
 	Sets our mana limit. If our mana is bigger than
@@ -224,13 +248,19 @@ public:
 	/*
 	Returns our raw mana regeneration
 	*/
-	float GetRawManaRegenerationPerSec();
+	float GetManaRegenerationPerSec();
 
 	/*
 	Returns our mana regeneration, modified by our items
 	*/
 	UFUNCTION(BlueprintPure, Category = "Variables|Gameplay Values|Mana")
-	float GetManaRegenerationPerSec();
+	float GetInfightManaRegenerationPerSec();
+
+	/*
+	Returns our mana regeneration, modified by our items
+	*/
+	UFUNCTION(BlueprintPure, Category = "Variables|Gameplay Values|Mana")
+	float GetDisplayManaRegenerationPerSec();
 
 	/*
 	Sets our mana regeneration

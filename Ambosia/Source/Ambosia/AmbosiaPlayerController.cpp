@@ -241,10 +241,10 @@ bool AAmbosiaPlayerController::SaveGameplayValues(UAmbosiaSaveGame* Savegame)
 	Savegame->HealthPoints = GameplaySystem->GetHealthPoints();
 	Savegame->HealthPointsLimit = GameplaySystem->GetHealthPointsLimit();
 	Savegame->Mana = GameplaySystem->GetMana();
-	Savegame->ManaLimit = GameplaySystem->GetRawManaLimit();
-	Savegame->ManaRegeneration = GameplaySystem->GetRawManaRegenerationPerSec();
-	Savegame->AttackPoints = GameplaySystem->GetRawAttackPoints();
-	Savegame->MagicalAttackPoints = GameplaySystem->GetRawMagicalAttackPoints();
+	Savegame->ManaLimit = GameplaySystem->GetManaLimit();
+	Savegame->ManaRegeneration = GameplaySystem->GetManaRegenerationPerSec();
+	Savegame->AttackPoints = GameplaySystem->GetAttackPoints();
+	Savegame->MagicalAttackPoints = GameplaySystem->GetMagicalAttackPoints();
 	Savegame->ExperiencePoints = ExperiencePoints;
 	Savegame->SkillPoints = SkillPoints;
 	Savegame->SkillLevel = CurrentLevel;

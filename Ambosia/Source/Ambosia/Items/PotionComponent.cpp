@@ -29,7 +29,7 @@ bool UPotionComponent::Action_Implementation()
 		return false;
 
 		
-	if (GSComponent->GetHealthPoints() < GSComponent->GetEffectiveHealthPointsLimit())
+	if (GSComponent->GetHealthPoints() < GSComponent->GetInfightHealthPointsLimit())
 	{
 		float NewHP = this->ModifyHealthPoints(GSComponent->GetHealthPoints());
 		GSComponent->SetHealthPoints(NewHP);

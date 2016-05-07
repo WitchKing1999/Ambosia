@@ -13,27 +13,52 @@ UAmuletComponent::UAmuletComponent()
 	ManaRegenerationPerSec = 0;
 }
 
-float UAmuletComponent::ModifyHealthPointsLimit_Implementation(float HealthPointsLimit)
+float UAmuletComponent::ModifyInfightHealthPointsLimit_Implementation(float HealthPointsLimit)
 {
 	return HealthPointsLimit + this->GetHealthPointsLimit();
 }
 
-float UAmuletComponent::ModifyManaLimit_Implementation(float ManaLimit)
+float UAmuletComponent::ModifyDisplayHealthPointsLimit_Implementation(float HealthPointsLimit)
+{
+	return HealthPointsLimit + this->GetHealthPointsLimit();
+}
+
+float UAmuletComponent::ModifyInfightManaLimit_Implementation(float ManaLimit)
 {
 	return ManaLimit + this->GetManaLimit();
 }
 
-float UAmuletComponent::ModifyAttackPoints_Implementation(float AttackPoints)
+float UAmuletComponent::ModifyDisplayManaLimit_Implementation(float ManaLimit)
+{
+	return ManaLimit + this->GetManaLimit();
+}
+
+float UAmuletComponent::ModifyInfightAttackPoints_Implementation(float AttackPoints)
 {
 	return AttackPoints + this->GetAttackPoints();
 }
 
-float UAmuletComponent::ModifyMagicalAttackPoints_Implementation(float MagicalAttackPoints)
+float UAmuletComponent::ModifyDisplayAttackPoints_Implementation(float AttackPoints)
+{
+	return AttackPoints + this->GetAttackPoints();
+}
+
+float UAmuletComponent::ModifyInfightMagicalAttackPoints_Implementation(float MagicalAttackPoints)
 {
 	return MagicalAttackPoints + this->GetMagicalAttackPoints();
 }
 
-float UAmuletComponent::ModifyManaRegeneration_Implementation(float ManaRegeneration)
+float UAmuletComponent::ModifyDisplayMagicalAttackPoints_Implementation(float MagicalAttackPoints)
+{
+	return MagicalAttackPoints + this->GetMagicalAttackPoints();
+}
+
+float UAmuletComponent::ModifyInfightManaRegeneration_Implementation(float ManaRegeneration)
+{
+	return ManaRegeneration + this->GetManaRegeneration();
+}
+
+float UAmuletComponent::ModifyDisplayManaRegeneration_Implementation(float ManaRegeneration)
 {
 	return ManaRegeneration + this->GetManaRegeneration();
 }

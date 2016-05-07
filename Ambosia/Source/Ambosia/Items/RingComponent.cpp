@@ -13,27 +13,52 @@ URingComponent::URingComponent()
 	ManaRegenerationPerSec = 0;
 }
 
-float URingComponent::ModifyHealthPointsLimit_Implementation(float HealthPointsLimit)
+float URingComponent::ModifyInfightHealthPointsLimit_Implementation(float HealthPointsLimit)
 {
 	return HealthPointsLimit + this->GetHealthPointsLimit();
 }
 
-float URingComponent::ModifyManaLimit_Implementation(float ManaLimit)
+float URingComponent::ModifyDisplayHealthPointsLimit_Implementation(float HealthPointsLimit)
+{
+	return HealthPointsLimit + this->GetHealthPointsLimit();
+}
+
+float URingComponent::ModifyInfightManaLimit_Implementation(float ManaLimit)
 {
 	return ManaLimit + this->GetManaLimit();
 }
 
-float URingComponent::ModifyAttackPoints_Implementation(float AttackPoints)
+float URingComponent::ModifyDisplayManaLimit_Implementation(float ManaLimit)
+{
+	return ManaLimit + this->GetManaLimit();
+}
+
+float URingComponent::ModifyInfightAttackPoints_Implementation(float AttackPoints)
 {
 	return AttackPoints + this->GetAttackPoints();
 }
 
-float URingComponent::ModifyMagicalAttackPoints_Implementation(float MagicalAttackPoints)
+float URingComponent::ModifyDisplayAttackPoints_Implementation(float AttackPoints)
+{
+	return AttackPoints + this->GetAttackPoints();
+}
+
+float URingComponent::ModifyInfightMagicalAttackPoints_Implementation(float MagicalAttackPoints)
 {
 	return MagicalAttackPoints + this->GetMagicalAttackPoints();
 }
 
-float URingComponent::ModifyManaRegeneration_Implementation(float ManaRegeneration)
+float URingComponent::ModifyDisplayMagicalAttackPoints_Implementation(float MagicalAttackPoints)
+{
+	return MagicalAttackPoints + this->GetMagicalAttackPoints();
+}
+
+float URingComponent::ModifyInfightManaRegeneration_Implementation(float ManaRegeneration)
+{
+	return ManaRegeneration + this->GetManaRegeneration();
+}
+
+float URingComponent::ModifyDisplayManaRegeneration_Implementation(float ManaRegeneration)
 {
 	return ManaRegeneration + this->GetManaRegeneration();
 }

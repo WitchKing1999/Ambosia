@@ -116,24 +116,48 @@ public:
 	By default, this does nothing.
 	*/
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Gameplay Values")
-	float ModifyHealthPointsLimit(float HealthPointsLimit);
-	virtual float ModifyHealthPointsLimit_Implementation(float HealthPointsLimit);
+	float ModifyInfightHealthPointsLimit(float HealthPointsLimit);
+	virtual float ModifyInfightHealthPointsLimit_Implementation(float HealthPointsLimit);
+
+	/*
+	Takes the health points limit and modifies and returns them.
+	By default, this does nothing.
+	*/
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Gameplay Values")
+	float ModifyDisplayHealthPointsLimit(float HealthPointsLimit);
+	virtual float ModifyDisplayHealthPointsLimit_Implementation(float HealthPointsLimit);
 
 	/*
 	Takes the attack points and modifies and returns them.
 	By default, this does nothing.
 	*/
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Gameplay Values")
-	float ModifyAttackPoints(float AttackPoints);
-	virtual float ModifyAttackPoints_Implementation(float AttackPoints);
+	float ModifyInfightAttackPoints(float AttackPoints);
+	virtual float ModifyInfightAttackPoints_Implementation(float AttackPoints);
+
+	/*
+	Takes the attack points and modifies and returns them.
+	By default, this does nothing.
+	*/
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Gameplay Values")
+	float ModifyDisplayAttackPoints(float AttackPoints);
+	virtual float ModifyDisplayAttackPoints_Implementation(float AttackPoints);
 
 	/*
 	Takes the magical attack points and modifies and returns them.
 	By default, this does nothing.
 	*/
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Gameplay Values")
-	float ModifyMagicalAttackPoints(float MagicalAttackPoints);
-	virtual float ModifyMagicalAttackPoints_Implementation(float MagicalAttackPoints);
+	float ModifyInfightMagicalAttackPoints(float MagicalAttackPoints);
+	virtual float ModifyInfightMagicalAttackPoints_Implementation(float MagicalAttackPoints);
+
+	/*
+	Takes the magical attack points and modifies and returns them.
+	By default, this does nothing.
+	*/
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Gameplay Values")
+	float ModifyDisplayMagicalAttackPoints(float MagicalAttackPoints);
+	virtual float ModifyDisplayMagicalAttackPoints_Implementation(float MagicalAttackPoints);
 
 	/*
 	Takes the mana and modifies and returns them.
@@ -148,16 +172,32 @@ public:
 	By default, this does nothing.
 	*/
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Gameplay Values")
-	float ModifyManaLimit(float ManaLimit);
-	virtual float ModifyManaLimit_Implementation(float ManaLimit);
+	float ModifyInfightManaLimit(float ManaLimit);
+	virtual float ModifyInfightManaLimit_Implementation(float ManaLimit);
+
+	/*
+	Takes the mana limit and modifies and returns them.
+	By default, this does nothing.
+	*/
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Gameplay Values")
+	float ModifyDisplayManaLimit(float ManaLimit);
+	virtual float ModifyDisplayManaLimit_Implementation(float ManaLimit);
 
 	/*
 	Takes the mana regeneration and modifies and returns them.
 	By default, this does nothing.
 	*/
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Gameplay Values")
-	float ModifyManaRegeneration(float ManaRegeneration);
-	virtual float ModifyManaRegeneration_Implementation(float ManaRegeneration);
+	float ModifyInfightManaRegeneration(float ManaRegeneration);
+	virtual float ModifyInfightManaRegeneration_Implementation(float ManaRegeneration);
+
+	/*
+	Takes the mana regeneration and modifies and returns them.
+	By default, this does nothing.
+	*/
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Gameplay Values")
+	float ModifyDisplayManaRegeneration(float ManaRegeneration);
+	virtual float ModifyDisplayManaRegeneration_Implementation(float ManaRegeneration);
 
 	/*
 	Our screen name

@@ -116,17 +116,32 @@ float UItemComponent::ModifyHealthPoints_Implementation(float HealthPoints)
 	return HealthPoints;
 }
 
-float UItemComponent::ModifyHealthPointsLimit_Implementation(float HealthPointsLimit)
+float UItemComponent::ModifyInfightHealthPointsLimit_Implementation(float HealthPointsLimit)
 {
 	return HealthPointsLimit;
 }
 
-float UItemComponent::ModifyAttackPoints_Implementation(float AttackPoints)
+float UItemComponent::ModifyDisplayHealthPointsLimit_Implementation(float HealthPointsLimit)
+{
+	return HealthPointsLimit;
+}
+
+float UItemComponent::ModifyInfightAttackPoints_Implementation(float AttackPoints)
 {
 	return AttackPoints;
 }
 
-float UItemComponent::ModifyMagicalAttackPoints_Implementation(float MagicalAttackPoints)
+float UItemComponent::ModifyDisplayAttackPoints_Implementation(float AttackPoints)
+{
+	return AttackPoints;
+}
+
+float UItemComponent::ModifyInfightMagicalAttackPoints_Implementation(float MagicalAttackPoints)
+{
+	return MagicalAttackPoints;
+}
+
+float UItemComponent::ModifyDisplayMagicalAttackPoints_Implementation(float MagicalAttackPoints)
 {
 	return MagicalAttackPoints;
 }
@@ -136,12 +151,22 @@ float UItemComponent::ModifyMana_Implementation(float Mana)
 	return Mana;
 }
 
-float UItemComponent::ModifyManaLimit_Implementation(float ManaLimit)
+float UItemComponent::ModifyInfightManaLimit_Implementation(float ManaLimit)
 {
 	return ManaLimit;
 }
 
-float UItemComponent::ModifyManaRegeneration_Implementation(float ManaRegeneration)
+float UItemComponent::ModifyDisplayManaLimit_Implementation(float ManaLimit)
+{
+	return ManaLimit;
+}
+
+float UItemComponent::ModifyInfightManaRegeneration_Implementation(float ManaRegeneration)
+{
+	return ManaRegeneration;
+}
+
+float UItemComponent::ModifyDisplayManaRegeneration_Implementation(float ManaRegeneration)
 {
 	return ManaRegeneration;
 }

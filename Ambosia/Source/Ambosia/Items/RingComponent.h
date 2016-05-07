@@ -20,27 +20,52 @@ public:
 	/*
 	Adds our health points limit to the given health points limit and returns it.
 	*/
-	virtual float ModifyHealthPointsLimit_Implementation(float HealthPointsLimit) override;
+	virtual float ModifyInfightHealthPointsLimit_Implementation(float HealthPointsLimit) override;
+
+	/*
+	Adds our health points limit to the given health points limit and returns it.
+	*/
+	virtual float ModifyDisplayHealthPointsLimit_Implementation(float HealthPointsLimit) override;
 
 	/*
 	Adds our mana limit to the given mana limit and returns it.
 	*/
-	virtual float ModifyManaLimit_Implementation(float ManaLimit) override;
+	virtual float ModifyInfightManaLimit_Implementation(float ManaLimit) override;
+
+	/*
+	Adds our mana limit to the given mana limit and returns it.
+	*/
+	virtual float ModifyDisplayManaLimit_Implementation(float ManaLimit) override;
 
 	/*
 	Adds our attack points limit to the given attack points and returns it.
 	*/
-	virtual float ModifyAttackPoints_Implementation(float AttackPoints) override;
+	virtual float ModifyInfightAttackPoints_Implementation(float AttackPoints) override;
+
+	/*
+	Adds our attack points limit to the given attack points and returns it.
+	*/
+	virtual float ModifyDisplayAttackPoints_Implementation(float AttackPoints) override;
 
 	/*
 	Adds our magical attack points to the given magical attack points and returns it.
 	*/
-	virtual float ModifyMagicalAttackPoints_Implementation(float MagicalAttackPoints) override;
+	virtual float ModifyInfightMagicalAttackPoints_Implementation(float MagicalAttackPoints) override;
+
+	/*
+	Adds our magical attack points to the given magical attack points and returns it.
+	*/
+	virtual float ModifyDisplayMagicalAttackPoints_Implementation(float MagicalAttackPoints) override;
 
 	/*
 	Adds our mana regeneration to the given mana regeneration and returns it.
 	*/
-	virtual float ModifyManaRegeneration_Implementation(float ManaRegeneration) override;
+	virtual float ModifyInfightManaRegeneration_Implementation(float ManaRegeneration) override;
+
+	/*
+	Adds our mana regeneration to the given mana regeneration and returns it.
+	*/
+	virtual float ModifyDisplayManaRegeneration_Implementation(float ManaRegeneration) override;
 
 	/*
 	Returns our health points limit
