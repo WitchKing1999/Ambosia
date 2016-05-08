@@ -37,7 +37,7 @@ AActor* UWeaponComponent::PlotHitLine(float LineLength, AController* Instigator,
 	}
 
 	// Setup the trace query  
-	FCollisionQueryParams TraceParams = FCollisionQueryParams(false);
+	FCollisionQueryParams TraceParams = FCollisionQueryParams();
 	TraceParams.AddIgnoredActor(OwnerAsController->GetPawn());
 	TraceParams.bTraceAsyncScene = true;
 	FCollisionResponseParams CollisionParams = FCollisionResponseParams();
