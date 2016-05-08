@@ -570,6 +570,8 @@ bool UGameplaySystemComponent::SetFirstRing(URingComponent* NewRing)
 	if (NewRing == nullptr)
 	{
 		this->FirstRing = nullptr;
+		this->AffectHealthPoints(0);	// Updates our health points and mana,
+		this->AffectMana(0);			// in case the new limit is higher than the actual value
 		return true;
 	}
 	else if (NewRing->GetAttachParent() == this)
@@ -579,6 +581,8 @@ bool UGameplaySystemComponent::SetFirstRing(URingComponent* NewRing)
 		{
 			this->SecondRing = nullptr;
 		}
+		this->AffectHealthPoints(0);	// Updates our health points and mana,
+		this->AffectMana(0);			// in case the new limit is higher than the actual value
 		return true;
 	}
 	else
@@ -597,6 +601,8 @@ bool UGameplaySystemComponent::SetSecondRing(URingComponent* NewRing)
 	if (NewRing == nullptr)
 	{
 		this->SecondRing = nullptr;
+		this->AffectHealthPoints(0);	// Updates our health points and mana,
+		this->AffectMana(0);			// in case the new limit is higher than the actual value
 		return true;
 	}
 	else if (NewRing->GetAttachParent() == this)
@@ -606,6 +612,8 @@ bool UGameplaySystemComponent::SetSecondRing(URingComponent* NewRing)
 		{
 			this->FirstRing = nullptr;
 		}
+		this->AffectHealthPoints(0);	// Updates our health points and mana,
+		this->AffectMana(0);			// in case the new limit is higher than the actual value
 		return true;
 	}
 	else
@@ -624,11 +632,15 @@ bool UGameplaySystemComponent::SetAmulet(UAmuletComponent* NewAmulet)
 	if (NewAmulet == nullptr)
 	{
 		this->Amulet = nullptr;
+		this->AffectHealthPoints(0);	// Updates our health points and mana,
+		this->AffectMana(0);			// in case the new limit is higher than the actual value
 		return true;
 	}
 	else if (NewAmulet->GetAttachParent() == this)
 	{
 		this->Amulet = NewAmulet;
+		this->AffectHealthPoints(0);	// Updates our health points and mana,
+		this->AffectMana(0);			// in case the new limit is higher than the actual value
 		return true;
 	}
 	else
