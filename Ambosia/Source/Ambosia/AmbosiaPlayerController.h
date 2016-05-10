@@ -20,6 +20,8 @@ enum class ESkillableValue : uint8
 	VE_MagicalAttackPoints UMETA(DisplayName="MagicalAttackPoints")
 };
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FGameSavedDelegate, bool, Successfull);
+
 /**
  * 
  */
@@ -75,6 +77,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Saving")
 	bool SavePosition(UAmbosiaSaveGame* Savegame);
+
+	UPROPERTY(BlueprintAssignable, Category = "Event Dispatchers")
+	FGameSavedDelegate OnGameSaved;
 
 	UFUNCTION(BlueprintCallable, Category = "Saving")
 	bool LoadSaveGame();

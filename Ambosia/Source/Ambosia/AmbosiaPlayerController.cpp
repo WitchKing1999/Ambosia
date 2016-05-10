@@ -4,7 +4,6 @@
 
 #include "Saving/MetaSaveGame.h"
 #include "Kismet/GameplayStatics.h"
-#include "Kismet/KismetSystemLibrary.h"
 
 #include "AmbosiaPlayerController.h"
 
@@ -12,6 +11,8 @@ AAmbosiaPlayerController::AAmbosiaPlayerController()
 {
 	GameplaySystem = CreateDefaultSubobject<UGameplaySystemComponent>(TEXT("GameplaySystemComponent"));
 	GameplaySystem->bLoadGameOverScreenOnDying = true;
+
+	OnGameSaved = FGameSavedDelegate();
 
 	LookRate = 2;
 	SaveGameLoaded = false;
@@ -227,11 +228,12 @@ bool AAmbosiaPlayerController::SaveSaveGame()
 
 	if (SavingSuccessfull)
 	{
-		UKismetSystemLibrary::PrintString(this, "Game Saved!");
+		this->OnGameSaved.Broadcast(true);
 		return true;
 	}
 	else
 	{
+		this->OnGameSaved.Broadcast(false);
 		return false;
 	}
 }
