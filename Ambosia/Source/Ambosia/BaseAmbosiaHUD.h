@@ -29,6 +29,9 @@ public:
 	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, Category = "HUD")
 	void HideHUD();
 
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, Category = "HUD")
+	void OpenReturnToMainMenuWidget();
+
 	UPROPERTY(BlueprintReadWrite, Category = "HUD")
 	bool bInventoryOpen;
 

@@ -100,7 +100,11 @@ void AAmbosiaPlayerController::PotionPressed()
 
 void AAmbosiaPlayerController::MainMenuPressed()
 {
-	UGameplayStatics::OpenLevel(this, "/Game/Menues/MainMenuWorld", true);
+	ABaseAmbosiaHUD* HUD = Cast<ABaseAmbosiaHUD>(this->GetHUD());
+	if (HUD)
+	{
+		HUD->OpenReturnToMainMenuWidget();
+	}
 }
 
 void AAmbosiaPlayerController::InventoryPressed()
