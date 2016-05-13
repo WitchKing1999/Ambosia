@@ -13,6 +13,7 @@
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FChildAttachedDelegate, USceneComponent*, ChildComponent);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FChildDetachedDelegate, USceneComponent*, ChildComponent);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_FourParams(FDamageTookDelegate, float, RawDamageAmount, float, ProperDamageAmount, UDamageType*, DamageType, AActor*, DamageCauser);
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class AMBOSIA_API UGameplaySystemComponent : public USceneComponent
@@ -32,6 +33,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Game|Damage")
 	virtual float TakeDamage(float DamageAmount, UDamageType* DamageType, AController* EventInstigator, AActor* DamageCauser);
+
+	UPROPERTY(BlueprintAssignable, Category = "Event Dispatchers")
+	FDamageTookDelegate OnDamageTook;
 
 	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 

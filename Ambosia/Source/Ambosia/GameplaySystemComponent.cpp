@@ -12,6 +12,7 @@ UGameplaySystemComponent::UGameplaySystemComponent()
 
 	OnChildAttachedDispatcher = FChildAttachedDelegate();
 	OnChildDetachedDispatcher = FChildDetachedDelegate();
+	OnDamageTook = FDamageTookDelegate();
 
 	TimeToNextRegen = 1;
 	bLoadGameOverScreenOnDying = false;
@@ -54,6 +55,8 @@ float UGameplaySystemComponent::TakeDamage(float DamageAmount, UDamageType* Dama
 {
 	UAmbosiaDamageType* AmbosiaDamageType = dynamic_cast<UAmbosiaDamageType*>(DamageType);
 
+	float RawDamageAmount = DamageAmount;
+
 	if (AmbosiaDamageType != nullptr)
 	{
 		if (AmbosiaDamageType->IsMagical())
@@ -68,6 +71,7 @@ float UGameplaySystemComponent::TakeDamage(float DamageAmount, UDamageType* Dama
 		}
 	}
 
+	this->OnDamageTook.Broadcast(RawDamageAmount, DamageAmount, DamageType, DamageCauser);
 	this->AffectHealthPoints(DamageAmount * -1);
 
 	return DamageAmount;
