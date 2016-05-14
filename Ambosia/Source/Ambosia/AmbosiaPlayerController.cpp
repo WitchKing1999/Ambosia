@@ -415,6 +415,7 @@ bool AAmbosiaPlayerController::LoadItems(UAmbosiaSaveGame* Savegame)
 bool AAmbosiaPlayerController::LoadPosition(UAmbosiaSaveGame* Savegame)
 {
 	this->GetPawn()->SetActorTransform(Savegame->Spawnpoint, false, nullptr, ETeleportType::TeleportPhysics);
+	this->SetControlRotation(FRotator(Savegame->Spawnpoint.GetRotation()));
 	this->CurrentWorldPath = Savegame->LevelName;
 	return true;
 }
