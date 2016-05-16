@@ -19,17 +19,21 @@ public:
 
 	float GetDefenceFactor();
 	
-	virtual float ModifyAttackPoints_Implementation(float AttackPoints) override;
+	virtual float ModifyInfightAttackPoints_Implementation(float AttackPoints) override;
+
+	virtual float ModifyDisplayAttackPoints_Implementation(float AttackPoints) override;
 
 	float GetMagicalDefenceFactor();
 
-	virtual float ModifyMagicalAttackPoints_Implementation(float MagicalAttackPoints) override;
+	virtual float ModifyInfightMagicalAttackPoints_Implementation(float MagicalAttackPoints) override;
+
+	virtual float ModifyDisplayMagicalAttackPoints_Implementation(float MagicalAttackPoints) override;
 
 protected:
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Armor")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Armor")
 	float DefenceFactor;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Armor")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Armor")
 	float MagicalDefenceFactor;
 };

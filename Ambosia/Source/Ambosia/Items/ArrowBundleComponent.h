@@ -20,7 +20,7 @@ public:
 
 protected:
 	
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Arrow Bundle")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Arrow Bundle")
 	UClass* ArrowClass;
 	
 };

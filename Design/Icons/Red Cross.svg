@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="40"
+   height="40"
+   viewBox="0 0 40 40"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="Red Cross.svg"
+   inkscape:export-filename="C:\Users\Jan-Oliver\Documents\Ambosia\Design\Icons\Red Cross.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.03"
+     inkscape:cx="-122.63547"
+     inkscape:cy="93"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="1272"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-1012.3622)">
+    <path
+       style="fill:#ff0000;stroke:#ff0000"
+       id="path3380"
+       d="m 0.31152257,1049.595 c 3.84061743,-4.0456 7.97818203,-7.7819 12.08463543,-11.551 3.300274,-3.0531 6.959081,-5.6661 10.539479,-8.3688 2.332379,-1.7111 4.343087,-3.7712 6.256399,-5.9251 0.616408,-0.7657 1.319696,-1.5315 1.712129,-2.4461 0.01404,-0.087 0.02808,-0.1747 0.04212,-0.2621 0,0 6.556745,-3.311 6.556745,-3.311 l 0,0 c 0.0062,0.1298 0.01238,0.2596 0.01857,0.3894 -0.123564,1.1059 -1.001771,1.955 -1.632721,2.818 -1.998549,2.1549 -3.943811,4.3651 -6.342353,6.1008 -4.268234,3.3038 1.103437,-0.8098 -3.298309,2.418 -2.545379,1.8665 -4.978262,3.894 -7.379907,5.9389 -4.048121,3.7061 -8.192438,7.3217 -11.8543147,11.4227 0,0 -6.70247873,2.7763 -6.70247873,2.7763 z"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:#ff0000;stroke:#ff0000"
+       id="path3392"
+       d="m 30.007078,1048.6015 c -1.68986,-0.2175 -3.399545,-0.4281 -4.911101,-1.2479 -0.970435,-0.5577 -1.902785,-1.1713 -2.982078,-1.4924 -1.000791,-0.455 -1.919238,-1.0536 -2.830614,-1.6678 -1.089512,-0.8169 -1.884235,-1.9319 -2.756852,-2.9668 -1.177483,-1.584 -2.230145,-3.2598 -3.314254,-4.9091 -0.748073,-1.0772 -1.561286,-2.1081 -2.373655,-3.1384 -1.0728367,-1.2923 -2.1878057,-2.5444 -3.1039973,-3.9558 -0.5650076,-0.9755 -1.044906,-1.9911 -1.5467593,-2.9987 -0.5273958,-0.8469 -1.2294765,-1.537 -1.7461332,-2.3899 -0.5392002,-0.9523 -1.0100576,-1.9379 -1.5452376,-2.8924 -0.2614725,-0.5141 -0.6369479,-0.9327 -1.0244065,-1.3522 0,0 6.2356321,-3.7853 6.2356321,-3.7853 l 0,0 c 0.4239692,0.4632 0.8486794,0.9217 1.138113,1.4863 0.5215562,0.951 0.9858358,1.9298 1.5222618,2.8724 0.527893,0.8673 1.288345,1.5523 1.793765,2.4382 0.477487,0.9884 0.925404,1.9881 1.462748,2.9474 0.899728,1.3954 2.000773,2.6254 3.071506,3.8894 0.843526,1.0363 1.672528,2.0889 2.400824,3.2101 1.034331,1.643 2.051327,3.3102 3.282625,4.8152 0.838065,0.977 1.580089,2.0533 2.655201,2.7878 0.875149,0.5679 1.763893,1.1323 2.742907,1.5054 1.06365,0.4158 2.017679,1.0349 3.011343,1.5916 1.468925,0.6825 3.133123,0.8802 4.738434,0.9516 0,0 -5.920272,4.3013 -5.920272,4.3013 z"
+       inkscape:connector-curvature="0" />
+  </g>
+</svg>

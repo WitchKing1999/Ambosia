@@ -1,7 +1,6 @@
 // (C) Flumminard 2015
 
 #include "Ambosia.h"
-#include "Text.h"
 #include "ItemComponent.h"
 
 
@@ -10,12 +9,19 @@ UItemComponent::UItemComponent()
 {
 	PrimaryComponentTick.bCanEverTick = true;
 
-	Name = "Item";
-	Description = "Does nothing at all!";
+	Name = FText::FromString("Item");
+	Description = FText::FromString("Does nothing at all!");
+	ItemType = EItemType::VE_Item;
 	StackSize = 1;
 	TimeTillCooled = 0;
 	CooldownTime = 0;
 	bStackable = false;
+	DropChance = 0;
+	static ConstructorHelpers::FObjectFinder<UTexture> IconAsset(TEXT("/Game/Icons/Grey_Circle"));
+	if (IconAsset.Succeeded())
+	{
+		Icon = IconAsset.Object;
+	}
 }
 
 void UItemComponent::TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
@@ -36,22 +42,17 @@ bool UItemComponent::Action_Implementation()
 	return true;
 }
 
-FString UItemComponent::GetName()
+EItemType UItemComponent::GetItemType()
 {
-	return this->Name;
+	return this->ItemType;
 }
 
-FString UItemComponent::GetDescription()
-{
-	return this->Description;
-}
-
-float UItemComponent::GetStackSize()
+int32 UItemComponent::GetStackSize()
 {
 	return this->StackSize;
 }
 
-void UItemComponent::SetStackSize(float NewStackSize)
+void UItemComponent::SetStackSize(int32 NewStackSize)
 {
 	this->StackSize = NewStackSize;
 	if (this->StackSize <= 0)
@@ -60,7 +61,7 @@ void UItemComponent::SetStackSize(float NewStackSize)
 	}
 }
 
-void UItemComponent::AffectStackSize(float Delta)
+void UItemComponent::AffectStackSize(int32 Delta)
 {
 	this->SetStackSize(this->StackSize + Delta);
 }
@@ -74,12 +75,18 @@ void UItemComponent::AddItemToStack(UItemComponent* Item)
 	}
 }
 
-void UItemComponent::StartCooldown()
+bool UItemComponent::StartCooldown()
 {
-	this->TimeTillCooled = this->CooldownTime;
+	if (this->TimeTillCooled <= 0)
+	{
+		this->TimeTillCooled = this->CooldownTime;
+		return true;
+	}
+	else
+		return false;
 }
 
-void UItemComponent::OnCooledDown()
+void UItemComponent::OnCooledDown_Implementation()
 {
 	return; // do nothing!
 }
@@ -99,22 +106,42 @@ bool UItemComponent::IsStackable()
 	return this->bStackable;
 }
 
+float UItemComponent::GetDropChance()
+{
+	return this->DropChance;
+}
+
 float UItemComponent::ModifyHealthPoints_Implementation(float HealthPoints)
 {
 	return HealthPoints;
 }
 
-float UItemComponent::ModifyHealthPointsLimit_Implementation(float HealthPointsLimit)
+float UItemComponent::ModifyInfightHealthPointsLimit_Implementation(float HealthPointsLimit)
 {
 	return HealthPointsLimit;
 }
 
-float UItemComponent::ModifyAttackPoints_Implementation(float AttackPoints)
+float UItemComponent::ModifyDisplayHealthPointsLimit_Implementation(float HealthPointsLimit)
+{
+	return HealthPointsLimit;
+}
+
+float UItemComponent::ModifyInfightAttackPoints_Implementation(float AttackPoints)
 {
 	return AttackPoints;
 }
 
-float UItemComponent::ModifyMagicalAttackPoints_Implementation(float MagicalAttackPoints)
+float UItemComponent::ModifyDisplayAttackPoints_Implementation(float AttackPoints)
+{
+	return AttackPoints;
+}
+
+float UItemComponent::ModifyInfightMagicalAttackPoints_Implementation(float MagicalAttackPoints)
+{
+	return MagicalAttackPoints;
+}
+
+float UItemComponent::ModifyDisplayMagicalAttackPoints_Implementation(float MagicalAttackPoints)
 {
 	return MagicalAttackPoints;
 }
@@ -124,12 +151,22 @@ float UItemComponent::ModifyMana_Implementation(float Mana)
 	return Mana;
 }
 
-float UItemComponent::ModifyManaLimit_Implementation(float ManaLimit)
+float UItemComponent::ModifyInfightManaLimit_Implementation(float ManaLimit)
 {
 	return ManaLimit;
 }
 
-float UItemComponent::ModifyManaRegeneration_Implementation(float ManaRegeneration)
+float UItemComponent::ModifyDisplayManaLimit_Implementation(float ManaLimit)
+{
+	return ManaLimit;
+}
+
+float UItemComponent::ModifyInfightManaRegeneration_Implementation(float ManaRegeneration)
+{
+	return ManaRegeneration;
+}
+
+float UItemComponent::ModifyDisplayManaRegeneration_Implementation(float ManaRegeneration)
 {
 	return ManaRegeneration;
 }

@@ -5,8 +5,9 @@
 
 UArrowBundleComponent::UArrowBundleComponent()
 {
-	Name = "Arrow bundle";
-	Description = "A bundle of arrows to be used with a bow";
+	Name = FText::FromString("Arrow bundle");
+	Description = FText::FromString("A bundle of arrows to be used with a bow");
+	ItemType = EItemType::VE_ArrowBundle;
 	bStackable = true;
 	ArrowClass = nullptr;
 }

@@ -4,6 +4,7 @@ DerivedDataCache
 Intermediate
 Saved
 *.opendb
+*.VC.db
 *.opensdf
 *.sdf
 *.sln
