@@ -7,8 +7,14 @@
 
 #include "AmbosiaPlayerController.h"
 
+UInteractableInterface::UInteractableInterface(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
+{
+}
+
 AAmbosiaPlayerController::AAmbosiaPlayerController()
 {
+	InteractableControllers = TArray<AController*>();
+
 	GameplaySystem = CreateDefaultSubobject<UGameplaySystemComponent>(TEXT("GameplaySystemComponent"));
 	GameplaySystem->bLoadGameOverScreenOnDying = true;
 
@@ -45,6 +51,7 @@ void AAmbosiaPlayerController::BeginPlay()
 	InputComponent->BindAction("Potion", IE_Pressed, this, &AAmbosiaPlayerController::PotionPressed);
 	InputComponent->BindAction("MainMenu", IE_Pressed, this, &AAmbosiaPlayerController::MainMenuPressed);
 	InputComponent->BindAction("Inventory", IE_Pressed, this, &AAmbosiaPlayerController::InventoryPressed);
+	InputComponent->BindAction("Interact", IE_Pressed, this, &AAmbosiaPlayerController::InteractionPressed);
 }
 
 void AAmbosiaPlayerController::EndPlay(const EEndPlayReason::Type EndPlayReason)
@@ -126,6 +133,16 @@ void AAmbosiaPlayerController::InventoryPressed()
 		this->bEnableClickEvents = true;
 		this->bEnableMouseOverEvents = true;
 		this->ControlsEnabled = false;
+	}
+}
+
+#include "Kismet/KismetSystemLibrary.h"
+
+void AAmbosiaPlayerController::InteractionPressed()
+{
+	if (this->InteractableControllers.Num() > 0)
+	{
+		IInteractableInterface::Execute_Interact(this->InteractableControllers.Last());
 	}
 }
 

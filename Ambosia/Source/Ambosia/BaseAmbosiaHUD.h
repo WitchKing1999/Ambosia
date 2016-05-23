@@ -30,6 +30,12 @@ public:
 	void HideHUD();
 
 	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, Category = "HUD")
+	void ShowInteractIcon();
+
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, Category = "HUD")
+	void HideInteractIcon();
+
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, Category = "HUD")
 	void OpenReturnToMainMenuWidget();
 
 	UPROPERTY(BlueprintReadWrite, Category = "HUD")

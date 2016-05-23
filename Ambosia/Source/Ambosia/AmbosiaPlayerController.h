@@ -20,6 +20,22 @@ enum class ESkillableValue : uint8
 	VE_MagicalAttackPoints UMETA(DisplayName="MagicalAttackPoints")
 };
 
+UINTERFACE(Blueprintable)
+class UInteractableInterface : public UInterface
+{
+	GENERATED_UINTERFACE_BODY()
+};
+
+class IInteractableInterface
+{
+	GENERATED_IINTERFACE_BODY()
+
+public:
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, Category = "Custom")
+		void Interact() const;
+};
+
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FGameSavedDelegate, bool, Successfull);
 
 /**
@@ -59,6 +75,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Events")
 	void InventoryPressed();
+
+	UFUNCTION(BlueprintCallable, Category = "Events")
+	void InteractionPressed();
 
 	UFUNCTION(BlueprintCallable, Category = "Experience")
 	void ReceiveLoot(TArray<UClass*> ItemClasses, TArray<int32> ItemStacks, float Experience);
@@ -107,6 +126,11 @@ public:
 	FName CurrentWorldPath;
 
 	bool GetSaveGameLoaded();
+
+public:
+
+	UPROPERTY(BlueprintReadWrite)
+	TArray<AController*> InteractableControllers;
 	
 protected:
 
