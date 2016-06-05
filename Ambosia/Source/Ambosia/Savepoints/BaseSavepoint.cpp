@@ -8,10 +8,11 @@
 // Sets default values
 ABaseSavepoint::ABaseSavepoint()
 {
+	//OnActorBeginOverlap.AddDynamic(this, &ABaseSavepoint::OnOverlapBegin);
 	OnActorBeginOverlap.AddDynamic(this, &ABaseSavepoint::OnOverlapBegin);
 }
 
-void ABaseSavepoint::OnOverlapBegin(class AActor* OtherActor)
+void ABaseSavepoint::OnOverlapBegin(class AActor* OverlappedActor, class AActor* OtherActor)
 {
 	APawn* OtherPawn = Cast<APawn>(OtherActor);
 	if (!OtherPawn)

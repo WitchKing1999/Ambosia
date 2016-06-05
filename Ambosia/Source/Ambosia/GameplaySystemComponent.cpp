@@ -44,7 +44,7 @@ UItemComponent* UGameplaySystemComponent::CreateAndAddItem(UClass* ItemClass)
 		}
 		//~~~~~~~~~~~~~
 		NewItem->RegisterComponent();        //You must ConstructObject with a valid Outer that has world, see above    
-		NewItem->AttachTo(this);
+		NewItem->AttachToComponent(this, FAttachmentTransformRules(EAttachmentRule::KeepWorld, false));
 		return NewItem;
 	}
 	else

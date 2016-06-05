@@ -19,7 +19,7 @@ public:
 	ABaseSavingPortal();
 
 	UFUNCTION()
-	virtual void OnOverlapBegin(class AActor* OtherActor) override;
+	virtual void OnOverlapBegin(class AActor* OverlappedActor, class AActor* OtherActor) override;
 
 protected:
 

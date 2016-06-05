@@ -15,5 +15,5 @@ public:
 	ABaseSavepoint();
 
 	UFUNCTION()
-	virtual void OnOverlapBegin(class AActor* OtherActor);
+	virtual void OnOverlapBegin(class AActor* OverlappedActor, class AActor* OtherActor);
 };
