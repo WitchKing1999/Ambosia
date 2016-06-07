@@ -7,6 +7,7 @@
 #include "Saving/AmbosiaSaveGame.h"
 #include "GameplaySystemComponent.h"
 #include "BaseAmbosiaHUD.h"
+#include "Structs/Quest.h"
 
 #include "AmbosiaPlayerController.generated.h"
 
@@ -37,6 +38,10 @@ public:
 };
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FGameSavedDelegate, bool, Successfull);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FQuestAddedDelegate, FQuest, Quest);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FQuestActivatedDelegate, FQuest, Quest);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FQuestCompletedDelegate, FQuest, Quest);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FQuestCanceledDelegate, FQuest, Quest);
 
 /**
  * 
@@ -127,6 +132,41 @@ public:
 
 	bool GetSaveGameLoaded();
 
+	/*
+	Returns our quests. See variable description for more information.
+	*/
+	TArray<FQuest> GetQuests();
+
+	/*
+	Gets the quest with this name. Returns true if this Quest was found, false if not.
+	*/
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Variables|Experience")
+	bool GetQuest(FName QuestName, FQuest& Quest);
+
+	/*
+	Adds a new quest.
+	*/
+	UFUNCTION(BlueprintCallable, Category = "Variables|Experience")
+	void AddQuest(FQuest NewQuest);
+
+	FQuestAddedDelegate OnQuestAdded;
+
+	/*
+	Removes the quest at the given index. Should be used barely.
+	*/
+	UFUNCTION(BlueprintCallable, Category = "Variables|Experience")
+	void RemoveQuest(FName QuestName);
+
+	/*
+	Sets the status of a quest to the new status.
+	*/
+	UFUNCTION(BlueprintCallable, Category = "Variables|Experience")
+	void SetQuestStatus(FName QuestName, EQuestStatus NewStatus);
+
+	FQuestActivatedDelegate OnQuestActivated;
+	FQuestCompletedDelegate OnQuestCompleted;
+	FQuestCanceledDelegate OnQuestCanceled;
+
 public:
 
 	UPROPERTY(BlueprintReadWrite)
@@ -160,5 +200,8 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	bool ControlsEnabled;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Experience")
+	TArray<FQuest> Quests;
 
 };

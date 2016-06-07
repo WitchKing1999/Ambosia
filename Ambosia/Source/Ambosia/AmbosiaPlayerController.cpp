@@ -36,6 +36,12 @@ AAmbosiaPlayerController::AAmbosiaPlayerController()
 	SkillPointsList.Add(20);
 	SkillPointsList.Add(40);
 
+	Quests = TArray<FQuest>();
+	OnQuestAdded = FQuestAddedDelegate();
+	OnQuestActivated = FQuestActivatedDelegate();
+	OnQuestCompleted = FQuestCompletedDelegate();
+	OnQuestCanceled = FQuestCanceledDelegate();
+
 }
 
 void AAmbosiaPlayerController::BeginPlay()
@@ -271,6 +277,7 @@ bool AAmbosiaPlayerController::SaveGameplayValues(UAmbosiaSaveGame* Savegame)
 	Savegame->ExperiencePoints = ExperiencePoints;
 	Savegame->SkillPoints = SkillPoints;
 	Savegame->SkillLevel = CurrentLevel;
+	Savegame->Quests = Quests;
 	return true;
 }
 
@@ -348,6 +355,7 @@ bool AAmbosiaPlayerController::LoadGameplayValues(UAmbosiaSaveGame* Savegame)
 	this->ExperiencePoints = Savegame->ExperiencePoints;
 	this->CurrentLevel = Savegame->SkillLevel;
 	this->SkillPoints = Savegame->SkillPoints;
+	this->Quests = Savegame->Quests;
 	return true;
 }
 
@@ -465,4 +473,69 @@ int32 AAmbosiaPlayerController::GetCurrentLevel()
 bool AAmbosiaPlayerController::GetSaveGameLoaded()
 {
 	return this->SaveGameLoaded;
+}
+
+TArray<FQuest> AAmbosiaPlayerController::GetQuests()
+{
+	return this->Quests;
+}
+
+bool AAmbosiaPlayerController::GetQuest(FName QuestName, FQuest& Quest)
+{
+	for (int32 Index = 0; Index < this->GetQuests().Num(); Index++)
+	{
+		if (this->GetQuests()[Index].QuestName == QuestName)
+		{
+			Quest = this->GetQuests()[Index];
+			return true;
+		}
+		Index++;
+	}
+	return false;
+}
+
+void AAmbosiaPlayerController::AddQuest(FQuest NewQuest)
+{
+	this->Quests.Add(NewQuest);
+	this->OnQuestAdded.Broadcast(NewQuest);
+}
+
+void AAmbosiaPlayerController::RemoveQuest(FName QuestName)
+{
+	for (int32 Index = 0; Index < this->GetQuests().Num(); Index++)
+	{
+		if (this->GetQuests()[Index].QuestName == QuestName)
+		{
+			this->Quests.RemoveAt(Index);
+			break;
+		}
+		Index++;
+	}
+}
+
+void AAmbosiaPlayerController::SetQuestStatus(FName QuestName, EQuestStatus NewStatus)
+{
+	for (int32 Index = 0; Index < this->GetQuests().Num(); Index++)
+	{
+		if (this->GetQuests()[Index].QuestName == QuestName)
+		{
+			this->Quests[Index].Status = NewStatus;
+			switch (NewStatus)
+			{
+			case EQuestStatus::VE_Active:
+				this->OnQuestActivated.Broadcast(this->GetQuests()[Index]);
+				break;
+			case EQuestStatus::VE_Completed:
+				this->OnQuestCompleted.Broadcast(this->GetQuests()[Index]);
+				break;
+			case EQuestStatus::VE_Canceled:
+				this->OnQuestCanceled.Broadcast(this->GetQuests()[Index]);
+				break;
+			default:
+				break;
+			}
+			break;
+		}
+		Index++;
+	}
 }

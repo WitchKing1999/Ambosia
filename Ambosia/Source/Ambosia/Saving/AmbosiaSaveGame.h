@@ -3,6 +3,7 @@
 #pragma once
 
 #include "GameFramework/SaveGame.h"
+#include "Structs/Quest.h"
 #include "AmbosiaSaveGame.generated.h"
 
 /**
@@ -46,6 +47,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Experience")
 		int32 SkillLevel;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Experience")
+		TArray<FQuest> Quests;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Level")
 		FTransform Spawnpoint;
