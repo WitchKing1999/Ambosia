@@ -37,11 +37,11 @@ public:
 		void Interact() const;
 };
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FGameLoadedDelegate, bool, Successfull);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FGameSavedDelegate, bool, Successfull);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FQuestAddedDelegate, FQuest, Quest);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FQuestActivatedDelegate, FQuest, Quest);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FQuestCompletedDelegate, FQuest, Quest);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FQuestCanceledDelegate, FQuest, Quest);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FQuestRemovedDelegate, FQuest, Quest);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FQuestStatusChangedDelegate, FQuest, OldQuest, FQuest, NewQuest);
 
 /**
  * 
@@ -114,8 +114,11 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Saving")
 	bool LoadItems(UAmbosiaSaveGame* Savegame);
 
-	UFUNCTION(BlueprintCallable, Category = "Saveing")
+	UFUNCTION(BlueprintCallable, Category = "Saving")
 	bool LoadPosition(UAmbosiaSaveGame* Savegame);
+
+	UPROPERTY(BlueprintAssignable, Category = "Event Dispatchers")
+	FGameLoadedDelegate OnGameLoaded;
 
 	float GetLookRate();
 
@@ -149,6 +152,7 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Variables|Experience")
 	void AddQuest(FQuest NewQuest);
 
+	UPROPERTY(BlueprintAssignable, Category = "Event Dispatchers")
 	FQuestAddedDelegate OnQuestAdded;
 
 	/*
@@ -157,15 +161,17 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Variables|Experience")
 	void RemoveQuest(FName QuestName);
 
+	UPROPERTY(BlueprintAssignable, Category = "Event Dispatchers")
+	FQuestRemovedDelegate OnQuestRemoved;
+
 	/*
 	Sets the status of a quest to the new status.
 	*/
 	UFUNCTION(BlueprintCallable, Category = "Variables|Experience")
 	void SetQuestStatus(FName QuestName, EQuestStatus NewStatus);
 
-	FQuestActivatedDelegate OnQuestActivated;
-	FQuestCompletedDelegate OnQuestCompleted;
-	FQuestCanceledDelegate OnQuestCanceled;
+	UPROPERTY(BlueprintAssignable, Category = "Event Dispatchers")
+	FQuestStatusChangedDelegate OnQuestStatusChanged;
 
 public:
 

@@ -16,7 +16,7 @@ class AMBOSIA_API ABaseAmbosiaHUD : public AHUD
 public:
 
 	ABaseAmbosiaHUD();
-	
+
 	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, Category = "HUD")
 	void OpenInventory();
 

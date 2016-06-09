@@ -4,6 +4,7 @@
 
 #include "Saving/MetaSaveGame.h"
 #include "Kismet/GameplayStatics.h"
+#include "BaseAmbosiaHUD.h"
 
 #include "AmbosiaPlayerController.h"
 
@@ -19,6 +20,7 @@ AAmbosiaPlayerController::AAmbosiaPlayerController()
 	GameplaySystem->bLoadGameOverScreenOnDying = true;
 
 	OnGameSaved = FGameSavedDelegate();
+	OnGameLoaded = FGameLoadedDelegate();
 
 	LookRate = 2;
 	SaveGameLoaded = false;
@@ -38,10 +40,8 @@ AAmbosiaPlayerController::AAmbosiaPlayerController()
 
 	Quests = TArray<FQuest>();
 	OnQuestAdded = FQuestAddedDelegate();
-	OnQuestActivated = FQuestActivatedDelegate();
-	OnQuestCompleted = FQuestCompletedDelegate();
-	OnQuestCanceled = FQuestCanceledDelegate();
-
+	OnQuestRemoved = FQuestRemovedDelegate();
+	OnQuestStatusChanged = FQuestStatusChangedDelegate();
 }
 
 void AAmbosiaPlayerController::BeginPlay()
@@ -341,6 +341,8 @@ bool AAmbosiaPlayerController::LoadSaveGame()
 	}
 	else
 		SaveSuccessfull = false;
+
+	this->OnGameLoaded.Broadcast(SaveSuccessfull);
 	return SaveSuccessfull;
 }
 
@@ -506,6 +508,7 @@ void AAmbosiaPlayerController::RemoveQuest(FName QuestName)
 	{
 		if (this->GetQuests()[Index].QuestName == QuestName)
 		{
+			this->OnQuestRemoved.Broadcast(this->GetQuests()[Index]);
 			this->Quests.RemoveAt(Index);
 			break;
 		}
@@ -519,22 +522,9 @@ void AAmbosiaPlayerController::SetQuestStatus(FName QuestName, EQuestStatus NewS
 	{
 		if (this->GetQuests()[Index].QuestName == QuestName)
 		{
+			FQuest OldQuest = this->Quests[Index];
 			this->Quests[Index].Status = NewStatus;
-			switch (NewStatus)
-			{
-			case EQuestStatus::VE_Active:
-				this->OnQuestActivated.Broadcast(this->GetQuests()[Index]);
-				break;
-			case EQuestStatus::VE_Completed:
-				this->OnQuestCompleted.Broadcast(this->GetQuests()[Index]);
-				break;
-			case EQuestStatus::VE_Canceled:
-				this->OnQuestCanceled.Broadcast(this->GetQuests()[Index]);
-				break;
-			default:
-				break;
-			}
-			break;
+			this->OnQuestStatusChanged.Broadcast(OldQuest, this->GetQuests()[Index]);
 		}
 		Index++;
 	}
