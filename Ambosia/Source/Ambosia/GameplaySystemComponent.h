@@ -11,10 +11,16 @@
 #include "Items/AmuletComponent.h"
 #include "GameplaySystemComponent.generated.h"
 
+/*
+Event Delegates
+*/
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FChildAttachedDelegate, USceneComponent*, ChildComponent);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FChildDetachedDelegate, USceneComponent*, ChildComponent);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_FourParams(FDamageTookDelegate, float, RawDamageAmount, float, ProperDamageAmount, UDamageType*, DamageType, AActor*, DamageCauser);
 
+/*
+The gameplay system handles items, damage applying and damage taking.
+*/
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class AMBOSIA_API UGameplaySystemComponent : public USceneComponent
 {
@@ -31,24 +37,49 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Component|AddComponent")
 	UItemComponent* CreateAndAddItem(UClass* ItemClass);
 
+	/*
+	Applies the damage to our health points.
+	*/
 	UFUNCTION(BlueprintCallable, Category = "Game|Damage")
 	virtual float TakeDamage(float DamageAmount, UDamageType* DamageType, AController* EventInstigator, AActor* DamageCauser);
 
+	/*
+	Gets called when we take damage.
+	*/
 	UPROPERTY(BlueprintAssignable, Category = "Event Dispatchers")
 	FDamageTookDelegate OnDamageTook;
 
+	/*
+	Gets called every engine tick.
+	*/
 	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
+	/*
+	Calls the OnChildAttachedDispatcher.
+	*/
 	virtual void OnChildAttached(USceneComponent* ChildComponent) override;
 
+	/*
+	If the detached child is a selected item, the selected item pointer will
+	be set to nullptr.
+	*/
 	virtual void OnChildDetached(USceneComponent* ChildComponent) override;
 
+	/*
+	Gets called when a child was attached.
+	*/
 	UPROPERTY(BlueprintAssignable, Category = "Event Dispatchers")
 	FChildAttachedDelegate OnChildAttachedDispatcher;
 
+	/*
+	Gets called when a child was detached.
+	*/
 	UPROPERTY(BlueprintAssignable, Category = "Event Dispatchers")
 	FChildDetachedDelegate OnChildDetachedDispatcher;
 
+	/*
+	Gets called when we end playing.
+	*/
 	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 
 private:
