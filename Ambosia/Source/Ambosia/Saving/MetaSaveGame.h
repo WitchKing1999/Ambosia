@@ -5,9 +5,13 @@
 #include "GameFramework/SaveGame.h"
 #include "MetaSaveGame.generated.h"
 
-/**
- * 
- */
+/*
+A save game container that contains
+the information about the current user name
+and user index. When the player controller loads
+the game, it first loads the meta save game, takes
+it information and loads the proper save game.
+*/
 UCLASS()
 class AMBOSIA_API UMetaSaveGame : public USaveGame
 {

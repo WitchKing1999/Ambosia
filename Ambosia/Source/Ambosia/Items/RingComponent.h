@@ -5,9 +5,9 @@
 #include "Items/ItemComponent.h"
 #include "RingComponent.generated.h"
 
-/**
- * 
- */
+/*
+The case class for rings.
+*/
 UCLASS()
 class AMBOSIA_API URingComponent : public UItemComponent
 {

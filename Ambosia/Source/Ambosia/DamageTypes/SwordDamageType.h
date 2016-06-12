@@ -5,9 +5,9 @@
 #include "DamageTypes/AmbosiaDamageType.h"
 #include "SwordDamageType.generated.h"
 
-/**
- * 
- */
+/*
+The damage type standart swords apply.
+*/
 UCLASS()
 class AMBOSIA_API USwordDamageType : public UAmbosiaDamageType
 {

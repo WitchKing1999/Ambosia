@@ -5,9 +5,9 @@
 #include "Items/ItemComponent.h"
 #include "AmuletComponent.generated.h"
 
-/**
- * 
- */
+/*
+Base class for amulets.
+*/
 UCLASS()
 class AMBOSIA_API UAmuletComponent : public UItemComponent
 {

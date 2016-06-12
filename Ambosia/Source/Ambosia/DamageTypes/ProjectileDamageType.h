@@ -5,9 +5,9 @@
 #include "DamageTypes/AmbosiaDamageType.h"
 #include "ProjectileDamageType.generated.h"
 
-/**
- * 
- */
+/*
+The damage type standart projectiles apply.
+*/
 UCLASS()
 class AMBOSIA_API UProjectileDamageType : public UAmbosiaDamageType
 {

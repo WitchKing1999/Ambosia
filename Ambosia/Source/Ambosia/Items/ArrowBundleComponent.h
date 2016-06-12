@@ -5,9 +5,9 @@
 #include "Items/ItemComponent.h"
 #include "ArrowBundleComponent.generated.h"
 
-/**
- * 
- */
+/*
+Base class for arrow bundles.
+*/
 UCLASS()
 class AMBOSIA_API UArrowBundleComponent : public UItemComponent
 {

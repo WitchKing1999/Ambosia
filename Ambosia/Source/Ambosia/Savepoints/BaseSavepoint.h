@@ -5,6 +5,11 @@
 #include "GameFramework/Actor.h"
 #include "BaseSavepoint.generated.h"
 
+/*
+Base class for savepoints.
+When the player overlaps it, it sends a message
+to the player controller to save the game.
+*/
 UCLASS()
 class AMBOSIA_API ABaseSavepoint : public AActor
 {

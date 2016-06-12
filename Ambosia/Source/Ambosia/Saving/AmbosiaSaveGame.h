@@ -6,9 +6,10 @@
 #include "Structs/Quest.h"
 #include "AmbosiaSaveGame.generated.h"
 
-/**
- * 
- */
+/*
+A saving container that contains all relevant
+information of the game.
+*/
 UCLASS()
 class AMBOSIA_API UAmbosiaSaveGame : public USaveGame
 {
