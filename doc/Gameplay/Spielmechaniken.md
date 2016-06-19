@@ -6,7 +6,7 @@
 
 Im Kern geht es im Kampfsystem von Ambosia darum, den **Lebenspunkte**-Wert des Gegners auf Null zu
 bringen und den eigenen über Null zu halten. Um den Gegnerischen Wert zu Verringern muss man Waffen
-anwenden, die dem Gegner Schaden zufügen (sprich: Den Lebenspunkte-Wert des Gegners zu verringern).
+verwenden, die dem Gegner Schaden zufügen (sprich: Den Lebenspunkte-Wert des Gegners zu verringern).
 Dazu hat man selbst einen **Angriffspunkte**-Wert, der dem Gegner als Schaden zugefügt wird.
 Dies kann jeder Charakter, der am Kampfsystem teilnimmt, tun und genauso kann jeder Charakter im
 System Schaden erhalten. Fällt der Lebenspunkte-Wert unter Null, wird der betroffene Charakter
@@ -15,11 +15,11 @@ zerstört.
 ### Schadensmodifikation durch Waffen und Rüstungen
 
 Der Schaden kann von der Waffe des Angreifers modifiziert werden. Diese Modifizierung erfolgt bevor
-der Angegriffene den Schaden erhält und ist von der Waffe abhängig. Die einfachen Start-Waffen multi-
-plizieren den Schaden mit einem Waffen-Eigenen Faktor.
-Der Angegriffene hat auch Möglichkeiten, den erhaltenen Schaden zu reduzieren und zwar mit seiner
-Rüstung. Auch hier ist die genaue Weise der Modifizierung die Sache der Rüstung, aber auch die ein-
-fachen Start-Rüstungen multiplizieren den erhaltenen Schaden mit einem eigenen Faktor.
+der Angegriffene den Schaden erhält und ist von der Waffe abhängig. Die einfachen Start-Waffen multiplizieren
+den Schaden mit einem Waffen-Eigenen Faktor.
+Der Angegriffene hat auch Möglichkeiten, den erhaltenen Schaden mit seiner Rüstung  zu reduzieren.
+Auch hier ist die genaue Weise der Modifizierung die Sache der Rüstung, aber auch die einfachen
+Start-Rüstungen multiplizieren den erhaltenen Schaden mit einem eigenen Faktor.
 
 ### Magie
 
@@ -40,5 +40,31 @@ der Stapel um 1 verringert.
 
 ### Ringe und Amulette
 
-Ringe un Amulete können angelegt werden und erhöhen dann alle Charakter-Werte. Man kan gleichzeitig
+Ringe und Amulete können angelegt werden und erhöhen dann alle Charakter-Werte. Man kann gleichzeitig
 zwei Ringe und ein Amulett tragen.
+
+### Beute
+
+Wenn der Spieler einen Gegner besiegt, gibt der Gegner ihm Items und Erfahrungspunkte. Jedes Item
+hat eine Drop-Wahrscheinlichkeit, mit der das Item, dass der Gegner besitzt gedropt wird. Zu den
+Erfahrungspunkten gibt es später mehr.
+
+## Erfahrung
+
+Die **Erfahrungspunkte** sind ein Wert des Spielers, die angeben, wie "erfahren" der Charakter des
+Spielers ist. Durch das besiegen von Gegnern oder erledigen von Aufgaben erhält der Spieler
+Erfahrungspunkte, die zu seinem Punktewert aufaddiert werden. Steigt der Punktewert des Spielers
+über eine bestimmte Höhe, erreicht er ein **Level** und erhält **Skillspunkte**. Mit diesen Punkten
+kann der Spieler die Statuswerte, also Angriffspunkte, mag. Angriffspunkte, maximale Lebenspunkte,
+maximales Mana und Manaregeneration, erhöhen: Für einen Skillpunkt kann er einen Wert um eins
+erhöhen.
+
+## Reden und Aufgaben
+
+Der Spieler kann mehrere Charaktere ansprechen und so interressante Informationen erhalten. Ebenso
+kann er darüber Aufgaben bekommen. Einmal erhalten, sind die Aufgaben im Aufgabenmenü sichtbar.
+Dort findet sich der Name und eine Beschreibung der Aufgabe, außerdem auch noch den Status der
+Aufgabe. Ist die Aufgabe aktiv, muss der Spieler diese erledigen und wieder mit dem Auftraggeber
+sprechen. Hat man keine Lust mehr, kann man Aufgaben auch abbrechen, allerdings verbleibt sie
+in der Liste und der Auftraggeber wird sich daran erinnern, dass man die Aufgabe abgebrochen hat.
+Als Belohnung bekommt der Spieler übrigens je nach Aufgabe Erfahrungspunkte und Items.
