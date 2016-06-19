@@ -1,3 +1,5 @@
+# Gameplay-Planung
+
 ### Grundlagen
 
 Im Spiel kann jedes Wesen jedes andere Wesen angreifen. Sobald Wesen A Wesen B schlägt, verringern sich die Lebenspunkte (LP)

@@ -1,8 +1,8 @@
-# Kampfsystem
+# Spielmechaniken
 
-## Algemeine Erläuterung
+## Kampfsystem
 
-### Generel
+### Generell
 
 Im Kern geht es im Kampfsystem von Ambosia darum, den **Lebenspunkte**-Wert des Gegners auf Null zu
 bringen und den eigenen über Null zu halten. Um den Gegnerischen Wert zu Verringern muss man Waffen
