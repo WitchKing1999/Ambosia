@@ -286,6 +286,12 @@ public:
 	*/
 	UPROPERTY(BlueprintReadWrite)
 	TArray<AController*> InteractableControllers;
+
+	/*
+	If true, the player controls over the character are enabled.
+	*/
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	bool ControlsEnabled;
 	
 protected:
 
@@ -334,12 +340,6 @@ protected:
 	*/
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	bool SaveGameLoaded;
-
-	/*
-	If true, the player controls over the character are enabled.
-	*/
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-	bool ControlsEnabled;
 
 	/*
 	An array with all of our quests.

@@ -126,19 +126,10 @@ void AAmbosiaPlayerController::InventoryPressed()
 	if (HUD->bInventoryOpen)
 	{
 		HUD->CloseInventory();
-
-		this->bShowMouseCursor = false;
-		this->bEnableClickEvents = false;
-		this->bEnableMouseOverEvents = false;
-		this->ControlsEnabled = true;
 	}
 	else
 	{
 		HUD->OpenInventory();
-		this->bShowMouseCursor = true;
-		this->bEnableClickEvents = true;
-		this->bEnableMouseOverEvents = true;
-		this->ControlsEnabled = false;
 	}
 }
 
