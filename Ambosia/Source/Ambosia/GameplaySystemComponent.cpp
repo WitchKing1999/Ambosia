@@ -359,10 +359,10 @@ float UGameplaySystemComponent::GetMana()
 
 void UGameplaySystemComponent::SetMana(float NewMana)
 {
-	if (NewMana <= this->GetManaLimit())
+	if (NewMana <= this->GetInfightManaLimit())
 		this->Mana = NewMana;
 	else
-		this->Mana = this->GetManaLimit();
+		this->Mana = this->GetInfightManaLimit();
 }
 
 void UGameplaySystemComponent::AffectMana(float Delta)
