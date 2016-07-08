@@ -23,7 +23,7 @@ Auf einmal hebt die Silhouette ihre Arme und der ganze Bereich der Landschaft wi
 Man sieht nur grobe Umrisse und das feurige Leuchten der Dämonen und die gelben Augen der Silhouette.
 Plötzlich feuert die Silhouette einen Blitz in die Luft, der dannach wieder runter stürmt und Ilyma trifft.
 Es gibt eine gewaltige goldene Druckwelle, welche den schwarzen Rauch vertreibt und Ilyma fliegt als Schwert hoch in die Luft.
-Heron wurde durch die Druckwellevon seinem Pferd gerissen und bekam den Vorfall nicht mit.
+Heron wurde durch die Druckwelle von seinem Pferd gerissen und bekam den Vorfall nicht mit.
 Nachdem er sich die Augen gerieben hat und wieder aufstand sieht er nur wie ein Feuerbeschwörungsring, welcher die Dämonen in letzter Sekunde gerettet hat, verschwindet.
 
 Die Silhouette beginnt ein Gespräch mit Heron und erzählt ihm, dass er jetzt Ilyma suchen muss und zu der Silhouette bringen soll,
@@ -31,3 +31,8 @@ um Ilyma zurückzuverwandeln.
 Er sagt zudem, dass Heron alles weitere später erfährt und mit der Arbeit in der guten Burg fortfahren soll.
 Die Silhouette verschwindet und Heron reitet zu seinem Hof zurück und berichtet den Vorfall.
 Dannach berichtet er den Vorfall in (Gute Burg).
+
+Der König hat sich wieder erholt, beschreibt die Lage als Ernst und befiehlt Heron weiter Aufträge anzunehmen und nun Ambosia nach seiner Frau
+und nach den Dämonen zu durchsuchen.
+Er trifft auf Personen, welche Heron Hinweise zu seinen Hauptaufgaben geben aber nur wenn Heron für diese, Aufträge erfüllt.
+
