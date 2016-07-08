@@ -5,9 +5,13 @@
 #include "GameFramework/HUD.h"
 #include "BaseAmbosiaHUD.generated.h"
 
-/**
- * 
- */
+/*
+An abstract class, derived from AHUD.
+The concrete AmbosiaHUD needs to handle with UMG widgets,
+which C++ can't, but also needs to accessed by the player controller,
+so this class adds the events for the HUD actions and the Blueprint
+AmbosiaHUD implements them.
+*/
 UCLASS()
 class AMBOSIA_API ABaseAmbosiaHUD : public AHUD
 {
@@ -16,7 +20,7 @@ class AMBOSIA_API ABaseAmbosiaHUD : public AHUD
 public:
 
 	ABaseAmbosiaHUD();
-	
+
 	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, Category = "HUD")
 	void OpenInventory();
 
@@ -28,6 +32,12 @@ public:
 
 	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, Category = "HUD")
 	void HideHUD();
+
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, Category = "HUD")
+	void ShowInteractIcon();
+
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, Category = "HUD")
+	void HideInteractIcon();
 
 	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, Category = "HUD")
 	void OpenReturnToMainMenuWidget();

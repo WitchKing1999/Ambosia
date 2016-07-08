@@ -19,14 +19,26 @@ public:
 
 	float GetDefenceFactor();
 	
+	/*
+	Multiplies the attack points with the defence factor and returns them.
+	*/
 	virtual float ModifyInfightAttackPoints_Implementation(float AttackPoints) override;
 
+	/*
+	Multiplies the attack points with the defence factor and returns them.
+	*/
 	virtual float ModifyDisplayAttackPoints_Implementation(float AttackPoints) override;
 
 	float GetMagicalDefenceFactor();
 
+	/*
+	Multiplies the magical attack points with the magical defence factor and returns them.
+	*/
 	virtual float ModifyInfightMagicalAttackPoints_Implementation(float MagicalAttackPoints) override;
 
+	/*
+	Multiplies the magical attack points with the magical defence factor and returns them.
+	*/
 	virtual float ModifyDisplayMagicalAttackPoints_Implementation(float MagicalAttackPoints) override;
 
 protected:

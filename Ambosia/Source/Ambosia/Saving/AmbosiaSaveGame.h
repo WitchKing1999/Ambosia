@@ -3,11 +3,13 @@
 #pragma once
 
 #include "GameFramework/SaveGame.h"
+#include "Structs/Quest.h"
 #include "AmbosiaSaveGame.generated.h"
 
-/**
- * 
- */
+/*
+A saving container that contains all relevant
+information of the game.
+*/
 UCLASS()
 class AMBOSIA_API UAmbosiaSaveGame : public USaveGame
 {
@@ -46,6 +48,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Experience")
 		int32 SkillLevel;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Experience")
+		TArray<FQuest> Quests;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Level")
 		FTransform Spawnpoint;

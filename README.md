@@ -13,5 +13,5 @@ snapshot](../../releases). Since this is published under the terms of the MIT Li
 upload the sourcecode. If you want to support us with code or assets, just create a pull request!
 
 You can find the game project files in the [`Ambosia`](Ambosia) folder, documentations in the
-[`doc`](doc) folder and the design file in the [`Design`](Design) folder. Please note that some of
+[`doc`](doc) folder and the design file in the [`Design`](Design) folder. Please note that most of
 the texts are written in german.

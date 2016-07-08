@@ -5,9 +5,9 @@
 #include "DamageTypes/AmbosiaDamageType.h"
 #include "MagicalProjectileDamageType.generated.h"
 
-/**
- * 
- */
+/*
+The damage type magical projectiles apply.
+*/
 UCLASS()
 class AMBOSIA_API UMagicalProjectileDamageType : public UAmbosiaDamageType
 {

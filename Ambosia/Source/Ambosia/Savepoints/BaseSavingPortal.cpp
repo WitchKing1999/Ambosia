@@ -13,9 +13,9 @@ ABaseSavingPortal::ABaseSavingPortal()
 	TargetTransform = FTransform();
 }
 
-void ABaseSavingPortal::OnOverlapBegin(class AActor* OtherActor)
+void ABaseSavingPortal::OnOverlapBegin(class AActor* OverlappedActor, class AActor* OtherActor)
 {
-	Super::OnOverlapBegin(OtherActor);
+	Super::OnOverlapBegin(OverlappedActor, OtherActor);
 	if (this->GetWorld()->GetFirstPlayerController()->GetPawn() != OtherActor)
 		return;
 	UMetaSaveGame* MetaSave = Cast<UMetaSaveGame>(UGameplayStatics::LoadGameFromSlot("Meta", 0));

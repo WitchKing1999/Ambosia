@@ -4,15 +4,23 @@
 
 #include "Saving/MetaSaveGame.h"
 #include "Kismet/GameplayStatics.h"
+#include "BaseAmbosiaHUD.h"
 
 #include "AmbosiaPlayerController.h"
 
+UInteractableInterface::UInteractableInterface(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
+{
+}
+
 AAmbosiaPlayerController::AAmbosiaPlayerController()
 {
+	InteractableControllers = TArray<AController*>();
+
 	GameplaySystem = CreateDefaultSubobject<UGameplaySystemComponent>(TEXT("GameplaySystemComponent"));
 	GameplaySystem->bLoadGameOverScreenOnDying = true;
 
 	OnGameSaved = FGameSavedDelegate();
+	OnGameLoaded = FGameLoadedDelegate();
 
 	LookRate = 2;
 	SaveGameLoaded = false;
@@ -30,6 +38,10 @@ AAmbosiaPlayerController::AAmbosiaPlayerController()
 	SkillPointsList.Add(20);
 	SkillPointsList.Add(40);
 
+	Quests = TArray<FQuest>();
+	OnQuestAdded = FQuestAddedDelegate();
+	OnQuestRemoved = FQuestRemovedDelegate();
+	OnQuestStatusChanged = FQuestStatusChangedDelegate();
 }
 
 void AAmbosiaPlayerController::BeginPlay()
@@ -45,6 +57,7 @@ void AAmbosiaPlayerController::BeginPlay()
 	InputComponent->BindAction("Potion", IE_Pressed, this, &AAmbosiaPlayerController::PotionPressed);
 	InputComponent->BindAction("MainMenu", IE_Pressed, this, &AAmbosiaPlayerController::MainMenuPressed);
 	InputComponent->BindAction("Inventory", IE_Pressed, this, &AAmbosiaPlayerController::InventoryPressed);
+	InputComponent->BindAction("Interact", IE_Pressed, this, &AAmbosiaPlayerController::InteractionPressed);
 }
 
 void AAmbosiaPlayerController::EndPlay(const EEndPlayReason::Type EndPlayReason)
@@ -113,19 +126,20 @@ void AAmbosiaPlayerController::InventoryPressed()
 	if (HUD->bInventoryOpen)
 	{
 		HUD->CloseInventory();
-
-		this->bShowMouseCursor = false;
-		this->bEnableClickEvents = false;
-		this->bEnableMouseOverEvents = false;
-		this->ControlsEnabled = true;
 	}
 	else
 	{
 		HUD->OpenInventory();
-		this->bShowMouseCursor = true;
-		this->bEnableClickEvents = true;
-		this->bEnableMouseOverEvents = true;
-		this->ControlsEnabled = false;
+	}
+}
+
+#include "Kismet/KismetSystemLibrary.h"
+
+void AAmbosiaPlayerController::InteractionPressed()
+{
+	if (this->InteractableControllers.Num() > 0)
+	{
+		IInteractableInterface::Execute_Interact(this->InteractableControllers.Last());
 	}
 }
 
@@ -254,6 +268,7 @@ bool AAmbosiaPlayerController::SaveGameplayValues(UAmbosiaSaveGame* Savegame)
 	Savegame->ExperiencePoints = ExperiencePoints;
 	Savegame->SkillPoints = SkillPoints;
 	Savegame->SkillLevel = CurrentLevel;
+	Savegame->Quests = Quests;
 	return true;
 }
 
@@ -317,6 +332,8 @@ bool AAmbosiaPlayerController::LoadSaveGame()
 	}
 	else
 		SaveSuccessfull = false;
+
+	this->OnGameLoaded.Broadcast(SaveSuccessfull);
 	return SaveSuccessfull;
 }
 
@@ -331,6 +348,7 @@ bool AAmbosiaPlayerController::LoadGameplayValues(UAmbosiaSaveGame* Savegame)
 	this->ExperiencePoints = Savegame->ExperiencePoints;
 	this->CurrentLevel = Savegame->SkillLevel;
 	this->SkillPoints = Savegame->SkillPoints;
+	this->Quests = Savegame->Quests;
 	return true;
 }
 
@@ -448,4 +466,57 @@ int32 AAmbosiaPlayerController::GetCurrentLevel()
 bool AAmbosiaPlayerController::GetSaveGameLoaded()
 {
 	return this->SaveGameLoaded;
+}
+
+TArray<FQuest> AAmbosiaPlayerController::GetQuests()
+{
+	return this->Quests;
+}
+
+bool AAmbosiaPlayerController::GetQuest(FName QuestName, FQuest& Quest)
+{
+	for (int32 Index = 0; Index < this->GetQuests().Num(); Index++)
+	{
+		if (this->GetQuests()[Index].QuestName == QuestName)
+		{
+			Quest = this->GetQuests()[Index];
+			return true;
+		}
+		Index++;
+	}
+	return false;
+}
+
+void AAmbosiaPlayerController::AddQuest(FQuest NewQuest)
+{
+	this->Quests.Add(NewQuest);
+	this->OnQuestAdded.Broadcast(NewQuest);
+}
+
+void AAmbosiaPlayerController::RemoveQuest(FName QuestName)
+{
+	for (int32 Index = 0; Index < this->GetQuests().Num(); Index++)
+	{
+		if (this->GetQuests()[Index].QuestName == QuestName)
+		{
+			this->OnQuestRemoved.Broadcast(this->GetQuests()[Index]);
+			this->Quests.RemoveAt(Index);
+			break;
+		}
+		Index++;
+	}
+}
+
+void AAmbosiaPlayerController::SetQuestStatus(FName QuestName, EQuestStatus NewStatus)
+{
+	for (int32 Index = 0; Index < this->GetQuests().Num(); Index++)
+	{
+		if (this->GetQuests()[Index].QuestName == QuestName)
+		{
+			FQuest OldQuest = this->Quests[Index];
+			this->Quests[Index].Status = NewStatus;
+			this->OnQuestStatusChanged.Broadcast(OldQuest, this->GetQuests()[Index]);
+		}
+		Index++;
+	}
 }
