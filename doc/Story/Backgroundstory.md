@@ -2,9 +2,9 @@ Herald, Herons Großvater, Ist ein normaler Mensch gewesen und wurde von den Gö
 Diese Insel heißt: "Ambosia".
 Als junger Mensch ganz alleine (Über seine Eltern ist nichts Bekannt) bereiste er Ambosia
 und fand bei seinen Erkundungen ein Volk: Die (Unbekanntes Volk).
-Sofort vereehrten die Einwohner von (Unbekannte Stadt1) Herald und baten Herald als Herscher über die (Unbekanntes Volk) einzutreten.
+Sofort vereehrten die Einwohner von (Unbekannte Stadt) Herald und baten Herald als Herscher über die (Unbekanntes Volk) einzutreten.
 Herald aktzeptierte die Anfrage und war nun Herscher über die (Unbekanntes Volk) und somit auch über ganz Ambosia, weil insgesammt nur
-3 Ur- Völker in Ambosia Leben: Die (Unbekanntes Volk), Die Wüstenbewohner von Al Kadar und die (Ur- Volk).
+3 Ur- Völker in Ambosia Leben: Die (Unbekanntes Volk), Die Wüstenbewohner von Al Kadar und die (Ur- Volk) und von denen die (Unbekanntes Volk) am weitesten gebildet waren.
 Die (Unbekanntes Volk) waren ledrige, grau-braune, hässliche Humanoide Wesen, welche sich sowohl mit dem Gehen als auch mit dem Fliegen
 fortbewegen konnten, weil sie Flügel besitzen. Da sie nur durch ihre Ledrige Haut "geschütz" waren und Herald sie beschützen musste
 wendete Herald die Schmiedekunst, die sein Vater ihm beigebracht hatte, an um Rüstungen für die (Unbekanntes Volk) herzustellen.
@@ -26,22 +26,22 @@ Doch der Himmel über Ambosia verdunkelte sich und ein Meteorit stürzte in den 
 Die Dämonen waren gekommen!
 Die Dämonen sind Wesen aus unglaublicher Magie und Stärke und besitzen die Kräfte des Feuers
 um alles Leben auszulöschen und damit ihr  Volk zu der Herrschaft des Universums zu bringen.
-Herald spürte diese grausame Macht und wusste, dass er alleine mit den (Unbekanntes Volk) Ambosia behüten konnte.
+Herald spürte diese grausame Macht und wusste, dass er alleine mit den (Unbekanntes Volk) Ambosia nicht mehr behüten konnte.
 Deshalb begann Herons Vater bei den mächtigsten Magiern von Ambosia eine Ausbildung und wurde selbst der Mächtigste von Allen.
-Er hat es nach langer Zeit so weit gebracht, dass er beschloss sich dem Verderbniss- Lord, dem Herrscher der Dämonen, zu stellen.
+Er hat es nach langer Zeit so weit gebracht, dass er beschloss sich dem Verderbnisslord, dem Herrscher der Dämonen, zu stellen.
 Mit Erfolg! Herons Vater hat die Dämonen mit seinen Magischen Kräften, den (Unbekanntes Volk) und Heralds Unterstützung geschafft.
 Leider wurde Herons Vater unheilbar verflucht: Er begann sich zu transformieren und zwar in das was er eigentlich bereits ausgelöscht hatte:
-Ein Dämon. Zwischen dem Finalem Kampf zwischen Herons Vater und dem Verderbniss- Lord, hatte der Verderbniss- Lord einen Teil seiner Macht in Herons Vater übertragen.
-Herons Vater transformiert sich langsam in einen Drachen!  Und der Verderbniss- Lord hat sich schließlich wieder materialisiert und beginnt erneut ein Heer aufzustellen, welches Ambosia
-ein für alle mal erobern soll.
+Ein Dämon. Zwischen dem Finalem Kampf zwischen Herons Vater und dem Verderbnisslord, hatte der Verderbnislord einen Teil seiner Macht in Herons Vater übertragen.
+Herons Vater transformiert sich langsam in einen Drachen!  Und der Verderbniss- Lord hat sich schließlich wieder materialisiert und beginnt mithilfe der (Alienvolk),
+welche der Verderbnisslord herbeigerufen hatte um mit deren Hilfe erneut ein Heer aufzustellen, welches Ambosia ein für alle mal erobern soll.
 
 Verzweifelt zog sich Herons Vater in seinem Turm in der Nordmitte von Ambosia zurück. Dort sucht er nach einer Lösung den Vorgang der Transformation zu verlangsamen.
 
 Inzwischen ist einiges passiert: Die Wüstenstadt Al Kadar ging durch die Dämonen, die sich Südlich der Wüste niedergelassen haben, unter.
-Verschlungen im Sand befinden sich die Überreste der Hochkultur: Ruinen und untote Krieger.
+Verschlungen im Sand befinden sich die Überreste der Hochkultur: Ruinen und untote Krieger, welche aus den Leichen der Kadanier und aus der Magie der (Alienvolk) entstanden sind.
 Doch einige Menschen haben die Wüste wiederbelebt: Die (Wüstenvolk) sind die gut ausgebildete Krieger und Attentäter.
 Sie konnten die Mächte der Untoten zurückdrängen und die neue Stadt (Wüstenstadt) errichten.
-Herald und die (Unbekanntes Volk) zogen sich nach (Unbekannte Stadt) zurück und warten, bis Heron soweit ist das Amt als Beschützer Ambosias zu vertretten.
+Herald und die (Unbekanntes Volk) zogen sich nach (Unbekannte Stadt) zurück und warten, bis ein Erbe soweit ist das Amt als Beschützer Ambosias zu vertretten.
 
 Herons Vater wusste selber, dass er es schaffen kann länger ein Mensch zu bleiben aber nicht für immer also zeugte er mit seiner Frau einen neuen Beschützer: HERON
 Herons Mutter war aber nicht mit dem Plan einverstanden, dass die Ausbildung zum Schützer von Amboisa durch Herons Vater und Herald beginnen soll wärend Heron noch ein Säugling ist.
@@ -64,7 +64,7 @@ Dieses Mädchen war die geflohene Ilyma. Mit vollem Tatendrang sprang Heron in d
 Er kümmerte sich um sie und die beiden begannen sich ineinander zu verlieben.
 Sie lebte nun bei Heron und Herons Mutter auf dem Hof.
 
-Heron und Ilyma bekamen 2 Kinder: Firan und (Herons jüngster Sohn). Herons Mutter freute sich über die beiden Enkelkinder verstirbt aber später an einem Friedlichem Tod.
+Heron und Ilyma bekamen 2 Kinder: Firan und (Herons jüngster Sohn). Herons Mutter freute sich über die beiden Enkelkinder verstirbt aber später an einem friedlichem Tod.
 
 Herons kleiner Hof bleibt erhalten, die Söhne wachsen heran und Herons Abenteuer beginnen........
 
