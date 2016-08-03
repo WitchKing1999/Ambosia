@@ -14,11 +14,11 @@ Nach diesem Satz sprang das Tor auf und Firan, Herons ältester Sohn, rannte mit
 Er schrie, dass Dämonen Herons Hof übernommen haben und Ilyma entführen.
 Sofort rannte Heron mit Firan zu seinem Hof und die Wachen stützen den König, der zusammenbrach durch die Vorstellung, dass Dämonon so nah an seiner Burg sind.
 
-Angekommen sah Heron wie (Herons jüngster Sohn) von einem Dämonen um Herons Hof verfolgt wird und wie 2 Weitere Dämonen Ilyma ohnmächtig an ein Dämonenpferd binden.
+Angekommen sah Heron wie (Herons jüngster Sohn) von einem Dämonen verfolgt wird und wie 2 Weitere Dämonen Ilyma ohnmächtig an ein Dämonenpferd binden.
 Hier kommt es zum ersten Kampf: Heron gegen den Dämon, der (Herons jüngster Sohn) verfolgt. Heron gewinnt den Kampf mit 1 Schlag, was die 2 anderen Dämonen verwundert und hauen mit Ilyma ab.
 Heron verfolgt die Dämonen mit seinem Pferd nachdem er Firan bat (Herons jüngster Sohn) zu trösten.
 
-Mitten der Verfolgung auf einer kleinen Erhöhung der Landschaft sieht Heron eine aus Rauch bestehende schwarze Silhouette mit leuchtend gelben Augen.
+Mitten der Verfolgung auf einer kleinen Erhöhung der Landschaft sieht Heron eine aus Rauch bestehende schwere Silhouette mit leuchtend gelben Augen.
 Auf einmal hebt die Silhouette ihre Arme und der ganze Bereich der Landschaft wird durch schwarzen Nebel bedeckt.
 Man sieht nur grobe Umrisse und das feurige Leuchten der Dämonen und die gelben Augen der Silhouette.
 Plötzlich feuert die Silhouette einen Blitz in die Luft, der dannach wieder runter stürmt und Ilyma trifft.
@@ -35,5 +35,4 @@ Dannach berichtet er den Vorfall in (Gute Burg).
 Der König hat sich wieder erholt, beschreibt die Lage als Ernst und befiehlt Heron weiter Aufträge anzunehmen und nun Ambosia nach seiner Frau
 und nach den Dämonen zu durchsuchen.
 Er trifft auf Personen, welche Heron Hinweise zu seinen Hauptaufgaben geben aber nur wenn Heron für diese, Aufträge erfüllt.
-
 
